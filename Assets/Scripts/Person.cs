@@ -153,6 +153,7 @@ public class Person : MonoBehaviour {
 		}
 	}
 
+
 	///////////////////// STATE MACHINE
 	private void OnEnterState(State state){
 		switch(state){
@@ -164,8 +165,8 @@ public class Person : MonoBehaviour {
 			//Hangout for a length of time
 			this.GetComponent<NavMeshAgent>().radius = .01F;
 			this.GetComponent<Collider>().isTrigger = true;
-			CalculateHappiness();
 			CurrentDestination().AddPerson(this);
+			start = DayNightController.instance.TimeOfDayActual();
 			break;
 		case State.walking:
 			// Animate walking
@@ -183,6 +184,9 @@ public class Person : MonoBehaviour {
 			break;
 		case State.waiting:
 			//Hangout for a length of time
+			end = DayNightController.instance.TimeOfDayActual ();
+			timeWaiting();
+			CalculateHappiness();
 			if (CurrentDestination ()) {
 				CurrentDestination().RemovePerson(this);
 			}
@@ -211,17 +215,41 @@ public class Person : MonoBehaviour {
 	}
 
 	/////////////// Happiness Calculations
-	public int mood;
 
-	public int monotony;
-	public int restfulness;
-	public int playfullness;
-	public int productivity;
-
-	private Building[] previousPath;
 
 
 	// THIS IS A SKELETON, BY NO MEANS BALANCED OR INTERESTING
+	//////////////////// Calculate how much time they spent in a building
+	public float mood;
+	public float monotony;
+	public float restfulness;
+	public float playfullness;
+	public float productivity;
+	private Building[] previousPath;
+
+	// Determine time in a given building
+	private float start;
+	private float end;
+	private float timePlaying;
+	private float timeWorking;
+	private float timeResting;
+
+	private void timeWaiting(){
+		var total = (end - start) * DayNightController.instance.ShiftLength();
+		switch(CurrentDestination().type){
+		case Building.Type.Home:
+			timeResting += total;
+			break;
+		case Building.Type.Play:
+			timePlaying += total;
+			break;
+		case Building.Type.Work:
+			timeWorking += total;
+			break;
+		}
+
+	}
+
 	private void CalculateHappiness(){
 		// Only Calculate once per day
 		if (CurrentDestination () == objects [0]) {
@@ -243,22 +271,24 @@ public class Person : MonoBehaviour {
 				}
 
 				// Other emotions
-				restfulness = 0;
-				playfullness = 0;
-				productivity = 0;
-					
+				restfulness = 0F;
+				playfullness = 0F;
+				productivity = 0F;
 				switch(objects[k].GetComponent<Building>().type){
 				case Building.Type.Home:
-					restfulness += 2;
+					restfulness += 1.0F * (1F - timeResting);
 					break;
 				case Building.Type.Play:
-					playfullness += 1;
+					playfullness += 1.0F * (1F - timePlaying);
 					break;
 				case Building.Type.Work:
-					productivity += 1;
+					productivity += 1.0F * (1F - timeWorking);
 					break;
 				}
 			}
+			timeWorking = 0;
+			timePlaying = 0;
+			timeResting = 0;
 			previousPath = objects;
 			// Calculate mood from emotions
 			mood += restfulness + playfullness + productivity;
