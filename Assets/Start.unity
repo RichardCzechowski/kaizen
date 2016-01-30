@@ -1073,6 +1073,10 @@ Prefab:
       propertyPath: m_Name
       value: Building (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11490276, guid: cea54157ab40f41558ef9dd415db4376, type: 2}
+      propertyPath: capacity
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cea54157ab40f41558ef9dd415db4376, type: 2}
   m_IsPrefabParent: 0

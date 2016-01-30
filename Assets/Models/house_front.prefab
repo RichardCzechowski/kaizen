@@ -36,6 +36,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &122546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 481728}
+  - 114: {fileID: 11421098}
+  m_Layer: 0
+  m_Name: OccupancyIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &124668
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,12 +120,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145052}
   m_LocalRotation: {x: 0, y: -0.43310463, z: 0, w: 0.9013437}
-  m_LocalPosition: {x: -6.339841, y: 3.02, z: 9.962195}
+  m_LocalPosition: {x: 7.0498, y: 3.02, z: 20.432}
   m_LocalScale: {x: 2.2417197, y: 2.2417192, z: 2.2417192}
   m_Children:
   - {fileID: 432044}
   - {fileID: 456744}
   - {fileID: 492174}
+  - {fileID: 481728}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &432044
@@ -137,6 +154,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 425428}
   m_RootOrder: 1
+--- !u!4 &481728
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.372, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 425428}
+  m_RootOrder: 3
 --- !u!4 &492174
 Transform:
   m_ObjectHideFlags: 1
@@ -284,6 +313,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11421098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4bbfbccedc0468985ce65e6aba9306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  building: {fileID: 11490276}
+  quadPrefab: {fileID: 113192, guid: 53915600a903548459ef7325c3ab2d37, type: 2}
+  emptySlotTexture: {fileID: 2800000, guid: b9df0aa89839e42da96c6f24c2f862af, type: 3}
+  fullSlotTexture: {fileID: 2800000, guid: 1f665b616fb6d4d20a514fa7a63c9398, type: 3}
+  spacing: 1.2
+  materialTemplate: {fileID: 2100000, guid: 8258d80db3cb1470daa8b31f422d48d8, type: 2}
 --- !u!114 &11490276
 MonoBehaviour:
   m_ObjectHideFlags: 1
