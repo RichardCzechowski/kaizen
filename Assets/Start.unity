@@ -1352,7 +1352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac041f13acb841299882bdc552a94f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startNewPath: 0
+  positiveSound: {fileID: 8300000, guid: 6197b23fa0a614bf7b8874bffd5f9e82, type: 3}
+  negativeSound: {fileID: 8300000, guid: 03cd0ecdcbc734187847953d95248eea, type: 3}
 --- !u!1001 &1202542205
 Prefab:
   m_ObjectHideFlags: 0
@@ -2252,7 +2253,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!114 &2098483915 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11490276, guid: cea54157ab40f41558ef9dd415db4376,

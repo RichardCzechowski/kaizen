@@ -31,7 +31,7 @@ public class Building : MonoBehaviour {
 	}
 
 	public bool Full() {
-		return numOfOccupants == capacity;
+		return OccupantsIncludingPreview().Count == capacity;
 	}
 
 	public Vector3 EntryPosition() {
