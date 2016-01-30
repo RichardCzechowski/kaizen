@@ -96,6 +96,12 @@ public class Person : MonoBehaviour {
 	}
 	
 	void Update () {
+		if (DayNightController.instance.paused == true) {
+			paused = true;
+		} else if (paused == true) {
+			paused = false;
+		}
+
 		if (CurrentDestination() && state != State.settingPath) {
 			if (Vector3.Distance (CurrentPathEnd (), transform.position) < 0.7f && state != State.waiting) {
 				if (DayNightController.instance.TimeOfDayActual () <= nextShiftStart) {
