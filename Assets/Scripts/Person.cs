@@ -68,7 +68,7 @@ public class Person : MonoBehaviour {
 		}
 	
 		SetState(State.waiting);
-		StartCoroutine (Wait (10));
+		StartCoroutine (Wait (4 * DayNightController.instance.HoursToGameTime()));
 		_agent.destination = CurrentDestination().EntryPosition(); 
 	
 	}
@@ -178,7 +178,7 @@ public class Person : MonoBehaviour {
 		OnEnterState (newState);
 	}
 
-	IEnumerator Wait(int time) {
+	IEnumerator Wait(float time) {
 		yield return new WaitForSeconds(time);
 		SetState(State.walking);
 	}
