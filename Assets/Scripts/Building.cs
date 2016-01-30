@@ -16,6 +16,15 @@ public class Building : MonoBehaviour {
 	void Start(){
 	}
 
+	public List<Person> OccupantsIncludingPreview() {
+		if (DayNightController.instance.paused) {
+
+			return null;
+		} else {
+			return occupants;
+		}
+	}
+
 	public bool Full() {
 		return numOfOccupants == capacity;
 	}
