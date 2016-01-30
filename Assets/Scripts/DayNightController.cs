@@ -37,6 +37,29 @@ public class DayNightController : MonoBehaviour {
 		return _currentTimeOfDay;
 	}
 
+	public int NumberOfShifts() {
+		return 6;
+	}
+
+	public float ShiftLength() {
+		return 24f / NumberOfShifts ();
+	}
+
+	public float ShiftStartTime(int shiftIndex) { 
+		return ShiftLength () * shiftIndex;
+	}
+
+	public float ShiftEndTime(int shiftIndex) { 
+		if (shiftIndex > NumberOfShifts () - 1) {
+			return 0;
+		}
+		return ShiftLength () * shiftIndex + 1;
+	}
+
+	public int CurrentShift() {
+		return Mathf.FloorToInt (TimeOfDayIncludingPreview () * 24 / ShiftLength ());
+	}
+
 	public float TimeOfDayIncludingPreview() {
 		if (paused) {
 			return _previewTimeOfDay;
