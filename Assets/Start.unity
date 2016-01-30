@@ -1037,54 +1037,6 @@ Prefab:
       propertyPath: objects.Array.data[0]
       value: 
       objectReference: {fileID: 1657511634}
-    - target: {fileID: 463768, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 463768, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 463768, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364382, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364382, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364382, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_UseLightProbes
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364382, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 418270, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364382, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 418270, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 154790, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 119116, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
   m_IsPrefabParent: 0
@@ -1451,7 +1403,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2a4066037509b4b8abbc904bdc4feac9, type: 2}
+  - {fileID: 2100000, guid: 04f21e6fa022a403d941f672533f5aa5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
