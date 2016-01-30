@@ -25,7 +25,6 @@ public class Building : MonoBehaviour {
 	}
 
 	public void AddPerson(Person newPerson){
-		Debug.Log ("adding dude");
 		if (numOfOccupants < capacity) {
 			occupants.Add (newPerson);
 			numOfOccupants++;

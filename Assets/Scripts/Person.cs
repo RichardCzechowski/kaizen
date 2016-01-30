@@ -146,6 +146,7 @@ public class Person : MonoBehaviour {
 			break;
 		case State.waiting:
 			//Hangout for a length of time
+			CalculateHappiness();
 			CurrentDestination().AddPerson(this);
 			break;
 		case State.walking:
@@ -164,7 +165,9 @@ public class Person : MonoBehaviour {
 			break;
 		case State.waiting:
 			//Hangout for a length of time
-			CurrentDestination().RemovePerson(this);
+			if (CurrentDestination ()) {
+				CurrentDestination().RemovePerson(this);
+			}
 			break;
 		case State.walking:
 			// Animate walking
@@ -185,5 +188,60 @@ public class Person : MonoBehaviour {
 	IEnumerator Wait(float time) {
 		yield return new WaitForSeconds(time);
 		SetState (State.readyToMove);
+	}
+
+	/////////////// Happiness Calculations
+	public int mood;
+
+	public int monotony;
+	public int restfulness;
+	public int playfullness;
+	public int productivity;
+
+	private Building[] previousPath;
+
+
+	// THIS IS A SKELETON, BY NO MEANS BALANCED OR INTERESTING
+	private void CalculateHappiness(){
+		// Only Calculate once per day
+		if (CurrentDestination () == objects [0]) {
+			var k = 0;
+			for (k = 0; k < objects.Length; k++) {
+				// Monotony
+				if (previousPath != null && previousPath[k] != null && objects [k] == previousPath [k]) {
+					monotony += 1;
+				} else {
+					monotony = 0;
+				}
+				// Person goes home if too borded
+				if (monotony > 100) {
+					var j = 1;
+					for (j = 1; j < objects.Length; j++) {
+						objects [j] = null;
+					}
+					mood -= monotony;
+				}
+
+				// Other emotions
+				restfulness = 0;
+				playfullness = 0;
+				productivity = 0;
+					
+				switch(objects[k].GetComponent<Building>().type){
+				case Building.Type.Home:
+					restfulness += 2;
+					break;
+				case Building.Type.Play:
+					playfullness += 1;
+					break;
+				case Building.Type.Work:
+					productivity += 1;
+					break;
+				}
+			}
+			previousPath = objects;
+			// Calculate mood from emotions
+			mood += restfulness + playfullness + productivity;
+		}
 	}
 }
