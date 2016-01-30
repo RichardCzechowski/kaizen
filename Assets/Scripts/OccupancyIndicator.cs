@@ -50,14 +50,15 @@ public class OccupancyIndicator : MonoBehaviour {
 		for (var i = 0; i < building.capacity; i++) {
 			var fg = _fgQuads [i];
 			var bg = _bgQuads [i];
-			if (i < building.occupants.Count) {
+			var occupants = building.OccupantsIncludingPreview ();
+			if (i < occupants.Count) {
 				var mat = new Material(materialTemplate);
-				mat.mainTexture = building.occupants[i].portrait;
+				mat.mainTexture = occupants[i].portrait;
 				fg.SetMaterial (mat);
 				fg.gameObject.SetActive (true);
 
 				var bgMat = new Material(_emptyMaterial);
-				bgMat.color = building.occupants[i].color;
+				bgMat.color = occupants[i].color;
 				bg.SetMaterial (bgMat);
 
 			} else {

@@ -37,6 +37,14 @@ public class Person : MonoBehaviour {
 
 	}
 
+	public static Person[] All() {
+		return FindObjectsOfType<Person>();
+	}
+
+	public Building BuildingForShift(int shift) {
+		return objects [shift];
+	}
+
 	Building CurrentDestination() {
 		return objects [_currentStep];
 	}

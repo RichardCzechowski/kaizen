@@ -18,8 +18,13 @@ public class Building : MonoBehaviour {
 
 	public List<Person> OccupantsIncludingPreview() {
 		if (DayNightController.instance.paused) {
-
-			return null;
+			List<Person> theseOccupants = new List<Person> ();
+			foreach (var person in Person.All()) {
+				if (person.BuildingForShift(DayNightController.instance.CurrentShift()) == this) {
+					theseOccupants.Add (person);
+				}
+			}
+			return theseOccupants;
 		} else {
 			return occupants;
 		}
