@@ -19,6 +19,8 @@ public class Person : MonoBehaviour {
 	private NavMeshAgent _agent;
 	private LineRenderer _lineRenderer;
 
+	public bool selected = false;
+
 	void Start () {
 		_agent = GetComponent<NavMeshAgent>();			
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
@@ -79,8 +81,13 @@ public class Person : MonoBehaviour {
 				}
 			}
 		}
-			
-		UpdatePathPreview ();
+
+		if (selected) {
+			UpdatePathPreview ();
+			_lineRenderer.gameObject.SetActive (true);
+		} else {
+			_lineRenderer.gameObject.SetActive (false);
+		}
 
 	}
 

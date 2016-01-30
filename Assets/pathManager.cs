@@ -27,6 +27,9 @@ public class pathManager : MonoBehaviour {
 				i = 0;
 				startNewPath = true;
 				pathToSet = hit.transform.gameObject;
+
+				var person = pathToSet.GetComponent<Person> ();
+				person.selected = true;
 			
 			}else if (hit.transform != null && startNewPath && hit.transform.gameObject.tag == "Building") {
 				i++;
@@ -49,6 +52,8 @@ public class pathManager : MonoBehaviour {
 						startNewPath = false;
 						person.state = Person.State.walking;
 						person.MoveToNext();
+						person.selected = false;
+
 					}
 				}
 			}
