@@ -31,6 +31,10 @@ public class Person : MonoBehaviour {
 			renderer.material = mat;
 		}
 
+		var lineMat = new Material(_lineRenderer.sharedMaterial);
+		lineMat.color = color;
+		_lineRenderer.material = lineMat;
+
 	}
 
 	Building CurrentDestination() {

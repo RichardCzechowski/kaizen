@@ -257,6 +257,18 @@ Prefab:
       propertyPath: objects.Array.data[0]
       value: 
       objectReference: {fileID: 1657511634}
+    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
+      propertyPath: color.r
+      value: 0.728
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
+      propertyPath: color.g
+      value: 0.5716933
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
+      propertyPath: color.b
+      value: 0.23529415
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
   m_IsPrefabParent: 0
