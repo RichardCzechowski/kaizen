@@ -21,6 +21,9 @@ public class pathManager : MonoBehaviour {
 			// Casts the ray and get the first game object hit
 			Physics.Raycast(ray, out hit);
 			if (hit.transform != null && hit.transform.gameObject.tag == "Player") {
+
+				DayNightController.instance.BeginPreview (0);
+
 				i = 0;
 				startNewPath = true;
 				pathToSet = hit.transform.gameObject;
@@ -30,6 +33,8 @@ public class pathManager : MonoBehaviour {
 				var person = pathToSet.GetComponent<Person> ();
 				if (i < person.objects.Length) {
 
+					DayNightController.instance.BeginPreview (i * 4.0f / 24.0f);
+				
 					// Search the hit object or its parents
 					Building building = hit.transform.gameObject.GetComponent<Building> ();
 					if (!building) {
@@ -40,6 +45,7 @@ public class pathManager : MonoBehaviour {
 
 					// Debug.Log ("Advancing path to " + i.ToString());
 					if (i == 5) {
+						DayNightController.instance.EndPreview ();
 						startNewPath = false;
 						person.state = Person.State.walking;
 						person.MoveToNext();

@@ -8,8 +8,10 @@ public class DayNightController : MonoBehaviour {
 	public Light sun;
 	public Light moon;
 	public float secondsInFullDay = 120f;
+
 	[Range(0,1)]
-	public float currentTimeOfDay = 0;
+	float _currentTimeOfDay = 0;
+
 	[HideInInspector]
 	public float timeMultiplier = 1f;
 
@@ -31,40 +33,66 @@ public class DayNightController : MonoBehaviour {
 		return secondsInFullDay / 24f;
 	}
 
+	public float TimeOfDayActual() {
+		return _currentTimeOfDay;
+	}
+
+	public float TimeOfDayIncludingPreview() {
+		if (paused) {
+			return _previewTimeOfDay;
+		}
+		return _currentTimeOfDay;
+	}
+
+	public bool paused = false;
+
+	[Range(0,1)]
+	public float _previewTimeOfDay;
+	public void BeginPreview(float time) {
+		_previewTimeOfDay = time;
+		paused = true;
+	}
+
+	public void EndPreview() {
+		paused = false;
+	}
+
 	void Update() {
+
 		UpdateSun();
 
-		currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
-
-		if (currentTimeOfDay >= 1) {
-			currentTimeOfDay = 0;
-			daysElapsed++;
+		if (!paused) { 
+			_currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
+			if (_currentTimeOfDay >= 1) {
+				_currentTimeOfDay = 0;
+				daysElapsed++;
+			}
 		}
-
+			
 	}
 
 	void UpdateSun() {
-		sun.transform.localRotation = Quaternion.Euler((currentTimeOfDay * 360f) - 90, 170, 0);
-		moon.transform.localRotation = Quaternion.Euler((currentTimeOfDay * 360f) - 270, 170, 0);
+		sun.transform.localRotation = Quaternion.Euler((TimeOfDayIncludingPreview() * 360f) - 90, 170, 0);
+		moon.transform.localRotation = Quaternion.Euler((TimeOfDayIncludingPreview() * 360f) - 270, 170, 0);
 
 		float intensityMultiplier = 1;
-		if (currentTimeOfDay <= 0.23f || currentTimeOfDay >= 0.75f) {
+		if (TimeOfDayIncludingPreview() <= 0.23f || TimeOfDayIncludingPreview() >= 0.75f) {
 			intensityMultiplier = 0;
 		}
-		else if (currentTimeOfDay <= 0.25f) {
-			intensityMultiplier = Mathf.Clamp01((currentTimeOfDay - 0.23f) * (1 / 0.02f));
+		else if (TimeOfDayIncludingPreview() <= 0.25f) {
+			intensityMultiplier = Mathf.Clamp01((TimeOfDayIncludingPreview() - 0.23f) * (1 / 0.02f));
 		}
-		else if (currentTimeOfDay >= 0.73f) {
-			intensityMultiplier = Mathf.Clamp01(1 - ((currentTimeOfDay - 0.73f) * (1 / 0.02f)));
+		else if (TimeOfDayIncludingPreview() >= 0.73f) {
+			intensityMultiplier = Mathf.Clamp01(1 - ((TimeOfDayIncludingPreview() - 0.73f) * (1 / 0.02f)));
 		}
 
 		sun.intensity = sunInitialIntensity * intensityMultiplier;
 		moon.intensity = moonInitialIntensity * (1 - intensityMultiplier);
 
-		sun.color = nightDayColor.Evaluate(currentTimeOfDay);
+		sun.color = nightDayColor.Evaluate(TimeOfDayIncludingPreview());
 		RenderSettings.ambientLight = sun.color;
 
-		RenderSettings.fogColor = nightDayFogColor.Evaluate(currentTimeOfDay);
+		RenderSettings.fogColor = nightDayFogColor.Evaluate(TimeOfDayIncludingPreview());
 
 	}
 }
