@@ -27,11 +27,15 @@ public class pathManager : MonoBehaviour {
 				i = 0;
 				startNewPath = true;
 				pathToSet = hit.transform.gameObject;
+
+				var person = pathToSet.GetComponent<Person> ();
+				person.selected = true;
+				person.ClearPaths ();
 			
 			}else if (hit.transform != null && startNewPath && hit.transform.gameObject.tag == "Building") {
 				i++;
 				var person = pathToSet.GetComponent<Person> ();
-				if (i < person.objects.Length) {
+				if (i < person.Buildings().Length) {
 
 					DayNightController.instance.BeginPreview (i * 4.0f / 24.0f);
 				
@@ -41,10 +45,10 @@ public class pathManager : MonoBehaviour {
 						building = hit.transform.parent.gameObject.GetComponent<Building> ();
 					}
 
-					person.objects[i] = building;
+					person.Buildings()[i] = building;
 
 					// Debug.Log ("Advancing path to " + i.ToString());
-					if (i == 5) {
+					if (i == person.Buildings().Length - 1) {
 						DayNightController.instance.EndPreview ();
 						startNewPath = false;
 						person.state = Person.State.walking;
