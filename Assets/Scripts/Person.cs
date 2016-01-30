@@ -31,7 +31,7 @@ public class Person : MonoBehaviour {
 	void Update () {
 
 		if (CurrentDestination()) {
-			if (Vector3.Distance(CurrentDestination().position, transform.position) < 4f) {
+			if (Vector3.Distance(CurrentDestination().position, transform.position) < 3f) {
 				MoveToNext ();
 			}
 		}
@@ -42,18 +42,17 @@ public class Person : MonoBehaviour {
 	}
 
 	public void MoveToNext() {
-		Debug.Log ("Moving to next");
 
-		var i = _currentStep;
-		if (i >= objects.Length - 1) {
+		if (_currentStep >= objects.Length - 1) {
 			_currentStep = 0;
+		} else if (objects [_currentStep + 1]) {
+			_currentStep = _currentStep + 1;
+		} else {
+			return;
 		}
-		else {
-			_currentStep = i + 1;
-		}
-		_agent.destination = CurrentDestination().position; 
 
-//		UpdatePathPreview ();
+		_agent.destination = CurrentDestination().position; 
+		UpdatePathPreview ();
 	
 	}
 
