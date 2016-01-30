@@ -24,7 +24,6 @@ public class pathManager : MonoBehaviour {
 				i = 0;
 				startNewPath = true;
 				pathToSet = hit.transform.gameObject;
-				Debug.Log ("Setting path");
 			
 			}else if (hit.transform != null && startNewPath && hit.transform.gameObject.tag == "Building") {
 				i++;
@@ -39,7 +38,7 @@ public class pathManager : MonoBehaviour {
 
 					person.objects[i] = building;
 
-					Debug.Log ("Advancing path to " + i.ToString());
+					// Debug.Log ("Advancing path to " + i.ToString());
 					if (i == 5) {
 						startNewPath = false;
 						person.state = Person.State.walking;

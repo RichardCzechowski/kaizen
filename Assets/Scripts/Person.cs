@@ -67,8 +67,8 @@ public class Person : MonoBehaviour {
 			return;
 		}
 	
-		state = State.waiting;
-		StartCoroutine (wait (10));
+		SetState(State.waiting);
+		StartCoroutine (Wait (10));
 		_agent.destination = CurrentDestination().EntryPosition(); 
 	
 	}
@@ -137,19 +137,17 @@ public class Person : MonoBehaviour {
 	}
 
 	///////////////////// STATE MACHINE
-
-	public void setState (State newState) {
-		state = newState;
+	private void OnEnterState(State state){
 		switch(state){
 		case State.settingPath:
 			// Don't move until path is set
 			Debug.Log("settingPath");
-			setState(State.waiting);
+			//SetState(State.waiting);
 			break;
 		case State.waiting:
 			//Hangout for a length of time
 			Debug.Log("waiting");
-			StartCoroutine(wait(10));
+			CurrentDestination().AddPerson(this);
 			break;
 		case State.walking:
 			// Animate walking
@@ -157,10 +155,31 @@ public class Person : MonoBehaviour {
 		}
 	}
 
-	IEnumerator wait(int time) {
-		Debug.Log("Before Waiting 2 seconds");
+	private void OnExitState(State state){
+		switch(state){
+		case State.settingPath:
+			// Don't move until path is set
+			//SetState(State.waiting);
+			break;
+		case State.waiting:
+			//Hangout for a length of time
+			CurrentDestination().RemovePerson(this);
+			break;
+		case State.walking:
+			// Animate walking
+			break;
+		}
+	}
+
+	public void SetState (State newState) {
+		Debug.Log (newState);
+		OnExitState (state);
+		state = newState;
+		OnEnterState (newState);
+	}
+
+	IEnumerator Wait(int time) {
 		yield return new WaitForSeconds(time);
-		Debug.Log("After Waiting 2 Seconds");
-		state = State.walking;
+		SetState(State.walking);
 	}
 }
