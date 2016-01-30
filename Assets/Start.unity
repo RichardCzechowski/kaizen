@@ -924,7 +924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sun: {fileID: 2096203617}
   moon: {fileID: 746783055}
-  secondsInFullDay: 30
+  secondsInFullDay: 100
   timeMultiplier: 1
   daysElapsed: 0
   nightDayColor:

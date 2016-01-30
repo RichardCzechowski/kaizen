@@ -22,6 +22,9 @@ public class Person : MonoBehaviour {
 
 	public bool selected = false;
 
+	private float nextShiftStart;
+	public bool paused = false;
+
 	void Start () {
 		_agent = GetComponent<NavMeshAgent>();			
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
@@ -69,19 +72,22 @@ public class Person : MonoBehaviour {
 	}
 
 	Vector3 CurrentPathEnd() {
-		return _agent.path.corners [_agent.path.corners.Length - 1];
+		if (_agent.path.corners.Length != 0) {
+			return _agent.path.corners [_agent.path.corners.Length - 1];
+		} else {
+			return Vector3.zero;
+		}
 	}
 	
 	void Update () {
-
 		if (CurrentDestination() && state != State.settingPath) {
-			if (Vector3.Distance (CurrentPathEnd (), transform.position) < 0.7f) {
-				if (state == State.readyToMove) {
-					SetState (State.walking);
-					MoveToNext ();
-				} else if (state != State.waiting) {
+			if (Vector3.Distance (CurrentPathEnd (), transform.position) < 0.7f && state != State.waiting) {
+				if (DayNightController.instance.TimeOfDayActual () <= nextShiftStart) {
 					SetState (State.waiting);
 				}
+			}
+			else if (DayNightController.instance.TimeOfDayActual() >= nextShiftStart) {
+				SetState (State.walking);
 			}
 		}
 
@@ -91,11 +97,17 @@ public class Person : MonoBehaviour {
 		} else {
 			_lineRenderer.gameObject.SetActive (false);
 		}
-
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			paused = !paused;
+			if (paused) {
+				Pause ();
+			} else {
+				Resume ();
+			}
+		}
 	}
 
 	public void MoveToNext() {
-
 		if (_currentStep >= objects.Length - 1) {
 			_currentStep = 0;
 		} else if (objects [_currentStep + 1]) {
@@ -103,7 +115,6 @@ public class Person : MonoBehaviour {
 		} else {
 			return;
 		}
-		StartCoroutine (Wait (4 * DayNightController.instance.HoursToGameTime()));
 		_agent.destination = CurrentDestination().EntryPosition(); 
 	
 	}
@@ -171,6 +182,28 @@ public class Person : MonoBehaviour {
 		}
 	}
 
+	private Vector3 lastAgentVelocity;
+	private NavMeshPath lastAgentPath;
+	public void Pause (){
+		paused = true;
+		lastAgentVelocity = _agent.velocity;
+		lastAgentPath = _agent.path;
+		_agent.velocity = Vector3.zero;
+		_agent.ResetPath();
+	}
+
+	public void Resume (){
+		paused = false;
+		_agent.velocity = lastAgentVelocity;
+		_agent.SetPath(lastAgentPath);
+	}
+
+
+
+	public void SetWaitTime(){
+		nextShiftStart = DayNightController.instance.ShiftStartTime(DayNightController.instance.CurrentShift() + 1) / 24F;
+	}
+
 
 	///////////////////// STATE MACHINE
 	private void OnEnterState(State state){
@@ -187,6 +220,8 @@ public class Person : MonoBehaviour {
 			start = DayNightController.instance.TimeOfDayActual();
 			break;
 		case State.walking:
+			SetWaitTime();
+			MoveToNext ();
 			// Animate walking
 			break;
 		case State.readyToMove:
@@ -221,16 +256,12 @@ public class Person : MonoBehaviour {
 	}
 
 	public void SetState (State newState) {
-		Debug.Log (newState);
+		//Debug.Log (newState);
 		OnExitState (state);
 		state = newState;
 		OnEnterState (newState);
 	}
-
-	IEnumerator Wait(float time) {
-		yield return new WaitForSeconds(time);
-		SetState (State.readyToMove);
-	}
+		
 
 	/////////////// Happiness Calculations
 

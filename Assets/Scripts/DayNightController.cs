@@ -81,7 +81,9 @@ public class DayNightController : MonoBehaviour {
 	}
 
 	void Update() {
-
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			paused = !paused;
+		}
 		UpdateSun();
 
 		if (!paused) { 
