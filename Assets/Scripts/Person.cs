@@ -9,7 +9,8 @@ public class Person : MonoBehaviour {
 	public State state = State.settingPath;
 
 	public Texture2D portrait;
-	public Color color = Color.magenta;
+	public Color color = Color.black;
+	public Color[] possibleColors;
 
 	public Building[] objects;
 
@@ -19,11 +20,15 @@ public class Person : MonoBehaviour {
 	private NavMeshAgent _agent;
 	private LineRenderer _lineRenderer;
 
+	public bool selected = false;
+
 	void Start () {
 		_agent = GetComponent<NavMeshAgent>();			
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
 		_lineRenderer.useWorldSpace = true;
 		transform.position = CurrentDestination().EntryPosition();
+
+		color = possibleColors [UnityEngine.Random.Range (0, possibleColors.Length - 1)];
 
 		foreach (var renderer in recolorableClothes) {
 			var mat = new Material(renderer.sharedMaterial);
@@ -35,6 +40,14 @@ public class Person : MonoBehaviour {
 		lineMat.color = color;
 		_lineRenderer.material = lineMat;
 
+	}
+
+	public static Person[] All() {
+		return FindObjectsOfType<Person>();
+	}
+
+	public Building BuildingForShift(int shift) {
+		return objects [shift];
 	}
 
 	Building CurrentDestination() {
@@ -71,8 +84,13 @@ public class Person : MonoBehaviour {
 				}
 			}
 		}
-			
-		UpdatePathPreview ();
+
+		if (selected) {
+			UpdatePathPreview ();
+			_lineRenderer.gameObject.SetActive (true);
+		} else {
+			_lineRenderer.gameObject.SetActive (false);
+		}
 
 	}
 
