@@ -34,7 +34,8 @@ public class pathManager : MonoBehaviour {
 					Debug.Log ("Advancing path to " + i.ToString());
 					if (i == 5) {
 						startNewPath = false;
-						person.MoveToNext ();
+						person.state = Person.State.walking;
+						person.MoveToNext();
 					}
 				}
 			}

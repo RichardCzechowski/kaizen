@@ -46,8 +46,10 @@ public class Person : MonoBehaviour {
 	void Update () {
 
 		if (CurrentDestination()) {
-			if (Vector3.Distance(CurrentPathEnd(), transform.position) < 0.7f) {
-				MoveToNext ();
+			if (Vector3.Distance (CurrentPathEnd (), transform.position) < 0.7f) {
+				if (state == State.walking) {
+					MoveToNext ();
+				}
 			}
 		}
 			
@@ -66,7 +68,8 @@ public class Person : MonoBehaviour {
 		}
 			
 		_agent.destination = CurrentDestination().position; 
-	
+		state = State.waiting;
+		StartCoroutine (wait (10));
 	}
 
 	Vector3[] GetCorners(Vector3 start, Vector3 end) {
@@ -157,5 +160,6 @@ public class Person : MonoBehaviour {
 		Debug.Log("Before Waiting 2 seconds");
 		yield return new WaitForSeconds(time);
 		Debug.Log("After Waiting 2 Seconds");
+		state = State.walking;
 	}
 }
