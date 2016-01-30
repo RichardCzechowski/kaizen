@@ -38,7 +38,7 @@ public class OccupancyIndicator : MonoBehaviour {
 		
 		for (var i = 0; i < building.capacity; i++) {
 			var quad = _quads [i];
-			if (i < building.occupants.Length) {
+			if (i < building.occupants.Count) {
 				var mat = new Material(materialTemplate);
 				mat.mainTexture = fullSlotTexture;
 				_quads [i].SetMaterial (mat);
