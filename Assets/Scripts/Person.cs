@@ -8,7 +8,12 @@ public class Person : MonoBehaviour {
 	public enum State {settingPath, waiting, walking, readyToMove};
 	public State state = State.settingPath;
 
+	public Texture2D portrait;
+	public Color color = Color.magenta;
+
 	public Building[] objects;
+
+	public MeshRenderer[] recolorableClothes;
 
 	int _currentStep = 0;
 	private NavMeshAgent _agent;
@@ -19,6 +24,17 @@ public class Person : MonoBehaviour {
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
 		_lineRenderer.useWorldSpace = true;
 		transform.position = CurrentDestination().EntryPosition();
+
+		foreach (var renderer in recolorableClothes) {
+			var mat = new Material(renderer.sharedMaterial);
+			mat.color = color;
+			renderer.material = mat;
+		}
+
+		var lineMat = new Material(_lineRenderer.sharedMaterial);
+		lineMat.color = color;
+		_lineRenderer.material = lineMat;
+
 	}
 
 	Building CurrentDestination() {

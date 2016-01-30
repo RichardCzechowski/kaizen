@@ -16,6 +16,7 @@ public class DayNightController : MonoBehaviour {
 	public int daysElapsed = 0;
 
 	float sunInitialIntensity;
+	float moonInitialIntensity;
 
 	public Gradient nightDayColor;
 	public Gradient nightDayFogColor;
@@ -23,6 +24,7 @@ public class DayNightController : MonoBehaviour {
 	void Start() {
 		instance = this;
 		sunInitialIntensity = sun.intensity;
+		moonInitialIntensity = moon.intensity;
 	}
 
 	public float HoursToGameTime() {
@@ -57,6 +59,7 @@ public class DayNightController : MonoBehaviour {
 		}
 
 		sun.intensity = sunInitialIntensity * intensityMultiplier;
+		moon.intensity = moonInitialIntensity * (1 - intensityMultiplier);
 
 		sun.color = nightDayColor.Evaluate(currentTimeOfDay);
 		RenderSettings.ambientLight = sun.color;
