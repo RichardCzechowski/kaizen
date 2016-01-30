@@ -38,11 +38,15 @@ public class Person : MonoBehaviour {
 	bool HasCompletePath() {
 		return ObjectsSet() == 6;
 	}
+
+	Vector3 CurrentPathEnd() {
+		return _agent.path.corners [_agent.path.corners.Length - 1];
+	}
 	
 	void Update () {
 
 		if (CurrentDestination()) {
-			if (Vector3.Distance(CurrentDestination().position, transform.position) < 3f) {
+			if (Vector3.Distance(CurrentPathEnd(), transform.position) < 0.7f) {
 				MoveToNext ();
 			}
 		}
@@ -71,7 +75,15 @@ public class Person : MonoBehaviour {
 		return segment.corners;
 	}
 
-
+	float PathLength(Vector3[] path) {
+		float pathLength = 0f;
+		for(var i = 1 ;i < path.Length; i++)
+		{
+			pathLength += Mathf.Abs(Vector3.Distance(path[i-1], path[i]));
+		}
+		return pathLength;
+	}
+		
 	void UpdatePathPreview() {
 
 		List<Vector3> path = new List<Vector3>();
@@ -113,7 +125,10 @@ public class Person : MonoBehaviour {
 					Gizmos.DrawLine (_agent.path.corners [i], _agent.path.corners [i + 1]);
 				}
 			}
-		
+
+			Gizmos.color = Color.magenta;
+			Gizmos.DrawWireSphere (CurrentPathEnd (), 0.7f);
+
 		}
 	}
 
