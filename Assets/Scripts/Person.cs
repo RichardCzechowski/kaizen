@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class Person : MonoBehaviour {
 	
-	public enum State {settingPath, waiting, walking};
+	public enum State {settingPath, waiting, walking, readyToMove};
 	public State state = State.settingPath;
 
 	public Building[] objects;
@@ -47,8 +47,11 @@ public class Person : MonoBehaviour {
 
 		if (CurrentDestination()) {
 			if (Vector3.Distance (CurrentPathEnd (), transform.position) < 0.7f) {
-				if (state == State.walking) {
+				if (state == State.readyToMove) {
 					MoveToNext ();
+					SetState (State.walking);
+				} else if (state != State.waiting) {
+					SetState (State.waiting);
 				}
 			}
 		}
@@ -66,8 +69,6 @@ public class Person : MonoBehaviour {
 		} else {
 			return;
 		}
-	
-		SetState(State.waiting);
 		StartCoroutine (Wait (10));
 		_agent.destination = CurrentDestination().EntryPosition(); 
 	
@@ -141,15 +142,17 @@ public class Person : MonoBehaviour {
 		switch(state){
 		case State.settingPath:
 			// Don't move until path is set
-			Debug.Log("settingPath");
 			//SetState(State.waiting);
 			break;
 		case State.waiting:
 			//Hangout for a length of time
-			Debug.Log("waiting");
 			CurrentDestination().AddPerson(this);
 			break;
 		case State.walking:
+			// Animate walking
+			break;
+		case State.readyToMove:
+			CurrentDestination().RemovePerson(this);
 			// Animate walking
 			break;
 		}
@@ -163,9 +166,11 @@ public class Person : MonoBehaviour {
 			break;
 		case State.waiting:
 			//Hangout for a length of time
-			CurrentDestination().RemovePerson(this);
 			break;
 		case State.walking:
+			// Animate walking
+			break;
+		case State.readyToMove:
 			// Animate walking
 			break;
 		}
@@ -180,6 +185,6 @@ public class Person : MonoBehaviour {
 
 	IEnumerator Wait(int time) {
 		yield return new WaitForSeconds(time);
-		SetState(State.walking);
+		SetState (State.readyToMove);
 	}
 }
