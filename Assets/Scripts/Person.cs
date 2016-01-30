@@ -9,7 +9,8 @@ public class Person : MonoBehaviour {
 	public State state = State.settingPath;
 
 	public Texture2D portrait;
-	public Color color = Color.magenta;
+	public Color color = Color.black;
+	public Color[] possibleColors;
 
 	public Building[] objects;
 
@@ -26,6 +27,8 @@ public class Person : MonoBehaviour {
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
 		_lineRenderer.useWorldSpace = true;
 		transform.position = CurrentDestination().EntryPosition();
+
+		color = possibleColors [UnityEngine.Random.Range (0, possibleColors.Length - 1)];
 
 		foreach (var renderer in recolorableClothes) {
 			var mat = new Material(renderer.sharedMaterial);
