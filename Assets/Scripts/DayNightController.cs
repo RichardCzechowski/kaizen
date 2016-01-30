@@ -11,6 +11,8 @@ public class DayNightController : MonoBehaviour {
 	[HideInInspector]
 	public float timeMultiplier = 1f;
 
+	public int daysElapsed = 0;
+
 	float sunInitialIntensity;
 
 	public Gradient nightDayColor;
@@ -27,7 +29,9 @@ public class DayNightController : MonoBehaviour {
 
 		if (currentTimeOfDay >= 1) {
 			currentTimeOfDay = 0;
+			daysElapsed++;
 		}
+
 	}
 
 	void UpdateSun() {
