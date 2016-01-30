@@ -2,10 +2,14 @@
 using System.Collections;
 
 public class pathManager : MonoBehaviour {
-	public bool startNewPath;
-	private Ray ray;
-	private int i = 0;
-	private GameObject pathToSet;
+
+	public AudioClip positiveSound;
+	public AudioClip negativeSound;
+
+	bool startNewPath;
+	Ray ray;
+	int i = 0;
+	GameObject pathToSet;
 
 	// Use this for initialization
 	void Start () {
@@ -33,28 +37,40 @@ public class pathManager : MonoBehaviour {
 				DayNightController.instance.BeginPreview (0);
 
 			} else if (hit.transform != null && startNewPath && hit.transform.gameObject.tag == "Building") {
-				i++;
-				var person = pathToSet.GetComponent<Person> ();
-				if (i < person.Buildings().Length) {
-
-					DayNightController.instance.BeginPreview (i * 4.0f / 24.0f);
 				
-					// Search the hit object or its parents
-					Building building = hit.transform.gameObject.GetComponent<Building> ();
-					if (!building) {
-						building = hit.transform.parent.gameObject.GetComponent<Building> ();
-					}
-
-					person.Buildings()[i] = building;
-
-					// Debug.Log ("Advancing path to " + i.ToString());
-					if (i == person.Buildings().Length - 1) {
-						DayNightController.instance.EndPreview ();
-						startNewPath = false;
-						person.state = Person.State.walking;
-						person.MoveToNext();
-					}
+				var person = pathToSet.GetComponent<Person> ();
+				// Search the hit object or its parents
+				Building building = hit.transform.gameObject.GetComponent<Building> ();
+				if (!building) {
+					building = hit.transform.parent.gameObject.GetComponent<Building> ();
 				}
+				if (building.Full ()) {
+
+					AudioSource.PlayClipAtPoint (negativeSound, Camera.main.transform.position);
+				} else {
+					AudioSource.PlayClipAtPoint (positiveSound, Camera.main.transform.position);
+
+
+					i++;
+					if (i < person.Buildings().Length) {
+
+						DayNightController.instance.BeginPreview (i * 4.0f / 24.0f);
+
+
+						person.Buildings()[i] = building;
+
+						// Debug.Log ("Advancing path to " + i.ToString());
+						if (i == person.Buildings().Length - 1) {
+							DayNightController.instance.EndPreview ();
+							startNewPath = false;
+							person.state = Person.State.walking;
+							person.MoveToNext();
+						}
+					}
+
+
+				}
+
 			}
 		}
 	}
