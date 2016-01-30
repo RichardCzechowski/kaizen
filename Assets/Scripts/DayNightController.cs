@@ -23,8 +23,11 @@ public class DayNightController : MonoBehaviour {
 	public Gradient nightDayColor;
 	public Gradient nightDayFogColor;
 
-	void Start() {
+	void Awake() {
 		instance = this;
+	}
+
+	void Start() {
 		sunInitialIntensity = sun.intensity;
 		moonInitialIntensity = moon.intensity;
 	}

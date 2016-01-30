@@ -317,6 +317,10 @@ Prefab:
       propertyPath: possibleColors.Array.data[4].b
       value: 0.5648757
       objectReference: {fileID: 0}
+    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
+      propertyPath: home
+      value: 
+      objectReference: {fileID: 2124810445}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
   m_IsPrefabParent: 0
@@ -1592,6 +1596,10 @@ Prefab:
       propertyPath: m_Name
       value: Person (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
+      propertyPath: home
+      value: 
+      objectReference: {fileID: 1657511634}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
   m_IsPrefabParent: 0
@@ -1867,3 +1875,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+--- !u!114 &2124810445 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11490276, guid: cea54157ab40f41558ef9dd415db4376,
+    type: 2}
+  m_PrefabInternal: {fileID: 1662337581}
+  m_Script: {fileID: 11500000, guid: 9f6b5038debd74380bec1dc88cc4f369, type: 3}

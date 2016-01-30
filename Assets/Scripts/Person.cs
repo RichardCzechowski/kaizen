@@ -12,7 +12,8 @@ public class Person : MonoBehaviour {
 	public Color color = Color.black;
 	public Color[] possibleColors;
 
-	public Building[] objects;
+	public Building home;
+	Building[] objects;
 
 	public MeshRenderer[] recolorableClothes;
 
@@ -23,6 +24,9 @@ public class Person : MonoBehaviour {
 	public bool selected = false;
 
 	void Start () {
+
+		ClearPaths ();
+
 		_agent = GetComponent<NavMeshAgent>();			
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
 		_lineRenderer.useWorldSpace = true;
@@ -51,7 +55,19 @@ public class Person : MonoBehaviour {
 	}
 
 	Building CurrentDestination() {
+		if (objects == null) {
+			return null;
+		}
 		return objects [_currentStep];
+	}
+
+	public Building[] Buildings() {
+		return objects;
+	}
+
+	public void ClearPaths() {
+		objects = new Building[DayNightController.instance.NumberOfShifts()];
+		objects [0] = home;
 	}
 
 	int ObjectsSet() {
@@ -65,7 +81,7 @@ public class Person : MonoBehaviour {
 	}
 
 	bool HasCompletePath() {
-		return ObjectsSet() == 6;
+		return ObjectsSet() == DayNightController.instance.NumberOfShifts();
 	}
 
 	Vector3 CurrentPathEnd() {
@@ -144,16 +160,20 @@ public class Person : MonoBehaviour {
 	}
 
 	void OnDrawGizmosSelected() {
-		foreach (var o in objects) {
-			if (o) {
-				if (o == CurrentDestination()) {
-					Gizmos.color = Color.green;
+
+		if (objects != null) {
+			foreach (var o in objects) {
+				if (o) {
+					if (o == CurrentDestination()) {
+						Gizmos.color = Color.green;
+					}
+					else {
+						Gizmos.color = Color.red;
+					}
+					Gizmos.DrawWireSphere (o.EntryPosition(), 1);
 				}
-				else {
-					Gizmos.color = Color.red;
-				}
-				Gizmos.DrawWireSphere (o.EntryPosition(), 1);
 			}
+
 		}
 
 		if (_agent) {
