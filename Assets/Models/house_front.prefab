@@ -36,6 +36,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &124668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 492174}
+  m_Layer: 0
+  m_Name: EntryPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &131650
 GameObject:
   m_ObjectHideFlags: 1
@@ -62,6 +77,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 425428}
+  - 114: {fileID: 11490276}
   m_Layer: 0
   m_Name: house_front
   m_TagString: Building
@@ -88,11 +104,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145052}
   m_LocalRotation: {x: 0, y: -0.43310463, z: 0, w: 0.9013437}
-  m_LocalPosition: {x: 7.0498, y: 3.02, z: 20.432}
+  m_LocalPosition: {x: -6.339841, y: 3.02, z: 9.962195}
   m_LocalScale: {x: 2.2417197, y: 2.2417192, z: 2.2417192}
   m_Children:
   - {fileID: 432044}
   - {fileID: 456744}
+  - {fileID: 492174}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &432044
@@ -120,6 +137,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 425428}
   m_RootOrder: 1
+--- !u!4 &492174
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124668}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.405, z: 0.459}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 425428}
+  m_RootOrder: 2
 --- !u!23 &2306560
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -255,6 +284,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11490276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f6b5038debd74380bec1dc88cc4f369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  capacity: 1
+  occupants: []
+  entryPoint: {fileID: 492174}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
