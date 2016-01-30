@@ -30,7 +30,15 @@ public class pathManager : MonoBehaviour {
 				i++;
 				var person = pathToSet.GetComponent<Person> ();
 				if (i < person.objects.Length) {
-					person.objects[i] = hit.transform;
+
+					// Search the hit object or its parents
+					Building building = hit.transform.gameObject.GetComponent<Building> ();
+					if (!building) {
+						building = hit.transform.parent.gameObject.GetComponent<Building> ();
+					}
+
+					person.objects[i] = building;
+
 					Debug.Log ("Advancing path to " + i.ToString());
 					if (i == 5) {
 						startNewPath = false;

@@ -8,7 +8,7 @@ public class Person : MonoBehaviour {
 	public enum State {settingPath, waiting, walking};
 	public State state = State.settingPath;
 
-	public Transform[] objects;
+	public Building[] objects;
 
 	int _currentStep = 0;
 	private NavMeshAgent _agent;
@@ -18,10 +18,10 @@ public class Person : MonoBehaviour {
 		_agent = GetComponent<NavMeshAgent>();			
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
 		_lineRenderer.useWorldSpace = true;
-		transform.position = CurrentDestination().position;
+		transform.position = CurrentDestination().EntryPosition();
 	}
 
-	Transform CurrentDestination() {
+	Building CurrentDestination() {
 		return objects [_currentStep];
 	}
 
@@ -65,7 +65,7 @@ public class Person : MonoBehaviour {
 			return;
 		}
 			
-		_agent.destination = CurrentDestination().position; 
+		_agent.destination = CurrentDestination().EntryPosition(); 
 	
 	}
 
@@ -89,11 +89,11 @@ public class Person : MonoBehaviour {
 		List<Vector3> path = new List<Vector3>();
 
 		for (var i = 0; i < ObjectsSet(); i ++) {
-			foreach (var point in GetCorners(objects [i].position, objects [i + 1].position)) {
+			foreach (var point in GetCorners(objects [i].EntryPosition(), objects [i + 1].EntryPosition())) {
 				path.Add (point);
 			}
 			if (i == objects.Length - 2) {
-				foreach (var point in GetCorners(objects [i + 1].position, objects [0].position)) {
+				foreach (var point in GetCorners(objects [i + 1].EntryPosition(), objects [0].EntryPosition())) {
 					path.Add (point);
 				}
 			}
@@ -113,7 +113,7 @@ public class Person : MonoBehaviour {
 				else {
 					Gizmos.color = Color.red;
 				}
-				Gizmos.DrawWireSphere (o.position, 1);
+				Gizmos.DrawWireSphere (o.EntryPosition(), 1);
 			}
 		}
 
