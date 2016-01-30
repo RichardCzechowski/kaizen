@@ -5,49 +5,61 @@ public class Person : MonoBehaviour {
 
 	public Transform[] objects;
 
-
-	private Transform _currentDestination;
+	int _currentStep = 0;
 	private NavMeshAgent _agent;
 	private LineRenderer _lineRenderer;
 
 	void Start () {
-		_agent = GetComponent<NavMeshAgent>();
-		_currentDestination = objects[0];
-		_agent.destination = _currentDestination.position; 
+		_agent = GetComponent<NavMeshAgent>();			
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
 		_lineRenderer.useWorldSpace = true;
+		transform.position = CurrentDestination().position;
+	}
+
+	Transform CurrentDestination() {
+		return objects [_currentStep];
+	}
+
+	bool HasCompletePath() {
+		return objects [1] && objects [2] && objects [3] && objects [4] && objects [5];
 	}
 	
 	void Update () {
-		if (Vector3.Distance(_currentDestination.position, transform.position) < 1) {
-			MoveToNext ();
-		}
 
+		if (CurrentDestination()) {
+			if (Vector3.Distance(CurrentDestination().position, transform.position) < 2f) {
+				MoveToNext ();
+			}
+		}
+			
 		_lineRenderer.SetVertexCount (_agent.path.corners.Length);
 		_lineRenderer.SetPositions (_agent.path.corners);
 
 	}
 
-	void MoveToNext() {
-		var i = Array.IndexOf (objects, _currentDestination);
+	public void MoveToNext() {
+		Debug.Log ("Moving to next");
+		var i = _currentStep;
 		if (i >= objects.Length - 1) {
-			_currentDestination = objects[0];
+			_currentStep = 0;
 		}
 		else {
-			_currentDestination = objects [i + 1];
+			_currentStep = i + 1;
 		}
-		_agent.destination = _currentDestination.position; 
+		_agent.destination = CurrentDestination().position; 
 	}
 
 	void OnDrawGizmosSelected() {
 		foreach (var o in objects) {
-			if (o == _currentDestination) {
-				Gizmos.color = Color.green;
+			if (o) {
+				if (o == CurrentDestination()) {
+					Gizmos.color = Color.green;
+				}
+				else {
+					Gizmos.color = Color.red;
+				}
+				Gizmos.DrawWireSphere (o.position, 1);
 			}
-			else {
-				Gizmos.color = Color.red;
-			}
-			Gizmos.DrawWireSphere (o.position, 1);
 		}
 
 		if (_agent) {

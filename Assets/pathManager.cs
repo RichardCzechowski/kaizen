@@ -24,13 +24,17 @@ public class pathManager : MonoBehaviour {
 				i = 0;
 				startNewPath = true;
 				pathToSet = hit.transform.gameObject;
+				Debug.Log ("Setting path");
+			
 			}else if (hit.transform != null && startNewPath && hit.transform.gameObject.tag == "Building") {
 				i++;
-				if (i < pathToSet.GetComponent<setNewPath>().path.Length) {
-					pathToSet.GetComponent<setNewPath>().path[i] = hit.transform;
-					Debug.Log (pathToSet);
-					if (i == 6) {
+				var person = pathToSet.GetComponent<Person> ();
+				if (i < person.objects.Length) {
+					person.objects[i] = hit.transform;
+					Debug.Log ("Advancing path to " + i.ToString());
+					if (i == 5) {
 						startNewPath = false;
+						person.MoveToNext ();
 					}
 				}
 			}
