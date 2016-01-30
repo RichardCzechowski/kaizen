@@ -43,6 +43,7 @@ public class Person : MonoBehaviour {
 
 	public void MoveToNext() {
 		Debug.Log ("Moving to next");
+
 		var i = _currentStep;
 		if (i >= objects.Length - 1) {
 			_currentStep = 0;
@@ -51,6 +52,24 @@ public class Person : MonoBehaviour {
 			_currentStep = i + 1;
 		}
 		_agent.destination = CurrentDestination().position; 
+
+//		UpdatePathPreview ();
+	
+	}
+
+	NavMeshPath[] pathPreviewSegments = new NavMeshPath[6];
+
+	void UpdatePathPreview() {
+		for (var i = 0; i < objects.Length; i ++) {
+			if (i < objects.Length - 1) {
+				if (objects [i + 1] && objects [i]) {
+					var segment = new NavMeshPath ();
+
+					NavMesh.CalculatePath (objects [i].position, objects [i + 1].position, NavMesh.AllAreas, segment);
+					pathPreviewSegments [i] = segment;
+				}
+			}
+		}
 	}
 
 	void OnDrawGizmosSelected() {
