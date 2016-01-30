@@ -162,6 +162,8 @@ public class Person : MonoBehaviour {
 			break;
 		case State.waiting:
 			//Hangout for a length of time
+			this.GetComponent<NavMeshAgent>().radius = .01F;
+			this.GetComponent<Collider>().isTrigger = true;
 			CalculateHappiness();
 			CurrentDestination().AddPerson(this);
 			break;
@@ -184,6 +186,8 @@ public class Person : MonoBehaviour {
 			if (CurrentDestination ()) {
 				CurrentDestination().RemovePerson(this);
 			}
+			this.GetComponent<NavMeshAgent>().radius = .5F;
+			this.GetComponent<Collider>().isTrigger = false;
 			break;
 		case State.walking:
 			// Animate walking
