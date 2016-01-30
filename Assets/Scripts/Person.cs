@@ -25,9 +25,10 @@ public class Person : MonoBehaviour {
 
 	private float nextShiftStart;
 	public bool paused = false;
+	bool timeIsPaused;
 
 	void Start () {
-
+		timeIsPaused = DayNightController.instance.paused;
 		ClearPaths ();
 
 		_agent = GetComponent<NavMeshAgent>();			
@@ -96,10 +97,12 @@ public class Person : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (DayNightController.instance.paused == true) {
-			paused = true;
-		} else if (paused == true) {
-			paused = false;
+		if (DayNightController.instance.paused != timeIsPaused) {
+			if (DayNightController.instance.paused == true) {
+				Pause ();
+			} else if (DayNightController.instance.paused == false) {
+				Resume ();
+			}
 		}
 
 		if (CurrentDestination() && state != State.settingPath) {
@@ -221,7 +224,9 @@ public class Person : MonoBehaviour {
 	public void Resume (){
 		paused = false;
 		_agent.velocity = lastAgentVelocity;
-		_agent.SetPath(lastAgentPath);
+		if (lastAgentPath != null) {
+			_agent.SetPath (lastAgentPath);
+		}
 	}
 
 
