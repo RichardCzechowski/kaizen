@@ -3,6 +3,8 @@ using System.Collections;
 
 public class DayNightController : MonoBehaviour {
 
+	public static DayNightController instance = null;
+		
 	public Light sun;
 	public Light moon;
 	public float secondsInFullDay = 120f;
@@ -19,7 +21,12 @@ public class DayNightController : MonoBehaviour {
 	public Gradient nightDayFogColor;
 
 	void Start() {
+		instance = this;
 		sunInitialIntensity = sun.intensity;
+	}
+
+	public float HoursToGameTime() {
+		return secondsInFullDay / 24f;
 	}
 
 	void Update() {

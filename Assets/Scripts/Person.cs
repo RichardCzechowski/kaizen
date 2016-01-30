@@ -45,11 +45,11 @@ public class Person : MonoBehaviour {
 	
 	void Update () {
 
-		if (CurrentDestination()) {
+		if (CurrentDestination() && state != State.settingPath) {
 			if (Vector3.Distance (CurrentPathEnd (), transform.position) < 0.7f) {
 				if (state == State.readyToMove) {
-					MoveToNext ();
 					SetState (State.walking);
+					MoveToNext ();
 				} else if (state != State.waiting) {
 					SetState (State.waiting);
 				}
@@ -69,7 +69,7 @@ public class Person : MonoBehaviour {
 		} else {
 			return;
 		}
-		StartCoroutine (Wait (10));
+		StartCoroutine (Wait (4 * DayNightController.instance.HoursToGameTime()));
 		_agent.destination = CurrentDestination().EntryPosition(); 
 	
 	}
@@ -152,7 +152,6 @@ public class Person : MonoBehaviour {
 			// Animate walking
 			break;
 		case State.readyToMove:
-			CurrentDestination().RemovePerson(this);
 			// Animate walking
 			break;
 		}
@@ -162,10 +161,10 @@ public class Person : MonoBehaviour {
 		switch(state){
 		case State.settingPath:
 			// Don't move until path is set
-			//SetState(State.waiting);
 			break;
 		case State.waiting:
 			//Hangout for a length of time
+			CurrentDestination().RemovePerson(this);
 			break;
 		case State.walking:
 			// Animate walking
@@ -183,7 +182,7 @@ public class Person : MonoBehaviour {
 		OnEnterState (newState);
 	}
 
-	IEnumerator Wait(int time) {
+	IEnumerator Wait(float time) {
 		yield return new WaitForSeconds(time);
 		SetState (State.readyToMove);
 	}
