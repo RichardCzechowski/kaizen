@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Person : MonoBehaviour {
 	
@@ -24,8 +25,18 @@ public class Person : MonoBehaviour {
 		return objects [_currentStep];
 	}
 
+	int ObjectsSet() {
+		var i = 0;
+		for (i = 0; i < objects.Length; i++) {
+			if (!objects [i]) {
+				return i - 1;
+			}
+		}
+		return i - 1;
+	}
+
 	bool HasCompletePath() {
-		return objects [1] && objects [2] && objects [3] && objects [4] && objects [5];
+		return ObjectsSet() == 6;
 	}
 	
 	void Update () {
@@ -36,8 +47,7 @@ public class Person : MonoBehaviour {
 			}
 		}
 			
-		_lineRenderer.SetVertexCount (_agent.path.corners.Length);
-		_lineRenderer.SetPositions (_agent.path.corners);
+		UpdatePathPreview ();
 
 	}
 
@@ -50,25 +60,36 @@ public class Person : MonoBehaviour {
 		} else {
 			return;
 		}
-
+			
 		_agent.destination = CurrentDestination().position; 
-		UpdatePathPreview ();
 	
 	}
 
-	NavMeshPath[] pathPreviewSegments = new NavMeshPath[6];
+	Vector3[] GetCorners(Vector3 start, Vector3 end) {
+		var segment = new NavMeshPath ();
+		NavMesh.CalculatePath (start, end, NavMesh.AllAreas, segment);
+		return segment.corners;
+	}
+
 
 	void UpdatePathPreview() {
-		for (var i = 0; i < objects.Length; i ++) {
-			if (i < objects.Length - 1) {
-				if (objects [i + 1] && objects [i]) {
-					var segment = new NavMeshPath ();
 
-					NavMesh.CalculatePath (objects [i].position, objects [i + 1].position, NavMesh.AllAreas, segment);
-					pathPreviewSegments [i] = segment;
+		List<Vector3> path = new List<Vector3>();
+
+		for (var i = 0; i < ObjectsSet(); i ++) {
+			foreach (var point in GetCorners(objects [i].position, objects [i + 1].position)) {
+				path.Add (point);
+			}
+			if (i == objects.Length - 2) {
+				foreach (var point in GetCorners(objects [i + 1].position, objects [0].position)) {
+					path.Add (point);
 				}
 			}
 		}
+
+		_lineRenderer.SetVertexCount (path.Count);
+		_lineRenderer.SetPositions (path.ToArray());
+
 	}
 
 	void OnDrawGizmosSelected() {
