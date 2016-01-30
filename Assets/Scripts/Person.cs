@@ -27,7 +27,7 @@ public class Person : MonoBehaviour {
 	void Update () {
 
 		if (CurrentDestination()) {
-			if (Vector3.Distance(CurrentDestination().position, transform.position) < 2f) {
+			if (Vector3.Distance(CurrentDestination().position, transform.position) < 4f) {
 				MoveToNext ();
 			}
 		}
