@@ -30,8 +30,9 @@ public class pathManager : MonoBehaviour {
 				var person = pathToSet.GetComponent<Person> ();
 				person.selected = true;
 				person.ClearPaths ();
-			
-			}else if (hit.transform != null && startNewPath && hit.transform.gameObject.tag == "Building") {
+				DayNightController.instance.BeginPreview (0);
+
+			} else if (hit.transform != null && startNewPath && hit.transform.gameObject.tag == "Building") {
 				i++;
 				var person = pathToSet.GetComponent<Person> ();
 				if (i < person.Buildings().Length) {
