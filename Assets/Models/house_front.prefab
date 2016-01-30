@@ -120,7 +120,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145052}
   m_LocalRotation: {x: 0, y: -0.43310463, z: 0, w: 0.9013437}
-  m_LocalPosition: {x: -6.339841, y: 3.02, z: 9.962195}
+  m_LocalPosition: {x: 7.0498, y: 3.02, z: 20.432}
   m_LocalScale: {x: 2.2417197, y: 2.2417192, z: 2.2417192}
   m_Children:
   - {fileID: 432044}
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building: {fileID: 11490276}
   quadPrefab: {fileID: 113192, guid: 53915600a903548459ef7325c3ab2d37, type: 2}
-  emptySlotTexture: {fileID: 2800000, guid: b9df0aa89839e42da96c6f24c2f862af, type: 3}
+  emptySlotTexture: {fileID: 2800000, guid: 295938f3062054374979b7a3cd25517b, type: 3}
   fullSlotTexture: {fileID: 2800000, guid: 1f665b616fb6d4d20a514fa7a63c9398, type: 3}
   spacing: 1.2
   width: 1

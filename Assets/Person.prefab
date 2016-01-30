@@ -370,6 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  portrait: {fileID: 2800000, guid: 5359bcfb3b2934086b1781ffb221635a, type: 3}
   objects:
   - {fileID: 0}
   - {fileID: 0}

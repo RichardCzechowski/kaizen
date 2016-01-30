@@ -8,7 +8,6 @@ public class OccupancyIndicator : MonoBehaviour {
 	public GameObject quadPrefab;
 
 	public Texture2D emptySlotTexture;
-	public Texture2D fullSlotTexture;
 
 	public float spacing = 1;
 	public float width = 1;
@@ -40,7 +39,7 @@ public class OccupancyIndicator : MonoBehaviour {
 			var quad = _quads [i];
 			if (i < building.occupants.Count) {
 				var mat = new Material(materialTemplate);
-				mat.mainTexture = fullSlotTexture;
+				mat.mainTexture = building.occupants[i].portrait;
 				_quads [i].SetMaterial (mat);
 
 			} else {

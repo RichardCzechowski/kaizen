@@ -8,6 +8,8 @@ public class Person : MonoBehaviour {
 	public enum State {settingPath, waiting, walking, readyToMove};
 	public State state = State.settingPath;
 
+	public Texture2D portrait;
+
 	public Building[] objects;
 
 	int _currentStep = 0;

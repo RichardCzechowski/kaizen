@@ -253,14 +253,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 471886, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.9999915
-      objectReference: {fileID: 0}
-    - target: {fileID: 471886, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: -0.004139513
-      objectReference: {fileID: 0}
     - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
       propertyPath: objects.Array.data[0]
       value: 
