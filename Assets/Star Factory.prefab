@@ -24,6 +24,22 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410120}
+  - 114: {fileID: 11476980}
+  m_Layer: 0
+  m_Name: ForSalePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!1 &124230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 474380}
   m_Layer: 0
   m_Name: ResourcePoint
   m_TagString: Untagged
@@ -123,11 +139,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.362, y: 0.234, z: 0.447}
+  m_LocalPosition: {x: -3.258, y: -0.092, z: 0.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 479706}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!4 &411042
 Transform:
   m_ObjectHideFlags: 1
@@ -177,6 +193,18 @@ Transform:
   - {fileID: 427162}
   m_Father: {fileID: 479706}
   m_RootOrder: 0
+--- !u!4 &474380
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124230}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.362, y: 0.234, z: 0.447}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 479706}
+  m_RootOrder: 4
 --- !u!4 &479706
 Transform:
   m_ObjectHideFlags: 1
@@ -191,6 +219,7 @@ Transform:
   - {fileID: 412180}
   - {fileID: 411042}
   - {fileID: 498714}
+  - {fileID: 474380}
   - {fileID: 410120}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -356,9 +385,22 @@ MonoBehaviour:
   capacity: 3
   occupants: []
   entryPoint: {fileID: 411042}
-  resourcePoint: {fileID: 410120}
+  resourcePoint: {fileID: 474380}
   stars: 0
+  upgradeCost: 5
   resourcePrefab: {fileID: 106138, guid: ce24a0b5c5cf74471a8ec02346fc8977, type: 2}
+--- !u!114 &11476980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33bdb84d040eb43c8bc7c3e7de9d2409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 173482, guid: e97b25d451e984caba3c89d95cf624d5, type: 2}
 --- !u!114 &11488450
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,6 +15,8 @@ public class Building : MonoBehaviour {
 
 	public int stars;
 
+	public int upgradeCost = 5;
+
 	public GameObject resourcePrefab;
 	List<GameObject> resourceItems = new List<GameObject>();
 
@@ -47,6 +49,15 @@ public class Building : MonoBehaviour {
 			}
 		}
 
+	}
+
+	public static Building[] All() {
+		return FindObjectsOfType<Building>();
+	}
+
+	public void Upgrade() {
+		scoreManager.instance.DecrementPoints (upgradeCost);
+		capacity++;
 	}
 
 	public bool Full() {
