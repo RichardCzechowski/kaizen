@@ -110,7 +110,7 @@ public class pathManager : MonoBehaviour {
 						
 				}
 
-			} else {
+			} else if (startNewPath) {
 
 				AudioSource.PlayClipAtPoint (cancelSound, Camera.main.transform.position);
 
