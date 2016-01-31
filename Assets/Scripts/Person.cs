@@ -150,7 +150,6 @@ public class Person : MonoBehaviour {
 
 		if (CurrentDestination() && state != State.settingPath) {
 			if (Vector3.Distance (CurrentPathEnd (), transform.position) < 0.7f && state != State.waiting) {
-				Debug.Log (Vector3.Distance (CurrentPathEnd (), transform.position));
 				if (DayNightController.instance.TimeOfDayActual () + DayNightController.instance.daysElapsed < nextShiftStart) {
 					SetState (State.waiting);
 				}
@@ -161,7 +160,6 @@ public class Person : MonoBehaviour {
 		}
 
 		if (state == State.settingPath) {
-			Debug.Log ("setting bullpen");
 			_agent.SetDestination (bullpenLocation);
 		}
 
@@ -351,12 +349,10 @@ public class Person : MonoBehaviour {
 		} else {
 			icon = PreviousDestination ().ComputeStatus (mood);
 		}
-		Debug.Log (icon);
 	}
 
 	///////////////////// STATE MACHINE
 	private void OnEnterState(State state){
-		Debug.Log ("entering " + state);
 		switch(state){
 		case State.settingPath:
 			// Don't move until path is set
@@ -381,8 +377,6 @@ public class Person : MonoBehaviour {
 	}
 		
 	private void OnExitState(State state){
-		Debug.Log ("exiting " + state);
-
 		switch(state){
 		case State.settingPath:
 			// Don't move until path is set
