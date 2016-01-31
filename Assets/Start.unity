@@ -1691,7 +1691,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
 --- !u!1001 &69220192
 Prefab:
   m_ObjectHideFlags: 0
@@ -3058,6 +3058,7 @@ GameObject:
   - 114: {fileID: 760038146}
   - 114: {fileID: 760038147}
   - 114: {fileID: 760038148}
+  - 114: {fileID: 760038149}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3400,6 +3401,20 @@ MonoBehaviour:
   dx11BokehTexture: {fileID: 2800000, guid: a4cdca73d61814d33ac1587f6c163bca, type: 3}
   dx11BokehScale: 1.2
   dx11BokehIntensity: 2.5
+--- !u!114 &760038149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 760038137}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34382083ad114a07d000fbfb8d76c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iterations: 3
+  blurSpread: 0.06
+  blurShader: {fileID: 4800000, guid: 57e6deea7c2924e22a5138e2b70bb4dc, type: 3}
 --- !u!1001 &766699956
 Prefab:
   m_ObjectHideFlags: 0
@@ -6113,7 +6128,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 29
 --- !u!1001 &1402660388
 Prefab:
   m_ObjectHideFlags: 0
@@ -6602,7 +6617,7 @@ Transform:
   - {fileID: 1340010262}
   - {fileID: 1040601245}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 33
 --- !u!1001 &1536412740
 Prefab:
   m_ObjectHideFlags: 0
