@@ -15,7 +15,7 @@ public class ForSaleSign : MonoBehaviour {
 
 	void Update () {
 	
-		if (scoreManager.instance.currentScore >= building.upgradeCost) {
+		if (building.CanUpgrade()) {
 			foreach (var r in _renderers) {
 				r.enabled = true;
 			}

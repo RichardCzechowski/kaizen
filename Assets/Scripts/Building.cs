@@ -8,6 +8,7 @@ public class Building : MonoBehaviour {
 	public Type type = Type.Home;
 
 	public int capacity = 3;
+	public int maxCapacity = 3;
 	public List<Person> occupants = new List<Person>();
 
 	public Transform entryPoint;
@@ -53,6 +54,10 @@ public class Building : MonoBehaviour {
 
 	public static Building[] All() {
 		return FindObjectsOfType<Building>();
+	}
+
+	public bool CanUpgrade() {
+		return scoreManager.instance.currentScore >= upgradeCost && capacity < maxCapacity;
 	}
 
 	public void Upgrade() {
