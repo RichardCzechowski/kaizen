@@ -28,6 +28,8 @@ public class Person : MonoBehaviour {
 	static int peopleCreated = 0;
 
 	public int mood = 0;
+	public Status icon;
+	public enum Status {lonely, tired, bored, fulfilled, rested, excited, noStatus};
 
 	void Start () {
 		timeIsPaused = DayNightController.instance.paused;
@@ -253,6 +255,39 @@ public class Person : MonoBehaviour {
 	float start;
 	float end;
 
+	int home;
+	int play;
+	int work;
+	private void CheckMood(){
+		// play: lonely, home: tired, work: bored
+		// play: fulfilled, home: rested, work: excited
+		var i = 0;
+		for (i = 0; i < objects.Length; i++) {
+			if (objects [i].type == Building.Type.Home) {
+				home++;
+			}else if (objects [i].type == Building.Type.Play) {
+				play++;
+			}else if (objects [i].type == Building.Type.Work) {
+				work++;
+			}
+		}
+		if (home == 0) {
+			icon = Status.tired;
+			mood--;
+		} else if (play == 0) {
+			icon = Status.lonely;
+			if (GameObject.FindGameObjectsWithTag("Player").Length > 1){
+				mood -= 3;
+			}
+		} else if (work == 0) {
+			icon = Status.bored;
+			mood--;
+		} else {
+			icon = PreviousDestination ().ComputeStatus (mood);
+		}
+		Debug.Log (icon);
+	}
+
 	///////////////////// STATE MACHINE
 	private void OnEnterState(State state){
 		switch(state){
@@ -289,6 +324,7 @@ public class Person : MonoBehaviour {
 			// Hangout for a length of time
 			end = DayNightController.instance.TimeOfDayActual ();
 			mood += PreviousDestination ().ComputeScore (mood);
+			CheckMood ();
 			PreviousDestination().RemovePerson(this);
 			this.GetComponent<NavMeshAgent>().radius = .5F;
 			this.GetComponent<Collider>().isTrigger = false;

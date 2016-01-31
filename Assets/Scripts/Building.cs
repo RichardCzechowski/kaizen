@@ -96,5 +96,31 @@ public class Building : MonoBehaviour {
 		}
 		return 0;
 	}
+	public Person.Status ComputeStatus(int mood){
+		// If it's a home, check if it's unoccupied, then add a point if so
+		// If it's a play zone, check for other people. Other people are fun!
+		// If it's work, we zero out the mood of the character and turn all that fun into stars!
+		switch(type){
+		case Type.Home:
+			if (occupants.Count == 1) {
+				return Person.Status.rested;
+			} else {
+				return Person.Status.tired;
+			}
+		case Type.Play:
+			if (occupants.Count > 1) {
+				return Person.Status.fulfilled;
+			}else {
+				return Person.Status.lonely;
+			}
+		case Type.Work:
+			if (mood > 0) {
+				return Person.Status.excited;
+			}else{
+				return Person.Status.bored;
+			}
+		}
+		return Person.Status.noStatus;
+	}
 
 }
