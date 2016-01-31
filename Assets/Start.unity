@@ -3550,6 +3550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 0
+  yougottabox: {fileID: 8300000, guid: c2a59332e35aa463baeb1b871cbb07b0, type: 3}
 --- !u!1 &986489038
 GameObject:
   m_ObjectHideFlags: 0
@@ -5674,7 +5675,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 21
 --- !u!1001 &1402660388
 Prefab:
   m_ObjectHideFlags: 0
@@ -6112,7 +6113,7 @@ Transform:
   - {fileID: 1340010262}
   - {fileID: 1040601245}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 23
 --- !u!1001 &1536412740
 Prefab:
   m_ObjectHideFlags: 0

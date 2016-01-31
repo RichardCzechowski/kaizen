@@ -68,6 +68,10 @@ public class Building : MonoBehaviour {
 				obj.SetActive (true);
 			}
 		}
+//
+//		if (Input.GetKeyUp (KeyCode.Alpha9)) {
+//			AddStars (1);
+//		}
 
 	}
 
@@ -104,6 +108,11 @@ public class Building : MonoBehaviour {
 		occupants.Remove(newPerson);
 	}
 
+	public void AddStars(int s) {
+		scoreManager.instance.AddPoints(s);
+		stars += s;
+	}
+
 	public int ComputeScore(int mood){
 		// If it's a home, check if it's unoccupied, then add a point if so
 		// If it's a play zone, check for other people. Other people are fun!
@@ -123,8 +132,7 @@ public class Building : MonoBehaviour {
 			}
 		case Type.Work:
 			if (mood > 0) {
-				scoreManager.instance.AddPoints(mood);
-				stars += mood;
+				AddStars (mood);
 				return -mood;
 			}
 			break;

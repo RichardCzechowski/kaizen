@@ -6,6 +6,7 @@ public class scoreManager : MonoBehaviour {
 
 	public static scoreManager instance;
 	public float currentScore;
+	public AudioClip yougottabox;
 
 	void Awake() {
 		instance = this;
@@ -14,6 +15,10 @@ public class scoreManager : MonoBehaviour {
 	public void AddPoints(int pointsToAdd){
 		currentScore += pointsToAdd;
 		Debug.Log ("You Score is: " + currentScore);
+		for(var i = 1 ;i < currentScore; i++)
+		{
+			AudioSource.PlayClipAtPoint (yougottabox, Camera.main.transform.position);
+		}
 	}
 
 	public void DecrementPoints(int pointsToDecrement) {
