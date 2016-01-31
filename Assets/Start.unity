@@ -1369,6 +1369,7 @@ MonoBehaviour:
     atime7: 0
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
+  numberOfShifts: 6
   paused: 0
   _previewTimeOfDay: 0
 --- !u!4 &981439661
@@ -2130,12 +2131,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 463768, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
       propertyPath: m_RootOrder
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
-    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: objects.Array.data[0]
-      value: 
-      objectReference: {fileID: 2098483915}
     - target: {fileID: 160516, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
       propertyPath: m_Name
       value: Person (1)
@@ -2144,38 +2141,6 @@ Prefab:
       propertyPath: home
       value: 
       objectReference: {fileID: 1657511634}
-    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: possibleColors.Array.data[1].r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: possibleColors.Array.data[1].g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: possibleColors.Array.data[1].b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: possibleColors.Array.data[2].r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: possibleColors.Array.data[2].g
-      value: 0.8896551
-      objectReference: {fileID: 0}
-    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: possibleColors.Array.data[3].r
-      value: 0.31079832
-      objectReference: {fileID: 0}
-    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: possibleColors.Array.data[3].g
-      value: 0.64705884
-      objectReference: {fileID: 0}
-    - target: {fileID: 11472926, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
-      propertyPath: possibleColors.Array.data[3].b
-      value: 0.24740486
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
   m_IsPrefabParent: 0
@@ -2370,12 +2335,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
---- !u!114 &2098483915 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11490276, guid: cea54157ab40f41558ef9dd415db4376,
-    type: 2}
-  m_PrefabInternal: {fileID: 940536165}
-  m_Script: {fileID: 11500000, guid: 9f6b5038debd74380bec1dc88cc4f369, type: 3}
 --- !u!1001 &2112890913
 Prefab:
   m_ObjectHideFlags: 0
