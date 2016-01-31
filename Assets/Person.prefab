@@ -429,6 +429,7 @@ MonoBehaviour:
   rested: {fileID: 21300000, guid: fcd48abbc9fb14da5a304fb0b6733b82, type: 3}
   excited: {fileID: 21300000, guid: df379d157ed2f43f398102bb8b9f7b1c, type: 3}
   bullpenLocation: {x: 0, y: 0, z: 0}
+  _statusIcon: {fileID: 11499406}
 --- !u!114 &11499406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -660,6 +661,10 @@ Prefab:
       propertyPath: baseRenderer.Array.data[1]
       value: 
       objectReference: {fileID: 2374034}
+    - target: {fileID: 0}
+      propertyPath: _statusIcon
+      value: 
+      objectReference: {fileID: 11499406}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160516}

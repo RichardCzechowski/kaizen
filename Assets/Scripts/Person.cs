@@ -282,6 +282,8 @@ public class Person : MonoBehaviour {
 		}
 	}
 
+	public statusIcon _statusIcon;
+
 	Sprite iconSprite;
 	private void ShowIcon(){
 		// Status {lonely, tired, bored, fulfilled, rested, excited, noStatus};
@@ -307,12 +309,12 @@ public class Person : MonoBehaviour {
 		}
 		
 		this.GetComponentInChildren<SpriteRenderer> ().sprite = iconSprite;
-		statusIcon.instance.Popup();
+		_statusIcon.Popup();
 	}
 
 	private void HideIcon(){
 		//Animation[] anim = this.GetComponentsInChildren<Animation>();
-		statusIcon.instance.Popdown();
+		_statusIcon.Popdown();
 	}
 
 	// Fo calculating mood
