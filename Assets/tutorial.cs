@@ -147,9 +147,9 @@ public class tutorial : MonoBehaviour {
 
 
 	public void kickOffIntroduceWork(){
-		if (!hasIntroducedFood) {
-			StartCoroutine(IntroduceFood());
-			hasIntroducedFood = true;
+		if (!hasIntroducedWork) {
+			StartCoroutine(IntroduceWork());
+			hasIntroducedWork = true;
 		}
 	}
 
