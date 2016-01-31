@@ -101,12 +101,29 @@ private function UpdatePanning() {
 			moveVector += Vector3(0, 0, 1);
 		}
 	}
+
 	
 	if (useMouseInput) {
 		if (Input.GetMouseButton(2) && Input.GetKey(KeyCode.LeftShift)) {
 			var deltaMousePos : Vector3 = (Input.mousePosition - lastMousePos);
 			moveVector += Vector3(-deltaMousePos.x, 0, -deltaMousePos.y) * mousePanMultiplier;
 		}	
+	}
+
+	if ( -20 > transform.position.x){
+		moveVector.x = -.25;
+	} else if (20 < transform.position.x){
+		moveVector.x = .25;
+	}
+		if ( -100 > transform.position.y){
+		moveVector.y = -.25;
+	} else if (200 < transform.position.y){
+		moveVector.y = .25;
+	}
+		if ( 10 > transform.position.z){
+		moveVector.z = -.25;
+	} else if (30 < transform.position.z){
+		moveVector.z = .25;
 	}
 	
 	if (moveVector != Vector3.zero) {
@@ -117,9 +134,10 @@ private function UpdatePanning() {
 	var effectivePanSpeed = moveVector;
 	if (smoothing) {
 		effectivePanSpeed = Vector3.Lerp(lastPanSpeed, moveVector, smoothingFactor);
+
 		lastPanSpeed = effectivePanSpeed;
 	}
-	
+
 	var oldRotation : float = transform.localEulerAngles.x;
 	transform.localEulerAngles.x = 0.0f;
 	var panMultiplier : float = increaseSpeedWhenZoomedOut ? (Mathf.Sqrt(currentCameraDistance)) : 1.0f;
@@ -176,6 +194,7 @@ private function UpdatePosition() {
 	}
 
 	transform.position = cameraTarget;
+
 	transform.Translate(Vector3.back * currentCameraDistance);
 	
 	if (adaptToTerrainHeight && terrain != null) {
