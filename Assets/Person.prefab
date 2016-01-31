@@ -515,8 +515,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 0.5
-    endWidth: 0.5
+    startWidth: 0.25
+    endWidth: 0.25
     m_StartColor:
       serializedVersion: 2
       rgba: 4294967295
@@ -725,6 +725,14 @@ Prefab:
       propertyPath: possibleSelectSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: fc441e38caaf84dc5b55d7983019cefd, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Parameters.startWidth
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Parameters.endWidth
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160516}
