@@ -133,6 +133,8 @@ public class pathManager : MonoBehaviour {
 
 			} else if (startNewPath) {
 
+				_guiPhase = -1;
+
 				AudioSource.PlayClipAtPoint (cancelSound, Camera.main.transform.position);
 
 				DayNightController.instance.EndPreview ();
