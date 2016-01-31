@@ -44,7 +44,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481728}
-  - 114: {fileID: 11421098}
+  - 114: {fileID: 11452980}
   m_Layer: 0
   m_Name: OccupancyIndicator
   m_TagString: Untagged
@@ -120,7 +120,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145052}
   m_LocalRotation: {x: 0, y: -0.43310463, z: 0, w: 0.9013437}
-  m_LocalPosition: {x: 7.0498, y: 3.02, z: 20.432}
+  m_LocalPosition: {x: 8.309292, y: 3.02, z: 10.149987}
   m_LocalScale: {x: 2.2417197, y: 2.2417192, z: 2.2417192}
   m_Children:
   - {fileID: 432044}
@@ -313,7 +313,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11421098
+--- !u!114 &11452980
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -321,15 +321,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 122546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d4bbfbccedc0468985ce65e6aba9306, type: 3}
+  m_Script: {fileID: 11500000, guid: 33bdb84d040eb43c8bc7c3e7de9d2409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building: {fileID: 11490276}
-  quadPrefab: {fileID: 113192, guid: 53915600a903548459ef7325c3ab2d37, type: 2}
-  emptySlotTexture: {fileID: 2800000, guid: 295938f3062054374979b7a3cd25517b, type: 3}
-  spacing: 1.2
-  width: 1
-  materialTemplate: {fileID: 2100000, guid: 8258d80db3cb1470daa8b31f422d48d8, type: 2}
+  prefab: {fileID: 131876, guid: c4050ec13625a440c8ddb81915ad7cda, type: 2}
 --- !u!114 &11490276
 MonoBehaviour:
   m_ObjectHideFlags: 1
