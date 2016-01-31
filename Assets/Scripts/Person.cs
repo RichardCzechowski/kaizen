@@ -16,12 +16,16 @@ public class Person : MonoBehaviour {
 	public Texture2D[] possiblePortraits;
 	public Texture2D[] possibleBaseTextures;
 	public Texture2D[] possibleClothingTextures;
+	public AudioClip[] possibleSelectSounds;
 	public Color[] possibleColors;
 
 	Building[] objects;
 
 	public MeshRenderer[] baseRenderer;
 	public MeshRenderer[] recolorableClothes;
+
+	[HideInInspector]
+	public AudioClip selectSound;
 
 	private NavMeshAgent _agent;
 	private LineRenderer _lineRenderer;
@@ -65,6 +69,7 @@ public class Person : MonoBehaviour {
 		var clothingTexture = possibleClothingTextures [peopleCreated % possibleClothingTextures.Length];
 		var baseTexture = possibleBaseTextures [peopleCreated % possibleBaseTextures.Length];
 		portrait = possiblePortraits [peopleCreated % possiblePortraits.Length];
+		selectSound = possibleSelectSounds [peopleCreated % possibleSelectSounds.Length];
 
 		foreach (var renderer in recolorableClothes) {
 			var mat = new Material(renderer.sharedMaterial);

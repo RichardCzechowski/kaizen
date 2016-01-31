@@ -56,6 +56,9 @@ public class pathManager : MonoBehaviour {
 				person.SetState (Person.State.settingPath);
 				person.ClearPaths ();
 
+				AudioSource.PlayClipAtPoint (person.selectSound, Camera.main.transform.position);
+
+
 				DayNightController.instance.BeginPreview (0);
 
 				i = 0;
