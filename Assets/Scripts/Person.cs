@@ -38,6 +38,14 @@ public class Person : MonoBehaviour {
 	public Status icon;
 	public enum Status {lonely, tired, bored, fulfilled, rested, excited, noStatus};
 
+	public Sprite lonely;
+	public Sprite tired;
+	public Sprite bored;
+	public Sprite fulfilled;
+	public Sprite rested;
+	public Sprite excited;
+	private Animation[] anim;
+
 	void Start () {
 		timeIsPaused = DayNightController.instance.paused;
 		ClearPaths ();
@@ -272,6 +280,39 @@ public class Person : MonoBehaviour {
 		}
 	}
 
+	Sprite iconSprite;
+	private void ShowIcon(){
+		// Status {lonely, tired, bored, fulfilled, rested, excited, noStatus};
+		switch (icon) {
+		case Status.lonely:
+			iconSprite = lonely;
+			break;
+		case Status.tired:
+			iconSprite = tired;
+			break;
+		case Status.bored:
+			iconSprite = bored;
+			break;
+		case Status.fulfilled:
+			iconSprite = fulfilled;
+			break;
+		case Status.rested:
+			iconSprite = rested;
+			break;
+		case Status.excited:
+			iconSprite = excited;
+			break;
+		}
+		
+		this.GetComponentInChildren<SpriteRenderer> ().sprite = iconSprite;
+		statusIcon.instance.Popup();
+	}
+
+	private void HideIcon(){
+		//Animation[] anim = this.GetComponentsInChildren<Animation>();
+		statusIcon.instance.Popdown();
+	}
+
 	// Fo calculating mood
 	float start;
 	float end;
@@ -322,6 +363,7 @@ public class Person : MonoBehaviour {
 			this.GetComponent<Collider> ().isTrigger = true;
 			CurrentDestination ().AddPerson (this);
 			start = DayNightController.instance.TimeOfDayActual ();
+			HideIcon ();
 			HideMesh ();
 			break;
 		case State.walking:
@@ -346,9 +388,10 @@ public class Person : MonoBehaviour {
 			end = DayNightController.instance.TimeOfDayActual ();
 			mood += PreviousDestination ().ComputeScore (mood);
 			CheckMood ();
-			PreviousDestination().RemovePerson(this);
-			this.GetComponent<NavMeshAgent>().radius = .5F;
-			this.GetComponent<Collider>().isTrigger = false;
+			PreviousDestination ().RemovePerson (this);
+			this.GetComponent<NavMeshAgent> ().radius = .5F;
+			this.GetComponent<Collider> ().isTrigger = false;
+			ShowIcon ();
 			break;
 		case State.walking:
 			// Animate walking
