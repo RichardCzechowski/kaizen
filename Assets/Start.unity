@@ -444,7 +444,7 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: 46e0ea3e3d8e34eb28615fa1818bbda9, type: 2}
-  m_TreeDistance: 5000
+  m_TreeDistance: 2000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
@@ -987,7 +987,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 425090, guid: 52f66f1944d674f368f41eb5ff3b4014, type: 2}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 120124, guid: 52f66f1944d674f368f41eb5ff3b4014, type: 2}
       propertyPath: m_Name
@@ -2092,7 +2092,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 425090, guid: 52f66f1944d674f368f41eb5ff3b4014, type: 2}
       propertyPath: m_RootOrder
-      value: 35
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 120124, guid: 52f66f1944d674f368f41eb5ff3b4014, type: 2}
       propertyPath: m_Name
