@@ -16,6 +16,8 @@ public class pathManager : MonoBehaviour {
 		
 	}
 
+	Building _lastBuilding;
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonUp(0)) {
@@ -37,6 +39,8 @@ public class pathManager : MonoBehaviour {
 
 				DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour(i));
 
+				_lastBuilding = null;
+
 				i++;
 
 			} else if (hit.transform != null && startNewPath && hit.transform.gameObject.tag == "Building") {
@@ -48,7 +52,7 @@ public class pathManager : MonoBehaviour {
 					building = hit.transform.parent.gameObject.GetComponent<Building> ();
 				}
 
-				if (building.Full ()) {
+				if (building.Full () || (_lastBuilding && building.type == _lastBuilding.type)) {
 					AudioSource.PlayClipAtPoint (negativeSound, Camera.main.transform.position);
 				} else {
 					
@@ -65,6 +69,8 @@ public class pathManager : MonoBehaviour {
 						DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour(i));
 						i++;
 					}
+
+					_lastBuilding = building;
 						
 				}
 					
