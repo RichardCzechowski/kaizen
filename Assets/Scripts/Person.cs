@@ -359,6 +359,8 @@ public class Person : MonoBehaviour {
 	private void OnEnterState(State state, State lastState){
 		switch(state){
 		case State.settingPath:
+			ShowMesh ();
+			HideIcon ();
 			if (lastState == State.waiting) {
 				CurrentDestination ().RemovePerson (this);
 			}
@@ -383,8 +385,10 @@ public class Person : MonoBehaviour {
 		
 	private void OnExitState(State state, State nextState){
 		switch(state){
-		case State.settingPath:
+		case State.settingPath: 
 			// Don't move until path is set
+			SetWaitTime();
+
 			break;
 		case State.waiting:
 			// Hangout for a length of time

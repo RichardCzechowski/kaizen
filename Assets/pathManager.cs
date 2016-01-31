@@ -62,7 +62,7 @@ public class pathManager : MonoBehaviour {
 				startNewPath = true;
 				_lastPerson = person;
 
-				DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour(i));
+				DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour (i));
 
 				_lastBuilding = null;
 
@@ -84,13 +84,13 @@ public class pathManager : MonoBehaviour {
 					
 					AudioSource.PlayClipAtPoint (positiveSound, Camera.main.transform.position);
 
-					person.Buildings()[i - 1] = building;
+					person.Buildings () [i - 1] = building;
 
 					if (i == person.Buildings ().Length) {
 						DayNightController.instance.EndPreview ();
 						startNewPath = false;
 						person.selected = false;
-						Invoke("Walkabout", Time.deltaTime);
+						Invoke ("Walkabout", Time.deltaTime);
 
 						if (fancyEffects) {
 							curves.enabled = false;
@@ -98,7 +98,7 @@ public class pathManager : MonoBehaviour {
 						}
 
 					} else {
-						DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour(i));
+						DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour (i));
 						i++;
 					}
 
@@ -106,13 +106,30 @@ public class pathManager : MonoBehaviour {
 						
 				}
 
+			} else {
+				
+				DayNightController.instance.EndPreview ();
+				startNewPath = false;
+				if (_lastPerson) {
+					_lastPerson.selected = false;
+					Invoke ("Resetto", Time.deltaTime);
+
+				}
+
 			}
+
+
 		}
 	}
 
 	void Walkabout() {
 		_lastPerson.SetState (Person.State.walking);
-	
+
+	}
+
+	void Resetto() {
+		_lastPerson.SetState (Person.State.settingPath);
+
 	}
 }
 
