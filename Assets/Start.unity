@@ -3736,6 +3736,11 @@ MonoBehaviour:
   colorCamera: {fileID: 1209766831}
   curves: {fileID: 760038147}
   fancyEffects: 0
+  shiftImages:
+  - {fileID: 2800000, guid: 3cca9701d80bb4637bb91ece0f03ab1c, type: 3}
+  - {fileID: 2800000, guid: fffdfc71f024f4924b87d345478bd85e, type: 3}
+  - {fileID: 2800000, guid: 3013ed1d96df143bcbf841263a4debc4, type: 3}
+  - {fileID: 2800000, guid: 0a48dba4f1173407b92422026054d994, type: 3}
 --- !u!114 &981439663
 MonoBehaviour:
   m_ObjectHideFlags: 0
