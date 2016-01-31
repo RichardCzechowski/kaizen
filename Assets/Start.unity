@@ -4327,7 +4327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67f046ca3d6f43a289393c129069a0f, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  introPerson: {fileID: 2800000, guid: e4a26a35e6a5e4852aeb515a28ab97e9, type: 3}
+  introPerson: {fileID: 2800000, guid: 20b74c381632740d1ad9c2cce7452e59, type: 3}
   introPath: {fileID: 2800000, guid: ccc9d0eb3a0ae4c85b382f5109a7a858, type: 3}
   introPath2: {fileID: 2800000, guid: c059f3cca99074e168fd9525628a6d21, type: 3}
   introHome: {fileID: 2800000, guid: a65d0b237a6404c188ea518a236303e0, type: 3}
