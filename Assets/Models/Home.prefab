@@ -119,9 +119,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145052}
-  m_LocalRotation: {x: 0, y: -0.43310463, z: 0, w: 0.9013437}
-  m_LocalPosition: {x: 8.309292, y: 3.02, z: 10.149987}
-  m_LocalScale: {x: 2.2417197, y: 2.2417192, z: 2.2417192}
+  m_LocalRotation: {x: 0, y: 0.2630617, z: 0, w: 0.964779}
+  m_LocalPosition: {x: -8.71, y: 3.2, z: 3.29}
+  m_LocalScale: {x: 3.0358355, y: 3.0358346, z: 3.0358346}
   m_Children:
   - {fileID: 432044}
   - {fileID: 456744}
@@ -340,6 +340,10 @@ MonoBehaviour:
   capacity: 1
   occupants: []
   entryPoint: {fileID: 492174}
+  resourcePoint: {fileID: 0}
+  stars: 0
+  upgradeCost: 5
+  resourcePrefab: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
