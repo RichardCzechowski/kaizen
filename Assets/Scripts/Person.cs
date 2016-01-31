@@ -355,8 +355,9 @@ public class Person : MonoBehaviour {
 	private void OnEnterState(State state, State lastState){
 		switch(state){
 		case State.settingPath:
-			// Don't move until path is set
-			//SetState(State.waiting);
+			if (lastState == State.waiting) {
+				CurrentDestination ().RemovePerson (this);
+			}
 			break;
 		case State.waiting:
 			//Hangout for a length of time
