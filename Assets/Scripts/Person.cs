@@ -352,7 +352,7 @@ public class Person : MonoBehaviour {
 	}
 
 	///////////////////// STATE MACHINE
-	private void OnEnterState(State state){
+	private void OnEnterState(State state, State lastState){
 		switch(state){
 		case State.settingPath:
 			// Don't move until path is set
@@ -376,7 +376,7 @@ public class Person : MonoBehaviour {
 		}
 	}
 		
-	private void OnExitState(State state){
+	private void OnExitState(State state, State nextState){
 		switch(state){
 		case State.settingPath:
 			// Don't move until path is set
@@ -399,9 +399,10 @@ public class Person : MonoBehaviour {
 
 	public void SetState (State newState) {
 		if (state != newState) {
-			OnExitState (state);
+			OnExitState (state, newState);
+			var oldState = state;
 			state = newState;
-			OnEnterState (newState);
+			OnEnterState (newState, oldState);
 		}
 	}
 }
