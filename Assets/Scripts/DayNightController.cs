@@ -95,7 +95,6 @@ public class DayNightController : MonoBehaviour {
 	[Range(0,1)]
 	public float _previewTimeOfDay;
 	public void BeginPreview(float time) {
-		Debug.Log ("preview for " + time);
 		_previewTimeOfDay = time;
 		paused = true;
 	}
