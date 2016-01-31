@@ -8,6 +8,7 @@ public class OccupancyIndicator : MonoBehaviour {
 	public GameObject quadPrefab;
 
 	public Texture2D emptySlotTexture;
+	public Texture2D fullSlotTexture;
 
 	public float spacing = 1;
 	public float width = 1;
@@ -84,6 +85,7 @@ public class OccupancyIndicator : MonoBehaviour {
 				fg.gameObject.SetActive (true);
 
 				var bgMat = new Material(_emptyMaterial);
+				bgMat.mainTexture = fullSlotTexture;
 				bgMat.color = occupants[i].color;
 				bg.SetMaterial (bgMat);
 
