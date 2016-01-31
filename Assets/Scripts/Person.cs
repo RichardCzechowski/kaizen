@@ -12,7 +12,6 @@ public class Person : MonoBehaviour {
 	public Color color = Color.black;
 	public Color[] possibleColors;
 
-	public Building home;
 	Building[] objects;
 
 	public MeshRenderer[] recolorableClothes;
@@ -33,13 +32,10 @@ public class Person : MonoBehaviour {
 	void Start () {
 		timeIsPaused = DayNightController.instance.paused;
 		ClearPaths ();
-		objects [0] = home;
 
 		_agent = GetComponent<NavMeshAgent>();			
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
 		_lineRenderer.useWorldSpace = true;
-		transform.position = CurrentDestination().EntryPosition();
-
 
 		color = possibleColors [peopleCreated % possibleColors.Length];
 		peopleCreated++;
@@ -107,6 +103,8 @@ public class Person : MonoBehaviour {
 			return Vector3.zero;
 		}
 	}
+
+	public Vector3 bullpenLocation;
 	
 	void Update () {
 		if (DayNightController.instance.paused != timeIsPaused) {
@@ -126,6 +124,10 @@ public class Person : MonoBehaviour {
 			else if (DayNightController.instance.TimeOfDayActual() + DayNightController.instance.daysElapsed >= nextShiftStart) {
 				SetState (State.walking);
 			}
+		}
+
+		if (state == State.settingPath) {
+			_agent.SetDestination (bullpenLocation);
 		}
 
 		if (selected) {
