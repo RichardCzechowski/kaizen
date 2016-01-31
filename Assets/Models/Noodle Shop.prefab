@@ -216,8 +216,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144026}
-  m_LocalRotation: {x: 0, y: 0.0022290014, z: 0, w: 0.99999756}
-  m_LocalPosition: {x: 0.29, y: 3.09, z: 2.54}
+  m_LocalRotation: {x: 0, y: -0.5462796, z: 0, w: 0.83760285}
+  m_LocalPosition: {x: 17.972227, y: 3.09, z: 15.158422}
   m_LocalScale: {x: 2.3107965, y: 2.3107967, z: 2.3107967}
   m_Children:
   - {fileID: 439740}
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  capacity: 2
+  capacity: 0
   maxCapacity: 3
   occupants: []
   entryPoint: {fileID: 494788}
@@ -589,6 +589,7 @@ MonoBehaviour:
   - {fileID: 111592}
   onAfterPurchase:
   - {fileID: 106174}
+  - {fileID: 172388}
 --- !u!114 &11484882
 MonoBehaviour:
   m_ObjectHideFlags: 1
