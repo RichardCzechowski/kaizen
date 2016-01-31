@@ -107,11 +107,11 @@ public class Person : MonoBehaviour {
 
 		if (CurrentDestination() && state != State.settingPath) {
 			if (Vector3.Distance (CurrentPathEnd (), transform.position) < 0.7f && state != State.waiting) {
-				if (DayNightController.instance.TimeOfDayActual () <= nextShiftStart) {
+				if (DayNightController.instance.TimeOfDayActual () + DayNightController.instance.daysElapsed < nextShiftStart) {
 					SetState (State.waiting);
 				}
 			}
-			else if (DayNightController.instance.TimeOfDayActual() >= nextShiftStart) {
+			else if (DayNightController.instance.TimeOfDayActual() + DayNightController.instance.daysElapsed >= nextShiftStart) {
 				SetState (State.walking);
 			}
 		}
@@ -232,7 +232,7 @@ public class Person : MonoBehaviour {
 
 
 	public void SetWaitTime(){
-		nextShiftStart = DayNightController.instance.ShiftStartTime(DayNightController.instance.CurrentShift() + 1) / 24F;
+		nextShiftStart = DayNightController.instance.ShiftStartTime(DayNightController.instance.CurrentShift() + 1) / 24F + DayNightController.instance.daysElapsed;
 	}
 
 
@@ -287,7 +287,7 @@ public class Person : MonoBehaviour {
 	}
 
 	public void SetState (State newState) {
-		//Debug.Log (newState);
+		Debug.Log (newState);
 		OnExitState (state);
 		state = newState;
 		OnEnterState (newState);
