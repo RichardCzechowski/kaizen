@@ -112,7 +112,7 @@ private function UpdatePanning() {
 
 	if ( -20 > transform.position.x){
 		moveVector.x = -.25;
-	} else if (20 < transform.position.x){
+	} else if (10 < transform.position.x){
 		moveVector.x = .25;
 	}
 		if ( -100 > transform.position.y){
@@ -122,7 +122,7 @@ private function UpdatePanning() {
 	}
 		if ( 10 > transform.position.z){
 		moveVector.z = -.25;
-	} else if (30 < transform.position.z){
+	} else if (40 < transform.position.z){
 		moveVector.z = .25;
 	}
 	
