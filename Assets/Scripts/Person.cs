@@ -353,6 +353,9 @@ public class Person : MonoBehaviour {
 		} else {
 			icon = PreviousDestination ().ComputeStatus (mood);
 		}
+		if (mood < 0) {
+			mood = 0;
+		}
 	}
 
 	///////////////////// STATE MACHINE
