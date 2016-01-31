@@ -2867,7 +2867,7 @@ MonoBehaviour:
   mouseRotationMultiplier: 0.2
   mouseZoomMultiplier: 5
   minZoomDistance: 20
-  maxZoomDistance: 50
+  maxZoomDistance: 40
   smoothingFactor: 0.1
   goToSpeed: 0.1
   useKeyboardInput: 1
@@ -6113,7 +6113,7 @@ Transform:
   - {fileID: 1340010262}
   - {fileID: 1040601245}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
 --- !u!1001 &1536412740
 Prefab:
   m_ObjectHideFlags: 0
