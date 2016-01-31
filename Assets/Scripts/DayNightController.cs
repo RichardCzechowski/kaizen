@@ -32,7 +32,7 @@ public class DayNightController : MonoBehaviour {
 		moonInitialIntensity = moon.intensity;
 	}
 
-	public float HoursToGameTime() {
+	public float RealSecondsPerGameHour() {
 		return secondsInFullDay / 24f;
 	}
 
@@ -44,23 +44,23 @@ public class DayNightController : MonoBehaviour {
 		return 6;
 	}
 
-	public float ShiftLength() {
+	public float ShiftLengthHours() {
 		return 24f / NumberOfShifts ();
 	}
 
-	public float ShiftStartTime(int shiftIndex) { 
-		return ShiftLength () * shiftIndex;
+	public float ShiftStartHour(int shiftIndex) { 
+		return ShiftLengthHours () * shiftIndex;
 	}
 
-	public float ShiftEndTime(int shiftIndex) { 
+	public float ShiftEndHour(int shiftIndex) { 
 		if (shiftIndex > NumberOfShifts () - 1) {
 			return 0;
 		}
-		return ShiftLength () * shiftIndex + 1;
+		return ShiftLengthHours () * shiftIndex + 1;
 	}
 
 	public int CurrentShift() {
-		return Mathf.FloorToInt (TimeOfDayIncludingPreview () * 24 / ShiftLength ());
+		return Mathf.FloorToInt (TimeOfDayIncludingPreview () * 24 / ShiftLengthHours ());
 	}
 
 	public float TimeOfDayIncludingPreview() {
@@ -75,8 +75,13 @@ public class DayNightController : MonoBehaviour {
 	[Range(0,1)]
 	public float _previewTimeOfDay;
 	public void BeginPreview(float time) {
+		Debug.Log ("preview for " + time);
 		_previewTimeOfDay = time;
 		paused = true;
+	}
+
+	public void BeginPreviewHours(float hours) {
+		BeginPreview (hours / 24f);
 	}
 
 	public void EndPreview() {

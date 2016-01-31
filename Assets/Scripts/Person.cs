@@ -27,16 +27,21 @@ public class Person : MonoBehaviour {
 	public bool paused = false;
 	bool timeIsPaused;
 
+	static int peopleCreated = 0;
+
 	void Start () {
 		timeIsPaused = DayNightController.instance.paused;
 		ClearPaths ();
+		objects [0] = home;
 
 		_agent = GetComponent<NavMeshAgent>();			
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
 		_lineRenderer.useWorldSpace = true;
 		transform.position = CurrentDestination().EntryPosition();
 
-		color = possibleColors [UnityEngine.Random.Range (0, possibleColors.Length - 1)];
+
+		color = possibleColors [peopleCreated % possibleColors.Length];
+		peopleCreated++;
 
 		foreach (var renderer in recolorableClothes) {
 			var mat = new Material(renderer.sharedMaterial);
@@ -71,7 +76,6 @@ public class Person : MonoBehaviour {
 
 	public void ClearPaths() {
 		objects = new Building[DayNightController.instance.NumberOfShifts()];
-		objects [0] = home;
 	}
 
 	int ObjectsSet() {
@@ -232,7 +236,7 @@ public class Person : MonoBehaviour {
 
 
 	public void SetWaitTime(){
-		nextShiftStart = DayNightController.instance.ShiftStartTime(DayNightController.instance.CurrentShift() + 1) / 24F;
+		nextShiftStart = DayNightController.instance.ShiftStartHour(DayNightController.instance.CurrentShift() + 1) / 24F;
 	}
 
 
@@ -315,7 +319,7 @@ public class Person : MonoBehaviour {
 	private float timeResting;
 
 	private void timeWaiting(){
-		var total = (end - start) * DayNightController.instance.ShiftLength();
+		var total = (end - start) * DayNightController.instance.ShiftLengthHours();
 		switch(CurrentDestination().type){
 		case Building.Type.Home:
 			timeResting += total;

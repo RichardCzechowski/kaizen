@@ -374,15 +374,16 @@ MonoBehaviour:
   color: {r: 0.728, g: 0.5716933, b: 0.23529415, a: 1}
   possibleColors:
   - {r: 0, g: 1, b: 0.9146342, a: 1}
-  - {r: 0.65671647, g: 1, b: 0, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.10522314, b: 0.6102941, a: 1}
+  - {r: 1, g: 0.8896551, b: 0, a: 1}
+  - {r: 0.31079832, g: 0.64705884, b: 0.24740486, a: 1}
   - {r: 0.7794118, g: 0.103157446, b: 0.5648757, a: 1}
   home: {fileID: 0}
   recolorableClothes:
   - {fileID: 2365558}
   - {fileID: 2307878}
   selected: 0
+  paused: 0
   mood: 0
   monotony: 0
   restfulness: 0

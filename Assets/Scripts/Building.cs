@@ -9,7 +9,6 @@ public class Building : MonoBehaviour {
 
 	public int capacity = 3;
 	public List<Person> occupants = new List<Person>();
-	private int numOfOccupants = 0;
 
 	public Transform entryPoint;
 
@@ -31,6 +30,7 @@ public class Building : MonoBehaviour {
 	}
 
 	public bool Full() {
+		Debug.Log ("occupnts " + OccupantsIncludingPreview ().Count + " capacity " + capacity);
 		return OccupantsIncludingPreview().Count == capacity;
 	}
 
@@ -39,15 +39,15 @@ public class Building : MonoBehaviour {
 	}
 
 	public void AddPerson(Person newPerson){
-		if (numOfOccupants < capacity) {
+		if (OccupantsIncludingPreview ().Count < capacity) {
 			occupants.Add (newPerson);
-			numOfOccupants++;
+		} else {
+			Debug.LogError ("Can't add person to building because it's full");
 		}
 	}
 
 	public void RemovePerson(Person newPerson){
 		occupants.Remove(newPerson);
-		numOfOccupants--;
 	}
 
 
