@@ -2457,6 +2457,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -0.0025504152
       objectReference: {fileID: 0}
+    - target: {fileID: 463098, guid: eaba41e5473d1409faf8042f8c4db9d7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.417
+      objectReference: {fileID: 0}
+    - target: {fileID: 463098, guid: eaba41e5473d1409faf8042f8c4db9d7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.051
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eaba41e5473d1409faf8042f8c4db9d7, type: 2}
   m_IsPrefabParent: 0
@@ -2497,7 +2505,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d4ad7d9b79e3b4a1db2d4a146f82a336, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 74f702e635462479e93c197cc087730c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
