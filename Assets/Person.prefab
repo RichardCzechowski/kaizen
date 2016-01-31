@@ -346,10 +346,13 @@ MonoBehaviour:
   color: {r: 0.728, g: 0.5716933, b: 0.23529415, a: 1}
   possiblePortraits:
   - {fileID: 2800000, guid: 5359bcfb3b2934086b1781ffb221635a, type: 3}
+  - {fileID: 2800000, guid: 9353dc01d6ac74b0f9838c5b442fd5f4, type: 3}
   possibleBaseTextures:
   - {fileID: 2800000, guid: 977a9dc5335024c90b42c97a9333a04d, type: 3}
+  - {fileID: 2800000, guid: 04d59aa3d8f31447cb34804b25f2d917, type: 3}
   possibleClothingTextures:
   - {fileID: 2800000, guid: cd8cebcf32f004e209303004bfa35205, type: 3}
+  - {fileID: 2800000, guid: 8f6e94722a90447b79191c0f8368f964, type: 3}
   possibleColors:
   - {r: 0, g: 1, b: 0.9146342, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
@@ -361,7 +364,9 @@ MonoBehaviour:
   - {r: 1, g: 0.59999996, b: 0, a: 1}
   - {r: 0.103157446, g: 0.19177002, b: 0.7794118, a: 1}
   - {r: 0.8206897, g: 0, b: 1, a: 1}
-  baseRenderer: []
+  baseRenderer:
+  - {fileID: 2384186}
+  - {fileID: 2374034}
   recolorableClothes:
   - {fileID: 2365558}
   - {fileID: 2307878}
@@ -437,8 +442,24 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: baseRenderer.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: possibleColors.Array.size
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possiblePortraits.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleBaseTextures.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleClothingTextures.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Speed
@@ -524,6 +545,26 @@ Prefab:
       propertyPath: possibleColors.Array.data[4].b
       value: 0.8740364
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possiblePortraits.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: 9353dc01d6ac74b0f9838c5b442fd5f4, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleBaseTextures.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: 04d59aa3d8f31447cb34804b25f2d917, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleClothingTextures.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: 8f6e94722a90447b79191c0f8368f964, type: 3}
+    - target: {fileID: 0}
+      propertyPath: baseRenderer.Array.data[0]
+      value: 
+      objectReference: {fileID: 2384186}
+    - target: {fileID: 0}
+      propertyPath: baseRenderer.Array.data[1]
+      value: 
+      objectReference: {fileID: 2374034}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160516}

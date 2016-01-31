@@ -46,6 +46,9 @@ public class Person : MonoBehaviour {
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
 		_lineRenderer.useWorldSpace = true;
 
+		// Don't always start with the same color etc.
+		peopleCreated += UnityEngine.Random.Range (0, 10);
+
 		color = possibleColors [peopleCreated % possibleColors.Length];
 		peopleCreated++;
 
