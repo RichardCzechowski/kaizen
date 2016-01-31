@@ -59,6 +59,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 479688}
   - 212: {fileID: 21211832}
+  - 95: {fileID: 9505874}
+  - 114: {fileID: 11499406}
   m_Layer: 0
   m_Name: status
   m_TagString: Untagged
@@ -150,7 +152,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160516}
   m_LocalRotation: {x: 0, y: -0.43310463, z: 0, w: 0.9013437}
-  m_LocalPosition: {x: 9.092941, y: 2.2612305, z: 10.996674}
+  m_LocalPosition: {x: 6.482254, y: 2.2951202, z: 18.804016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 472300}
@@ -360,6 +362,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.15, z: 1}
   m_Center: {x: 0, y: 0.18, z: 0}
+--- !u!95 &9505874
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132872}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 575e49b30161145debd978d81b86be6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11472926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -403,7 +422,24 @@ MonoBehaviour:
   paused: 0
   mood: 0
   icon: 0
+  lonely: {fileID: 21300000, guid: 81cb7d81871454cb09d42671e4e266f9, type: 3}
+  tired: {fileID: 21300000, guid: 5b003279d739243d6acdac15fb034fbf, type: 3}
+  bored: {fileID: 21300000, guid: af81e69a5f2724b618aa384a604ecd3a, type: 3}
+  fulfilled: {fileID: 21300000, guid: 625d37edcc6824516ad68f5047f8b268, type: 3}
+  rested: {fileID: 21300000, guid: fcd48abbc9fb14da5a304fb0b6733b82, type: 3}
+  excited: {fileID: 21300000, guid: df379d157ed2f43f398102bb8b9f7b1c, type: 3}
   bullpenLocation: {x: 0, y: 0, z: 0}
+--- !u!114 &11499406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6859ddb8c0d74bdfaf1be8b83d54325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!120 &12047500
 LineRenderer:
   m_ObjectHideFlags: 1
