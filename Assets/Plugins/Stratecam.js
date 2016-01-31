@@ -110,20 +110,22 @@ private function UpdatePanning() {
 		}	
 	}
 
-	if ( -20 > transform.position.x){
-		moveVector.x = -.25;
-	} else if (10 < transform.position.x){
-		moveVector.x = .25;
-	}
-		if ( -100 > transform.position.y){
-		moveVector.y = -.25;
-	} else if (200 < transform.position.y){
-		moveVector.y = .25;
-	}
-		if ( 10 > transform.position.z){
-		moveVector.z = -.25;
-	} else if (40 < transform.position.z){
-		moveVector.z = .25;
+	if (objectToFollow == null){
+		if ( -20 > transform.position.x){
+			moveVector.x = -.25;
+		} else if (10 < transform.position.x){
+			moveVector.x = .25;
+		}
+			if ( -100 > transform.position.y){
+			moveVector.y = -.25;
+		} else if (200 < transform.position.y){
+			moveVector.y = .25;
+		}
+			if ( 10 > transform.position.z){
+			moveVector.z = -.25;
+		} else if (40 < transform.position.z){
+			moveVector.z = .25;
+		}
 	}
 	
 	if (moveVector != Vector3.zero) {
