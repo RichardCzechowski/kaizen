@@ -3,7 +3,7 @@
 --- !u!29 &1
 SceneSettings:
   m_ObjectHideFlags: 0
-  m_PVSData:
+  m_PVSData: 
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3983ff5128ddf476c83772d243c2c6cf, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   lightPrefab: {fileID: 86175732}
 --- !u!199 &59061905
 ParticleSystemRenderer:
@@ -126,7 +126,7 @@ ParticleSystemRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -2117,7 +2117,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: ff7317f4a674a48eb8a7e4722100d571, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
@@ -2200,23 +2200,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 432288, guid: eaba41e5473d1409faf8042f8c4db9d7, type: 2}
       propertyPath: m_RootOrder
-      value: 62
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 401438, guid: eaba41e5473d1409faf8042f8c4db9d7, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.0025504157
+      value: -0.002550416
       objectReference: {fileID: 0}
     - target: {fileID: 401438, guid: eaba41e5473d1409faf8042f8c4db9d7, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.7071021
+      value: -0.7071022
       objectReference: {fileID: 0}
     - target: {fileID: 401438, guid: eaba41e5473d1409faf8042f8c4db9d7, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.70710224
+      value: 0.7071023
       objectReference: {fileID: 0}
     - target: {fileID: 401438, guid: eaba41e5473d1409faf8042f8c4db9d7, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.0025504152
+      value: -0.0025504155
       objectReference: {fileID: 0}
     - target: {fileID: 144026, guid: eaba41e5473d1409faf8042f8c4db9d7, type: 2}
       propertyPath: m_Name
@@ -2476,7 +2476,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 351c78e848fe54aa4a47d4741b73b67a, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -2835,7 +2835,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 51a67111c373a413e868977766949687, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -2984,7 +2984,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11490276, guid: cea54157ab40f41558ef9dd415db4376, type: 2}
       propertyPath: onAfterPurchase.Array.data[2]
-      value:
+      value: 
       objectReference: {fileID: 459622502}
     - target: {fileID: 145052, guid: cea54157ab40f41558ef9dd415db4376, type: 2}
       propertyPath: m_Name
@@ -3216,7 +3216,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11490276, guid: cea54157ab40f41558ef9dd415db4376, type: 2}
       propertyPath: onAfterPurchase.Array.data[2]
-      value:
+      value: 
       objectReference: {fileID: 459622502}
     - target: {fileID: 145052, guid: cea54157ab40f41558ef9dd415db4376, type: 2}
       propertyPath: m_Name
@@ -3447,8 +3447,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46b166c1e329d45c3bde2ada616eb67c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   terrain: {fileID: 0}
   panSpeed: 5
   zoomSpeed: 50
@@ -3478,8 +3478,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 646b5bc27a658f447b1d929fd5ffbd70, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   mode: 1
   showGeneratedNormals: 0
   offsetScale: 0.2
@@ -3504,8 +3504,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9191284b058eef549b7108b5f04e1117, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   intensityMultiplier: 0.25
   generalIntensity: 0.5
   blackIntensity: 1
@@ -3530,8 +3530,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76b5ec6153a1d55438228df10fe66844, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   distanceFog: 1
   excludeFarPixels: 0
   useRadialDistance: 1
@@ -3549,8 +3549,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fd999d1b2cf94a45a5b0a47ce074bef, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   redChannel:
     serializedVersion: 2
     m_Curve:
@@ -3685,8 +3685,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   visualizeFocus: 0
   focalLength: 10
   focalSize: 0.314
@@ -3714,8 +3714,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34382083ad114a07d000fbfb8d76c639, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   iterations: 3
   blurSpread: 0.06
   blurShader: {fileID: 4800000, guid: 57e6deea7c2924e22a5138e2b70bb4dc, type: 3}
@@ -4050,7 +4050,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 351c78e848fe54aa4a47d4741b73b67a, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -4112,8 +4112,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf7908e3f67ae420fadc494ece09a651, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   sun: {fileID: 2096203617}
   moon: {fileID: 746783055}
   secondsInFullDay: 60
@@ -4232,8 +4232,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ac041f13acb841299882bdc552a94f7, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   positiveSound: {fileID: 8300000, guid: 04a1456cfc34b43d5acee25a50dec16a, type: 3}
   negativeSound: {fileID: 8300000, guid: 2464b7b0fbdd3447787ed85bb2126a6e, type: 3}
   cancelSound: {fileID: 8300000, guid: ccb0392c484524712888589bf879e6b0, type: 3}
@@ -4254,8 +4254,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 020b6bd34d5144d05b2a6c00e87bcdc3, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   currentScore: 0
   yougottabox: {fileID: 8300000, guid: c2a59332e35aa463baeb1b871cbb07b0, type: 3}
 --- !u!114 &981439664
@@ -4267,8 +4267,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e67f046ca3d6f43a289393c129069a0f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   introPerson: {fileID: 2800000, guid: 20b74c381632740d1ad9c2cce7452e59, type: 3}
   introPath: {fileID: 2800000, guid: ccc9d0eb3a0ae4c85b382f5109a7a858, type: 3}
   introPath2: {fileID: 2800000, guid: c059f3cca99074e168fd9525628a6d21, type: 3}
@@ -4346,7 +4346,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 51a67111c373a413e868977766949687, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -4603,7 +4603,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 351c78e848fe54aa4a47d4741b73b67a, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -4940,7 +4940,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 51a67111c373a413e868977766949687, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -5001,8 +5001,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3983ff5128ddf476c83772d243c2c6cf, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   lightPrefab: {fileID: 86175732}
 --- !u!199 &1394083662
 ParticleSystemRenderer:
@@ -5015,7 +5015,7 @@ ParticleSystemRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -6761,8 +6761,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 547eac36ad72a4c91aa951f7da089d08, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   settlerPrefab: {fileID: 160516, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
   arrivalSound: {fileID: 8300000, guid: c05f5d5a9d8a94a3b9c35f11219eed63, type: 3}
   entrance: {fileID: 986489039}
@@ -6824,7 +6824,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11490276, guid: cea54157ab40f41558ef9dd415db4376, type: 2}
       propertyPath: onAfterPurchase.Array.data[2]
-      value:
+      value: 
       objectReference: {fileID: 459622502}
     - target: {fileID: 145052, guid: cea54157ab40f41558ef9dd415db4376, type: 2}
       propertyPath: m_Name
@@ -6878,7 +6878,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: ed89d9e26b8b24f13b50970a05562732, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -7011,7 +7011,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: ed89d9e26b8b24f13b50970a05562732, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -7435,7 +7435,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: 351c78e848fe54aa4a47d4741b73b67a, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
@@ -7598,8 +7598,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9678a1d69e7704ac5b0fc88492b38ec3, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   Origin: {fileID: 760038142}
   target: {fileID: 1709318135}
   DOF34: {fileID: 760038148}
@@ -7718,7 +7718,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11490276, guid: cea54157ab40f41558ef9dd415db4376, type: 2}
       propertyPath: onAfterPurchase.Array.data[2]
-      value:
+      value: 
       objectReference: {fileID: 459622502}
     - target: {fileID: 145052, guid: cea54157ab40f41558ef9dd415db4376, type: 2}
       propertyPath: m_Name
@@ -7772,7 +7772,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_Materials:
   - {fileID: 2100000, guid: abd311afa514949d2bb0454a545a4b8b, type: 2}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 0
