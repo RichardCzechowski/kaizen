@@ -110,7 +110,6 @@ public class tutorial : MonoBehaviour {
 			camera.GetComponent<Stratecam> ().objectToFollow = null;
 			camera.GetComponent<Stratecam> ().maxZoomDistance = 40;
 			camera.GetComponent<Stratecam> ().minZoomDistance = 10;
-			DayNightController.instance.pauseNoPreview = false;
 		}
 		if (Input.GetMouseButtonUp(0)) {
 			showPersonGUI = false;
@@ -125,7 +124,7 @@ public class tutorial : MonoBehaviour {
 			camera.GetComponent<Stratecam> ().objectToFollow = null;
 			camera.GetComponent<Stratecam> ().maxZoomDistance = 40;
 			camera.GetComponent<Stratecam> ().minZoomDistance = 10;
-			DayNightController.instance.paused = false;
+			DayNightController.instance.pauseNoPreview = false;
 		}
 	}
 
