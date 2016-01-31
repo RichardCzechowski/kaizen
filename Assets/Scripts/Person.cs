@@ -288,7 +288,7 @@ public class Person : MonoBehaviour {
 		case State.waiting:
 			// Hangout for a length of time
 			end = DayNightController.instance.TimeOfDayActual ();
-			mood += PreviousDestination ().ComputeScore ();
+			mood += PreviousDestination ().ComputeScore (mood);
 			PreviousDestination().RemovePerson(this);
 			this.GetComponent<NavMeshAgent>().radius = .5F;
 			this.GetComponent<Collider>().isTrigger = false;

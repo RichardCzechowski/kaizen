@@ -51,21 +51,30 @@ public class Building : MonoBehaviour {
 		occupants.Remove(newPerson);
 	}
 
-	public int ComputeScore(){
+	public int ComputeScore(int mood){
+		// If it's a home, check if it's unoccupied, then add a point if so
+		// If it's a play zone, check for other people. Other people are fun!
+		// If it's work, we zero out the mood of the character and turn all that fun into stars!
 		switch(type){
 		case Type.Home:
 			if (occupants.Count == 1) {
 				return 1;
+			} else {
+				return -occupants.Count;
 			}
-			break;
 		case Type.Play:
 			if (occupants.Count > 1) {
 				return occupants.Count;
+			}else {
+				return -3;
+			}
+		case Type.Work:
+			if (mood > 0) {
+				scoreManager.instance.AddPoints(mood);
+				stars += mood;
+				return -mood;
 			}
 			break;
-		case Type.Work:
-			return 0;
-			//break;
 		}
 		return 0;
 	}

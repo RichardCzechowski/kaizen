@@ -18,4 +18,9 @@ public class scoreManager : MonoBehaviour {
 	void Update () {
 		//Debug.Log (currentScore);
 	}
+
+	public void AddPoints(int pointsToAdd){
+		currentScore += pointsToAdd;
+		Debug.Log ("You Score is: " + currentScore);
+	}
 }
