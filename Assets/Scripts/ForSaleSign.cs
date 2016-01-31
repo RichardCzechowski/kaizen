@@ -3,7 +3,10 @@ using System.Collections;
 
 public class ForSaleSign : MonoBehaviour {
 
+	[HideInInspector]
 	public Building building;
+
+	public AudioClip upgradeSound;
 
 	Renderer[] _renderers;
 	Collider _collider;
@@ -30,7 +33,8 @@ public class ForSaleSign : MonoBehaviour {
 	}
 
 	void OnMouseUp() {
-		building.Upgrade ();			
+		building.Upgrade ();
+		AudioSource.PlayClipAtPoint (upgradeSound, Camera.main.transform.position);
 	}
 
 
