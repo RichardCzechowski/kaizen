@@ -16,12 +16,16 @@ public class Person : MonoBehaviour {
 	public Texture2D[] possiblePortraits;
 	public Texture2D[] possibleBaseTextures;
 	public Texture2D[] possibleClothingTextures;
+	public AudioClip[] possibleSelectSounds;
 	public Color[] possibleColors;
 
 	Building[] objects;
 
 	public MeshRenderer[] baseRenderer;
 	public MeshRenderer[] recolorableClothes;
+
+	[HideInInspector]
+	public AudioClip selectSound;
 
 	private NavMeshAgent _agent;
 	private LineRenderer _lineRenderer;
@@ -65,6 +69,7 @@ public class Person : MonoBehaviour {
 		var clothingTexture = possibleClothingTextures [peopleCreated % possibleClothingTextures.Length];
 		var baseTexture = possibleBaseTextures [peopleCreated % possibleBaseTextures.Length];
 		portrait = possiblePortraits [peopleCreated % possiblePortraits.Length];
+		selectSound = possibleSelectSounds [peopleCreated % possibleSelectSounds.Length];
 
 		foreach (var renderer in recolorableClothes) {
 			var mat = new Material(renderer.sharedMaterial);
@@ -166,8 +171,17 @@ public class Person : MonoBehaviour {
 		}
 
 		if (selected) {
+			
 			UpdatePathPreview ();
+
 			_lineRenderer.gameObject.SetActive (true);
+
+			if (_startHidingTime > -1) {
+				Color currentColor = _lineRenderer.material.color;
+				float a = (_hiddenTime - Time.time) / (_hiddenTime - _startHidingTime);
+				_lineRenderer.material.color = new Color (color.r, color.g, color.b, a);
+			}
+
 		} else {
 			_lineRenderer.gameObject.SetActive (false);
 		}
@@ -179,6 +193,23 @@ public class Person : MonoBehaviour {
 				Resume ();
 			}
 		}
+	}
+
+	public void ShowPath() {
+		selected = true;
+		_startHidingTime = -1;
+	}
+
+	float _hiddenTime;
+	float _startHidingTime;
+	public void FadeOutPath() {
+		_hiddenTime = Time.time + 3f;
+		_startHidingTime = Time.time;
+		Invoke ("HidePath", 3f);
+	}
+
+	void HidePath() {
+		selected = false;
 	}
 
 	Vector3[] GetCorners(Vector3 start, Vector3 end) {

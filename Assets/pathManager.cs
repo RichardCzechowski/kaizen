@@ -6,6 +6,7 @@ public class pathManager : MonoBehaviour {
 
 	public AudioClip positiveSound;
 	public AudioClip negativeSound;
+	public AudioClip cancelSound;
 
 	public Camera colorCamera;
 	public ColorCorrectionCurves curves;
@@ -52,9 +53,12 @@ public class pathManager : MonoBehaviour {
 					colorCamera.enabled = true;
 				}
 
-				person.selected = true;
 				person.SetState (Person.State.settingPath);
 				person.ClearPaths ();
+				person.ShowPath ();
+
+				AudioSource.PlayClipAtPoint (person.selectSound, Camera.main.transform.position);
+
 
 				DayNightController.instance.BeginPreview (0);
 
@@ -89,7 +93,7 @@ public class pathManager : MonoBehaviour {
 					if (i == person.Buildings ().Length) {
 						DayNightController.instance.EndPreview ();
 						startNewPath = false;
-						person.selected = false;
+						person.FadeOutPath ();
 						Invoke ("Walkabout", Time.deltaTime);
 
 						if (fancyEffects) {
@@ -106,8 +110,10 @@ public class pathManager : MonoBehaviour {
 						
 				}
 
-			} else {
-				
+			} else if (startNewPath) {
+
+				AudioSource.PlayClipAtPoint (cancelSound, Camera.main.transform.position);
+
 				DayNightController.instance.EndPreview ();
 				startNewPath = false;
 				if (_lastPerson) {

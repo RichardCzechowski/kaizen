@@ -4,6 +4,7 @@ using System.Collections;
 public class SettlerGenerator : MonoBehaviour {
 
 	public GameObject settlerPrefab;
+	public AudioClip arrivalSound;
 
 	public Transform entrance;
 
@@ -12,6 +13,7 @@ public class SettlerGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GeneratePerson ();
+		AudioSource.PlayClipAtPoint (arrivalSound, transform.position);
 	}
 
 	Person GeneratePerson() {
@@ -33,6 +35,10 @@ public class SettlerGenerator : MonoBehaviour {
 			for(var i = 0; i < settlersToGenerate; i++) {
 				GeneratePerson ();
 				_accumulatedSettlers--;
+			}
+
+			if (settlersToGenerate > 0) {
+				AudioSource.PlayClipAtPoint (arrivalSound, transform.position);
 			}
 
 			_lastDay = DayNightController.instance.daysElapsed;
