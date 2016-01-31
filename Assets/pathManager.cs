@@ -72,8 +72,6 @@ public class pathManager : MonoBehaviour {
 
 				person = _lastPerson;
 
-				Debug.Log (person);
-
 				// Search the hit object or its parents
 				Building building = hit.transform.gameObject.GetComponent<Building> ();
 				if (!building) {
