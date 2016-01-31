@@ -5,10 +5,10 @@ public class ForSaleSign : MonoBehaviour {
 
 	public Building building;
 
-	Renderer _renderer;
+	Renderer[] _renderers;
 	Collider _collider;
 	void Start() {
-		_renderer = GetComponent<Renderer> ();
+		_renderers = GetComponentsInChildren<Renderer> ();
 		_collider = GetComponent<Collider> ();
 		building = transform.parent.parent.GetComponent<Building> ();
 	}
@@ -16,10 +16,14 @@ public class ForSaleSign : MonoBehaviour {
 	void Update () {
 	
 		if (scoreManager.instance.currentScore >= building.upgradeCost) {
-			_renderer.enabled = true;
+			foreach (var r in _renderers) {
+				r.enabled = true;
+			}
 			_collider.enabled = true;
 		} else {
-			_renderer.enabled = false;
+			foreach (var r in _renderers) {
+				r.enabled = false;
+			}
 			_collider.enabled = false;
 		}
 
