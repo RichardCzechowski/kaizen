@@ -47,6 +47,8 @@ public class pathManager : MonoBehaviour {
 			var person = GetPerson (hit.transform.gameObject);
 
 			if (hit.transform != null && hit.transform.gameObject.tag == "Player" || person) {
+				
+				tutorial.instance.kickOffIntroducePath ();
 
 				if (fancyEffects) {
 					curves.enabled = true;
@@ -80,6 +82,14 @@ public class pathManager : MonoBehaviour {
 				Building building = hit.transform.gameObject.GetComponent<Building> ();
 				if (!building) {
 					building = hit.transform.parent.gameObject.GetComponent<Building> ();
+				}
+
+				if (building.type == Building.Type.Home) {
+					tutorial.instance.kickOffIntroduceHome ();
+				}else if(building.type == Building.Type.Play){
+					tutorial.instance.kickOffIntroduceFood ();
+				}else if(building.type == Building.Type.Work){
+					tutorial.instance.kickOffIntroduceWork ();
 				}
 
 				if (building.Full () || (_lastBuilding && building.type == _lastBuilding.type)) {

@@ -19,6 +19,7 @@ public class scoreManager : MonoBehaviour {
 		{
 			AudioSource.PlayClipAtPoint (yougottabox, Camera.main.transform.position);
 		}
+		tutorial.instance.kickOffIntroduceStar();
 	}
 
 	public void DecrementPoints(int pointsToDecrement) {
