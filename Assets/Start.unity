@@ -1369,7 +1369,7 @@ MonoBehaviour:
     atime7: 0
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
-  numberOfShifts: 6
+  numberOfShifts: 4
   paused: 0
   _previewTimeOfDay: 0
 --- !u!4 &981439661
