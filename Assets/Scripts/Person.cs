@@ -342,7 +342,8 @@ public class Person : MonoBehaviour {
 					for (j = 1; j < objects.Length; j++) {
 						objects [j] = null;
 					}
-					mood -= monotony;
+					mood -= 1;
+					scoreManager.instance.currentScore -= 1;
 				}
 
 				// Other emotions
@@ -351,21 +352,35 @@ public class Person : MonoBehaviour {
 				productivity = 0F;
 				switch(objects[k].GetComponent<Building>().type){
 				case Building.Type.Home:
-					restfulness += 1.0F * (1F - timeResting);
+					restfulness += 1.0F - (1F - timeResting);
 					break;
 				case Building.Type.Play:
-					playfullness += 1.0F * (1F - timePlaying);
+					playfullness += 1.0F - (1F - timePlaying);
 					break;
 				case Building.Type.Work:
-					productivity += 1.0F * (1F - timeWorking);
+					productivity += 1.0F - (1F - timeWorking);
 					break;
 				}
 			}
 			timeWorking = 0;
 			timePlaying = 0;
 			timeResting = 0;
+
+			// Subtract for imbalanced days
+			if (playfullness == 0 || restfulness == 0 || productivity == 0) {
+				scoreManager.instance.currentScore -= 1;
+			}
+
 			previousPath = objects;
 			// Calculate mood from emotions
+			scoreManager.instance.currentScore += restfulness + playfullness + productivity;
+
+			// Don't allow negative scores b/c that's sad
+			if (scoreManager.instance.currentScore < 0) {
+				scoreManager.instance.currentScore = 0;
+			}
+
+			// Keep constant mood
 			mood += restfulness + playfullness + productivity;
 		}
 	}
