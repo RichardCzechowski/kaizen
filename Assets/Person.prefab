@@ -349,13 +349,19 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 1, g: 0.8896551, b: 0, a: 1}
   - {r: 0.31079832, g: 0.64705884, b: 0.24740486, a: 1}
-  - {r: 0.7794118, g: 0.103157446, b: 0.5648757, a: 1}
+  - {r: 1, g: 0.60294116, b: 0.8740364, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.59999996, b: 0, a: 1}
+  - {r: 0.103157446, g: 0.19177002, b: 0.7794118, a: 1}
+  - {r: 0.8206897, g: 0, b: 1, a: 1}
   recolorableClothes:
   - {fileID: 2365558}
   - {fileID: 2307878}
   selected: 0
   paused: 0
   mood: 0
+  icon: 0
   bullpenLocation: {x: 0, y: 0, z: 0}
 --- !u!120 &12047500
 LineRenderer:
@@ -424,6 +430,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: possibleColors.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Speed
       value: 7
       objectReference: {fileID: 0}
@@ -434,6 +444,78 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Acceleration
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[5].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[5].g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[5].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[6].r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[6].g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[6].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[7].g
+      value: 0.59999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[7].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[7].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[8].r
+      value: 0.103157446
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[8].g
+      value: 0.19177002
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[8].b
+      value: 0.7794118
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[9].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[9].r
+      value: 0.8206897
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[9].g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[4].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[4].g
+      value: 0.60294116
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[4].b
+      value: 0.8740364
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

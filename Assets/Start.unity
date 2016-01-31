@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settlerPrefab: {fileID: 160516, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
   entrance: {fileID: 986489039}
-  settlersPerDay: 1.5
+  settlersPerDay: 0.75
 --- !u!1001 &1493576847
 Prefab:
   m_ObjectHideFlags: 0
