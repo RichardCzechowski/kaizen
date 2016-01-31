@@ -25,13 +25,13 @@ public class scoreManager : MonoBehaviour {
 		currentScore -= pointsToDecrement;
 		int remainder = pointsToDecrement;
 		foreach (var building in Building.All()) {
-			building.stars -= remainder;
-			remainder = Mathf.Abs(building.stars);
-			if (remainder == 0) {
-				return;
-			} else {
-				building.stars = 0;
+			int starsToRemove = remainder;
+			if (building.stars - remainder < 0) {
+				starsToRemove = building.stars;
 			}
+			Debug.Log ("removing " + starsToRemove);
+			building.stars -= starsToRemove;
+			pointsToDecrement -= starsToRemove;
 		}
 	}
 
