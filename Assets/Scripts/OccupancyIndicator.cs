@@ -8,6 +8,7 @@ public class OccupancyIndicator : MonoBehaviour {
 	public GameObject quadPrefab;
 
 	public Texture2D emptySlotTexture;
+	public Texture2D fullSlotTexture;
 
 	public float spacing = 1;
 	public float width = 1;
@@ -25,8 +26,27 @@ public class OccupancyIndicator : MonoBehaviour {
 		_emptyMaterial = new Material(materialTemplate);
 		_emptyMaterial.mainTexture = emptySlotTexture;
 
+		Rebuild ();
+	}
+
+
+	void Rebuild() {
+
+		if (_fgQuads != null) {
+			for (var i = 0; i < _fgQuads.Length; i++) {
+				if (_fgQuads[i]) {
+					Destroy (_fgQuads[i].gameObject);
+				}
+				if (_bgQuads[i]) {
+					Destroy (_bgQuads[i].gameObject);
+				}
+
+			}
+		}
+
 		_fgQuads = new QuadDisplay[building.capacity];
 		_bgQuads = new QuadDisplay[building.capacity];
+
 		for (var i = 0; i < building.capacity; i++) {
 			Vector3 pos = transform.position + transform.right * i * spacing - transform.right * spacing * building.capacity / 2 + transform.right * spacing / 2;
 
@@ -45,9 +65,14 @@ public class OccupancyIndicator : MonoBehaviour {
 			_bgQuads [i].SetMaterial (_emptyMaterial);
 		}
 
+
 	}
 
 	void Update() {
+
+		if (_fgQuads != null && building.capacity != _fgQuads.Length) {
+			Rebuild ();
+		}
 		
 		for (var i = 0; i < building.capacity; i++) {
 			var fg = _fgQuads [i];
@@ -60,6 +85,7 @@ public class OccupancyIndicator : MonoBehaviour {
 				fg.gameObject.SetActive (true);
 
 				var bgMat = new Material(_emptyMaterial);
+				bgMat.mainTexture = fullSlotTexture;
 				bgMat.color = occupants[i].color;
 				bg.SetMaterial (bgMat);
 

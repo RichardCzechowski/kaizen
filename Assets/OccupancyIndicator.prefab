@@ -40,10 +40,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 113192, guid: 53915600a903548459ef7325c3ab2d37, type: 2}
-  emptySlotTexture: {fileID: 2800000, guid: 295938f3062054374979b7a3cd25517b, type: 3}
+  emptySlotTexture: {fileID: 2800000, guid: c06f5bdbe17d74f06a7b96760c380812, type: 3}
+  fullSlotTexture: {fileID: 2800000, guid: 295938f3062054374979b7a3cd25517b, type: 3}
   spacing: 1.2
   width: 1
-  materialTemplate: {fileID: 2100000, guid: 8258d80db3cb1470daa8b31f422d48d8, type: 2}
+  materialTemplate: {fileID: 2100000, guid: 4d51544ac0d6341f3af62ea9f83d377e, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -54,11 +55,15 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: emptySlotTexture
       value: 
-      objectReference: {fileID: 2800000, guid: 295938f3062054374979b7a3cd25517b, type: 3}
+      objectReference: {fileID: 2800000, guid: c06f5bdbe17d74f06a7b96760c380812, type: 3}
     - target: {fileID: 0}
       propertyPath: materialTemplate
       value: 
-      objectReference: {fileID: 2100000, guid: 8258d80db3cb1470daa8b31f422d48d8, type: 2}
+      objectReference: {fileID: 2100000, guid: 4d51544ac0d6341f3af62ea9f83d377e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: fullSlotTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 295938f3062054374979b7a3cd25517b, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131876}

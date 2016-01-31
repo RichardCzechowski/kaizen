@@ -140,8 +140,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.919, y: 0.30664775, z: 0.08}
-  m_LocalScale: {x: 1.4533737, y: 1.4540716, z: 10.272024}
+  m_LocalPosition: {x: -1.919, y: 0.87, z: 0.08}
+  m_LocalScale: {x: 2.5411818, y: 2.542402, z: 17.960337}
   m_Children:
   - {fileID: 498948}
   m_Father: {fileID: 432288}
@@ -152,9 +152,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144026}
-  m_LocalRotation: {x: 0, y: -0.12791844, z: 0, w: 0.99178475}
-  m_LocalPosition: {x: 4.781148, y: 3.29, z: -3.01084}
-  m_LocalScale: {x: 2.2417197, y: 2.2417192, z: 2.2417192}
+  m_LocalRotation: {x: 0, y: 0.0022290014, z: 0, w: 0.99999756}
+  m_LocalPosition: {x: 0.29, y: 3.09, z: 2.54}
+  m_LocalScale: {x: 2.3107965, y: 2.3107967, z: 2.3107967}
   m_Children:
   - {fileID: 423828}
   - {fileID: 437106}
@@ -171,8 +171,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.964, y: 0.237, z: -0}
-  m_LocalScale: {x: 0.8250357, y: 1.5763259, z: 0.44448787}
+  m_LocalPosition: {x: -1.96, y: 0.237, z: 0.08}
+  m_LocalScale: {x: 1.166532, y: 3.0408082, z: 0.15589371}
   m_Children: []
   m_Father: {fileID: 432288}
   m_RootOrder: 1
@@ -183,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.881, y: 1.372, z: -0}
+  m_LocalPosition: {x: -1.881, y: 2.24, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 432288}
@@ -384,11 +384,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  capacity: 3
+  capacity: 2
   occupants: []
   entryPoint: {fileID: 494788}
   resourcePoint: {fileID: 451438}
   stars: 0
+  upgradeCost: 5
   resourcePrefab: {fileID: 106138, guid: ce24a0b5c5cf74471a8ec02346fc8977, type: 2}
 --- !u!114 &11484882
 MonoBehaviour:
