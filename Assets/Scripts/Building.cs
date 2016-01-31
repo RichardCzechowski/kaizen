@@ -21,6 +21,9 @@ public class Building : MonoBehaviour {
 	public GameObject resourcePrefab;
 	List<GameObject> resourceItems = new List<GameObject>();
 
+	public GameObject[] onBeforePurchase;
+	public GameObject[] onAfterPurchase;
+
 	void Start(){
 	}
 
@@ -47,6 +50,22 @@ public class Building : MonoBehaviour {
 				resourceItems.RemoveAt (0);
 			} else if (resourceItems.Count < stars) {
 				resourceItems.Add(Instantiate(resourcePrefab, resourcePoint.position, resourcePoint.rotation) as GameObject);
+			}
+		}
+
+		if (capacity == 0) {
+			foreach (var obj in onBeforePurchase) {
+				obj.SetActive (true);
+			}
+			foreach (var obj in onAfterPurchase) {
+				obj.SetActive (false);
+			}
+		} else {
+			foreach (var obj in onBeforePurchase) {
+				obj.SetActive (false);
+			}
+			foreach (var obj in onAfterPurchase) {
+				obj.SetActive (true);
 			}
 		}
 
