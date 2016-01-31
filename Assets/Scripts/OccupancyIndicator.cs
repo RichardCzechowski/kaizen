@@ -58,13 +58,18 @@ public class OccupancyIndicator : MonoBehaviour {
 			bg.transform.parent = transform;
 			bg.gameObject.name = "bg";
 
+			fg.layer = gameObject.layer;
+			bg.layer = gameObject.layer;
+
 			_fgQuads [i] = fg.GetComponent<QuadDisplay>();
 			_fgQuads [i].SetMaterial (_emptyMaterial);
+			_fgQuads [i].SetLayer (gameObject.layer);
 			_fgQuads [i].gameObject.AddComponent<PersonProxy> ();
 
 
 			_bgQuads [i] = bg.GetComponent<QuadDisplay>();
 			_bgQuads [i].SetMaterial (_emptyMaterial);
+			_bgQuads [i].SetLayer (gameObject.layer);
 			_bgQuads [i].gameObject.AddComponent<PersonProxy> ();
 
 		}

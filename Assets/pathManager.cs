@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.ImageEffects;
 
 public class pathManager : MonoBehaviour {
 
 	public AudioClip positiveSound;
 	public AudioClip negativeSound;
+
+	public Camera colorCamera;
+	public ColorCorrectionCurves curves;
+
+	public bool fancyEffects = false;
 
 	bool startNewPath;
 	Ray ray;
@@ -13,7 +19,7 @@ public class pathManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+//		Camera.main.gameObject.getcompon
 	}
 
 	Building _lastBuilding;
@@ -40,6 +46,11 @@ public class pathManager : MonoBehaviour {
 			var person = GetPerson (hit.transform.gameObject);
 
 			if (hit.transform != null && hit.transform.gameObject.tag == "Player" || person) {
+
+				if (fancyEffects) {
+					curves.enabled = true;
+					colorCamera.enabled = true;
+				}
 
 				person.selected = true;
 				person.SetState (Person.State.settingPath);
@@ -83,6 +94,12 @@ public class pathManager : MonoBehaviour {
 						person.selected = false;
 //						person.SetState (Person.State.walking);
 						Invoke("Walkabout", Time.deltaTime);
+
+						if (fancyEffects) {
+							curves.enabled = false;
+							colorCamera.enabled = false;
+						}
+
 					} else {
 						DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour(i));
 						i++;
@@ -91,7 +108,7 @@ public class pathManager : MonoBehaviour {
 					_lastBuilding = building;
 						
 				}
-					
+
 			}
 		}
 	}

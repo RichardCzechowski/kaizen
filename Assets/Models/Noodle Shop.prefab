@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3398752}
   - 64: {fileID: 6406200}
   - 23: {fileID: 2396192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 33: {fileID: 3303240}
   - 64: {fileID: 6434602}
   - 23: {fileID: 2392236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}

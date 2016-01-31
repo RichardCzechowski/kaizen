@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 472300}
   - 120: {fileID: 12047500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Path Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,6 +705,10 @@ Prefab:
       propertyPath: _statusIcon
       value: 
       objectReference: {fileID: 11499406}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160516}

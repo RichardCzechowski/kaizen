@@ -19,4 +19,10 @@ public class QuadDisplay : MonoBehaviour {
 		}
 	}
 
+	public void SetLayer(int layer) {
+		foreach (var quad in quads) {
+			quad.gameObject.layer = layer;
+		}
+	}
+
 }
