@@ -30,7 +30,6 @@ public class Building : MonoBehaviour {
 	}
 
 	public bool Full() {
-		Debug.Log ("occupnts " + OccupantsIncludingPreview ().Count + " capacity " + capacity);
 		return OccupantsIncludingPreview().Count == capacity;
 	}
 

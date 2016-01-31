@@ -23,6 +23,8 @@ public class DayNightController : MonoBehaviour {
 	public Gradient nightDayColor;
 	public Gradient nightDayFogColor;
 
+	public int numberOfShifts = 6;
+
 	void Awake() {
 		instance = this;
 	}
@@ -41,7 +43,7 @@ public class DayNightController : MonoBehaviour {
 	}
 
 	public int NumberOfShifts() {
-		return 6;
+		return numberOfShifts;
 	}
 
 	public float ShiftLengthHours() {
@@ -61,6 +63,24 @@ public class DayNightController : MonoBehaviour {
 
 	public int CurrentShift() {
 		return Mathf.FloorToInt (TimeOfDayIncludingPreview () * 24 / ShiftLengthHours ());
+	}
+
+	public int NextShift() {
+		var thisShift = CurrentShift ();
+		if (thisShift + 1 == NumberOfShifts ()) {
+			return 0;
+		} else {
+			return thisShift + 1;
+		}
+	}
+
+	public int PreviousShift() {
+		var thisShift = CurrentShift ();
+		if (thisShift - 1 < 0) {
+			return NumberOfShifts () - 1;
+		} else {
+			return thisShift - 1;
+		}
 	}
 
 	public float TimeOfDayIncludingPreview() {

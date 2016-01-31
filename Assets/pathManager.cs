@@ -59,9 +59,8 @@ public class pathManager : MonoBehaviour {
 					if (i == person.Buildings ().Length) {
 						DayNightController.instance.EndPreview ();
 						startNewPath = false;
-						person.state = Person.State.walking;
+						person.SetState (Person.State.walking);
 						person.selected = false;
-						person.MoveToNext ();
 					} else {
 						DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour(i));
 						i++;

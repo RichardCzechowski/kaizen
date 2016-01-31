@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class Person : MonoBehaviour {
 	
 	public enum State {settingPath, waiting, walking, readyToMove};
-	public State state = State.settingPath;
+	State state = State.settingPath;
 
 	public Texture2D portrait;
 	public Color color = Color.black;
@@ -17,7 +17,6 @@ public class Person : MonoBehaviour {
 
 	public MeshRenderer[] recolorableClothes;
 
-	int _currentStep = 0;
 	private NavMeshAgent _agent;
 	private LineRenderer _lineRenderer;
 
@@ -67,7 +66,14 @@ public class Person : MonoBehaviour {
 		if (objects == null) {
 			return null;
 		}
-		return objects [_currentStep];
+		return objects [DayNightController.instance.CurrentShift()];
+	}
+
+	Building PreviousDestination() {
+		if (objects == null) {
+			return null;
+		}
+		return objects [DayNightController.instance.PreviousShift()];
 	}
 
 	public Building[] Buildings() {
@@ -134,18 +140,6 @@ public class Person : MonoBehaviour {
 				Resume ();
 			}
 		}
-	}
-
-	public void MoveToNext() {
-		if (_currentStep >= objects.Length - 1) {
-			_currentStep = 0;
-		} else if (objects [_currentStep + 1]) {
-			_currentStep = _currentStep + 1;
-		} else {
-			return;
-		}
-		_agent.destination = CurrentDestination().EntryPosition(); 
-	
 	}
 
 	Vector3[] GetCorners(Vector3 start, Vector3 end) {
@@ -256,7 +250,7 @@ public class Person : MonoBehaviour {
 			break;
 		case State.walking:
 			SetWaitTime();
-			MoveToNext ();
+			_agent.destination = CurrentDestination().EntryPosition(); 
 			// Animate walking
 			break;
 		case State.readyToMove:
@@ -275,9 +269,7 @@ public class Person : MonoBehaviour {
 			end = DayNightController.instance.TimeOfDayActual ();
 			timeWaiting();
 			CalculateHappiness();
-			if (CurrentDestination ()) {
-				CurrentDestination().RemovePerson(this);
-			}
+			PreviousDestination().RemovePerson(this);
 			this.GetComponent<NavMeshAgent>().radius = .5F;
 			this.GetComponent<Collider>().isTrigger = false;
 			break;
@@ -291,7 +283,6 @@ public class Person : MonoBehaviour {
 	}
 
 	public void SetState (State newState) {
-		Debug.Log (newState);
 		OnExitState (state);
 		state = newState;
 		OnEnterState (newState);
