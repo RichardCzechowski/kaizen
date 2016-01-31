@@ -69,7 +69,7 @@ public class Building : MonoBehaviour {
 	}
 
 	public void AddPerson(Person newPerson){
-		if (OccupantsIncludingPreview ().Count < capacity) {
+		if (occupants.Count < capacity) {
 			occupants.Add (newPerson);
 		} else {
 			Debug.LogError ("Can't add person to building because it's full");
