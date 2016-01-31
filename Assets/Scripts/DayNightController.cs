@@ -25,6 +25,8 @@ public class DayNightController : MonoBehaviour {
 
 	public int numberOfShifts = 6;
 
+	public bool pauseNoPreview = false;
+
 	void Awake() {
 		instance = this;
 	}
@@ -108,12 +110,12 @@ public class DayNightController : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			paused = !paused;
-		}
+//		if (Input.GetKeyDown (KeyCode.Space)) {
+//			paused = !paused;
+//		}
 		UpdateSun();
 
-		if (!paused) { 
+		if (!paused && !pauseNoPreview) { 
 			_currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
 			if (_currentTimeOfDay >= 1) {
 				_currentTimeOfDay = 0;

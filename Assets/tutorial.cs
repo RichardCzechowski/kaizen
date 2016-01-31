@@ -110,7 +110,7 @@ public class tutorial : MonoBehaviour {
 			camera.GetComponent<Stratecam> ().objectToFollow = null;
 			camera.GetComponent<Stratecam> ().maxZoomDistance = 40;
 			camera.GetComponent<Stratecam> ().minZoomDistance = 10;
-			DayNightController.instance.paused = false;
+			DayNightController.instance.pauseNoPreview = false;
 		}
 		if (Input.GetMouseButtonUp(0)) {
 			showPersonGUI = false;
@@ -189,30 +189,32 @@ public class tutorial : MonoBehaviour {
 		camera.GetComponent<Stratecam> ().minZoomDistance = 10;
 		camera.GetComponent<Stratecam> ().objectToFollow = GameObject.FindWithTag("Player");
 		yield return new WaitForSeconds (5);
-		DayNightController.instance.paused = true;
+		DayNightController.instance.pauseNoPreview = true;
 		showPersonGUI = true;
 		camera.GetComponent<Stratecam> ().objectToFollow = null;
 		camera.GetComponent<Stratecam> ().maxZoomDistance = 40;
 		camera.GetComponent<Stratecam> ().minZoomDistance = 10;
 		yield return new WaitForSeconds (5);
-		DayNightController.instance.paused = false;
+		showPersonGUI = false;
+		DayNightController.instance.pauseNoPreview = false;
 		//StartCoroutine(IntroducePath());
 	}
 
 	IEnumerator IntroducePath() {
-		DayNightController.instance.paused = true;
 		yield return new WaitForSeconds (1);
+		DayNightController.instance.pauseNoPreview = true;
 		showPathGUI = true;
 		yield return new WaitForSeconds (7);
 		showPathGUI = false;
 
 		showPathGUI2 = true;
 		yield return new WaitForSeconds (5);
-		DayNightController.instance.paused = false;
+		showPathGUI2 = false;
+		DayNightController.instance.pauseNoPreview = false;
 	}
 
 	IEnumerator IntroduceHome() {
-		DayNightController.instance.paused = true;
+		DayNightController.instance.pauseNoPreview = true;
 		camera.GetComponent<Stratecam> ().maxZoomDistance = 11;
 		camera.GetComponent<Stratecam> ().minZoomDistance = 10;
 		camera.GetComponent<Stratecam> ().objectToFollow = GameObject.Find("Home (1)");
@@ -224,12 +226,12 @@ public class tutorial : MonoBehaviour {
 		camera.GetComponent<Stratecam> ().objectToFollow = null;
 		camera.GetComponent<Stratecam> ().maxZoomDistance = 40;
 		camera.GetComponent<Stratecam> ().minZoomDistance = 10;
-		DayNightController.instance.paused = false;
+		DayNightController.instance.pauseNoPreview = false;
 		//StartCoroutine(IntroduceFood());
 	}
 
 	IEnumerator IntroduceFood() {
-		DayNightController.instance.paused = true;
+		DayNightController.instance.pauseNoPreview = true;
 		camera.GetComponent<Stratecam> ().maxZoomDistance = 11;
 		camera.GetComponent<Stratecam> ().minZoomDistance = 10;
 		camera.GetComponent<Stratecam> ().objectToFollow = GameObject.Find("Noodle Shop");
@@ -238,12 +240,14 @@ public class tutorial : MonoBehaviour {
 		camera.GetComponent<Stratecam> ().objectToFollow = null;
 		camera.GetComponent<Stratecam> ().maxZoomDistance = 40;
 		camera.GetComponent<Stratecam> ().minZoomDistance = 10;
-		DayNightController.instance.paused = false;
+		yield return new WaitForSeconds (5);
+		showFoodGUI = false;
+		DayNightController.instance.pauseNoPreview = false;
 		//StartCoroutine(IntroduceWork());
 	}
 
 	IEnumerator IntroduceWork() {
-		DayNightController.instance.paused = true;
+		DayNightController.instance.pauseNoPreview = true;
 		camera.GetComponent<Stratecam> ().maxZoomDistance = 11;
 		camera.GetComponent<Stratecam> ().minZoomDistance = 10;
 		camera.GetComponent<Stratecam> ().objectToFollow = GameObject.Find("Star Factory");
@@ -252,12 +256,14 @@ public class tutorial : MonoBehaviour {
 		camera.GetComponent<Stratecam> ().objectToFollow = null;
 		camera.GetComponent<Stratecam> ().maxZoomDistance = 40;
 		camera.GetComponent<Stratecam> ().minZoomDistance = 10;
-		DayNightController.instance.paused = false;
+		yield return new WaitForSeconds (5);
+		showWorkGUI = false;
+		DayNightController.instance.pauseNoPreview = false;
 		//StartCoroutine(IntroduceStar());
 	}
 
 	IEnumerator IntroduceStar() {
-		DayNightController.instance.paused = true;
+		DayNightController.instance.pauseNoPreview = true;
 		camera.GetComponent<Stratecam> ().maxZoomDistance = 11;
 		camera.GetComponent<Stratecam> ().minZoomDistance = 10;
 		camera.GetComponent<Stratecam> ().objectToFollow = GameObject.Find("StarResource");
@@ -266,14 +272,14 @@ public class tutorial : MonoBehaviour {
 		camera.GetComponent<Stratecam> ().maxZoomDistance = 40;
 		camera.GetComponent<Stratecam> ().minZoomDistance = 10;
 		showStarGUI = true;
-		DayNightController.instance.paused = false;
+		DayNightController.instance.pauseNoPreview = false;
 		kickOffIntroduceUpgrade ();
 	}
 
 	void IntroduceUpgrade() {
-		DayNightController.instance.paused = true;
+		DayNightController.instance.pauseNoPreview = true;
 		showUpgradeGUI = true;
-		DayNightController.instance.paused = true;
-		DayNightController.instance.paused = false;
+		DayNightController.instance.pauseNoPreview = false;
 	}
+		
 }
