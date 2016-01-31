@@ -2249,7 +2249,7 @@ Terrain:
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
+  m_DetailObjectDistance: 105.5
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
@@ -2557,7 +2557,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 74f702e635462479e93c197cc087730c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6056,6 +6056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settlerPrefab: {fileID: 160516, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
+  arrivalSound: {fileID: 8300000, guid: c05f5d5a9d8a94a3b9c35f11219eed63, type: 3}
   entrance: {fileID: 986489039}
   settlersPerDay: 1.25
 --- !u!1001 &1493576847
