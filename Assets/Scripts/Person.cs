@@ -200,12 +200,19 @@ public class Person : MonoBehaviour {
 		_startHidingTime = -1;
 	}
 
+	public void FadeOutPath() {
+		Invoke ("FadeOutInternal", 1f);
+
+	}
+
 	float _hiddenTime;
 	float _startHidingTime;
-	public void FadeOutPath() {
+
+	void FadeOutInternal() {
 		_hiddenTime = Time.time + 3f;
 		_startHidingTime = Time.time;
 		Invoke ("HidePath", 3f);
+
 	}
 
 	void HidePath() {
@@ -231,15 +238,28 @@ public class Person : MonoBehaviour {
 
 		List<Vector3> path = new List<Vector3>();
 
+		var offset = new Vector3 (0, 0.2f, 0);
 		for (var i = 0; i < ObjectsSet(); i ++) {
+			var lastPoint = Vector3.one * 1002023;
+			if (i > 0) {
+				lastPoint = path [i - 1];
+			}
 			foreach (var point in GetCorners(objects [i].EntryPosition(), objects [i + 1].EntryPosition())) {
-				path.Add (point);
+				if (Vector3.Distance (lastPoint, point) > 0.1f) {
+					path.Add (point + offset);
+				}
 			}
 			if (i == objects.Length - 2) {
 				foreach (var point in GetCorners(objects [i + 1].EntryPosition(), objects [0].EntryPosition())) {
-					path.Add (point);
+					if (Vector3.Distance (lastPoint, point) > 0.1f) {
+						path.Add (point + offset);
+					}
 				}
 			}
+		}
+
+		if (HasCompletePath ()) {
+			path.Add (path [0]);
 		}
 
 		_lineRenderer.SetVertexCount (path.Count);

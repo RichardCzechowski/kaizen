@@ -1691,7 +1691,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
 --- !u!1001 &69220192
 Prefab:
   m_ObjectHideFlags: 0
@@ -1810,7 +1810,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
 --- !u!1 &101314312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,7 +2162,7 @@ Transform:
   m_LocalScale: {x: 2.8404672, y: 2.840467, z: 2.730472}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
 --- !u!1001 &376046464
 Prefab:
   m_ObjectHideFlags: 0
@@ -2969,6 +2969,7 @@ GameObject:
   - 114: {fileID: 760038145}
   - 114: {fileID: 760038146}
   - 114: {fileID: 760038147}
+  - 114: {fileID: 760038148}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3107,7 +3108,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 760038137}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9191284b058eef549b7108b5f04e1117, type: 3}
   m_Name: 
@@ -3282,6 +3283,35 @@ MonoBehaviour:
     type: 3}
   colorCorrectionSelectiveShader: {fileID: 4800000, guid: e515e0f94cefc4c0db54b45cba621544,
     type: 3}
+--- !u!114 &760038148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 760038137}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualizeFocus: 0
+  focalLength: 10
+  focalSize: 0.314
+  aperture: 0.477
+  focalTransform: {fileID: 0}
+  maxBlurSize: 2
+  highResolution: 0
+  blurType: 0
+  blurSampleCount: 0
+  nearBlur: 0
+  foregroundOverlap: 1
+  dofHdrShader: {fileID: 4800000, guid: acd613035ff3e455e8abf23fdc8c8c24, type: 3}
+  dx11BokehShader: {fileID: 4800000, guid: d8e82664aa8686642a424c88ab10164a, type: 3}
+  dx11BokehThreshold: 0.5
+  dx11SpawnHeuristic: 0.0875
+  dx11BokehTexture: {fileID: 2800000, guid: a4cdca73d61814d33ac1587f6c163bca, type: 3}
+  dx11BokehScale: 1.2
+  dx11BokehIntensity: 2.5
 --- !u!1001 &766699956
 Prefab:
   m_ObjectHideFlags: 0
@@ -3736,6 +3766,11 @@ MonoBehaviour:
   colorCamera: {fileID: 1209766831}
   curves: {fileID: 760038147}
   fancyEffects: 0
+  shiftImages:
+  - {fileID: 2800000, guid: 3cca9701d80bb4637bb91ece0f03ab1c, type: 3}
+  - {fileID: 2800000, guid: fffdfc71f024f4924b87d345478bd85e, type: 3}
+  - {fileID: 2800000, guid: 3013ed1d96df143bcbf841263a4debc4, type: 3}
+  - {fileID: 2800000, guid: 0a48dba4f1173407b92422026054d994, type: 3}
 --- !u!114 &981439663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5939,7 +5974,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
 --- !u!1001 &1402660388
 Prefab:
   m_ObjectHideFlags: 0
@@ -6382,7 +6417,7 @@ Transform:
   - {fileID: 1340010262}
   - {fileID: 1040601245}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 27
 --- !u!1001 &1536412740
 Prefab:
   m_ObjectHideFlags: 0
@@ -6736,6 +6771,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52f66f1944d674f368f41eb5ff3b4014, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1709318133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1709318135}
+  - 114: {fileID: 1709318134}
+  m_Layer: 0
+  m_Name: DynamicDOF
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1709318134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1709318133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9678a1d69e7704ac5b0fc88492b38ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Origin: {fileID: 760038142}
+  target: {fileID: 1709318135}
+  DOF34: {fileID: 760038148}
+--- !u!4 &1709318135
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1709318133}
+  m_LocalRotation: {x: 0, y: -0.43310463, z: 0.0000000037252903, w: 0.9013437}
+  m_LocalPosition: {x: 10.284913, y: -0, z: 1.8958282}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
 --- !u!1 &1868367912
 GameObject:
   m_ObjectHideFlags: 0

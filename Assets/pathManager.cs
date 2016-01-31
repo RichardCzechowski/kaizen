@@ -36,6 +36,14 @@ public class pathManager : MonoBehaviour {
 		return person;
 	}
 
+	public Texture2D[] shiftImages;
+	int _guiPhase = -1;
+	void OnGUI() {
+		if (_guiPhase > -1) {
+			GUI.DrawTexture(new Rect(Screen.width - 100 - 40, 40, 100, 100), shiftImages[_guiPhase]);
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonUp(0)) {
@@ -65,6 +73,7 @@ public class pathManager : MonoBehaviour {
 				DayNightController.instance.BeginPreview (0);
 
 				i = 0;
+				_guiPhase = 0;
 				startNewPath = true;
 				_lastPerson = person;
 
@@ -105,6 +114,7 @@ public class pathManager : MonoBehaviour {
 						startNewPath = false;
 						person.FadeOutPath ();
 						Invoke ("Walkabout", Time.deltaTime);
+						_guiPhase = -1;
 
 						if (fancyEffects) {
 							curves.enabled = false;
@@ -114,6 +124,7 @@ public class pathManager : MonoBehaviour {
 					} else {
 						DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour (i));
 						i++;
+						_guiPhase++;
 					}
 
 					_lastBuilding = building;
