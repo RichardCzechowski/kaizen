@@ -60,9 +60,13 @@ public class OccupancyIndicator : MonoBehaviour {
 
 			_fgQuads [i] = fg.GetComponent<QuadDisplay>();
 			_fgQuads [i].SetMaterial (_emptyMaterial);
+			_fgQuads [i].gameObject.AddComponent<PersonProxy> ();
+
 
 			_bgQuads [i] = bg.GetComponent<QuadDisplay>();
 			_bgQuads [i].SetMaterial (_emptyMaterial);
+			_bgQuads [i].gameObject.AddComponent<PersonProxy> ();
+
 		}
 
 
@@ -83,15 +87,20 @@ public class OccupancyIndicator : MonoBehaviour {
 				mat.mainTexture = occupants[i].portrait;
 				fg.SetMaterial (mat);
 				fg.gameObject.SetActive (true);
+				fg.GetComponent<PersonProxy> ().person = occupants [i];
 
 				var bgMat = new Material(_emptyMaterial);
 				bgMat.mainTexture = fullSlotTexture;
 				bgMat.color = occupants[i].color;
 				bg.SetMaterial (bgMat);
+				bg.GetComponent<PersonProxy> ().person = occupants [i];
 
 			} else {
 				bg.SetMaterial (_emptyMaterial);
 				fg.gameObject.SetActive (false);
+				bg.GetComponent<PersonProxy> ().person = null;
+				fg.GetComponent<PersonProxy> ().person = null;
+
 			}
 		}
 

@@ -9,7 +9,7 @@ public class pathManager : MonoBehaviour {
 	bool startNewPath;
 	Ray ray;
 	int i = 0;
-	GameObject pathToSet;
+	Person _lastPerson;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +18,17 @@ public class pathManager : MonoBehaviour {
 
 	Building _lastBuilding;
 
+	Person GetPerson(GameObject obj) {
+		var person = obj.GetComponentInParent<Person> ();
+		var proxy = obj.GetComponentInParent<PersonProxy> ();
+
+		if (!person && proxy && proxy.person) {
+			person = proxy.person;
+		}
+
+		return person;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonUp(0)) {
@@ -25,17 +36,20 @@ public class pathManager : MonoBehaviour {
 			RaycastHit hit;
 			// Casts the ray and get the first game object hit
 			Physics.Raycast(ray, out hit);
-			if (hit.transform != null && hit.transform.gameObject.tag == "Player") {
+
+			var person = GetPerson (hit.transform.gameObject);
+
+			if (hit.transform != null && hit.transform.gameObject.tag == "Player" || person) {
+
+				person.selected = true;
+				person.SetState (Person.State.settingPath);
+				person.ClearPaths ();
 
 				DayNightController.instance.BeginPreview (0);
 
 				i = 0;
 				startNewPath = true;
-				pathToSet = hit.transform.gameObject;
-
-				var person = pathToSet.GetComponent<Person> ();
-				person.selected = true;
-				person.ClearPaths ();
+				_lastPerson = person;
 
 				DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour(i));
 
@@ -45,7 +59,10 @@ public class pathManager : MonoBehaviour {
 
 			} else if (hit.transform != null && startNewPath && hit.transform.gameObject.tag == "Building") {
 
-				var person = pathToSet.GetComponent<Person> ();
+				person = _lastPerson;
+
+				Debug.Log (person);
+
 				// Search the hit object or its parents
 				Building building = hit.transform.gameObject.GetComponent<Building> ();
 				if (!building) {
@@ -63,8 +80,9 @@ public class pathManager : MonoBehaviour {
 					if (i == person.Buildings ().Length) {
 						DayNightController.instance.EndPreview ();
 						startNewPath = false;
-						person.SetState (Person.State.walking);
 						person.selected = false;
+//						person.SetState (Person.State.walking);
+						Invoke("Walkabout", Time.deltaTime);
 					} else {
 						DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour(i));
 						i++;
@@ -77,4 +95,10 @@ public class pathManager : MonoBehaviour {
 			}
 		}
 	}
+
+	void Walkabout() {
+		_lastPerson.SetState (Person.State.walking);
+	
+	}
 }
+

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class Person : MonoBehaviour {
 	
-	public enum State {settingPath, waiting, walking, readyToMove};
+	public enum State {settingPath, waiting, walking};
 	State state = State.settingPath;
 
 
@@ -150,6 +150,7 @@ public class Person : MonoBehaviour {
 
 		if (CurrentDestination() && state != State.settingPath) {
 			if (Vector3.Distance (CurrentPathEnd (), transform.position) < 0.7f && state != State.waiting) {
+				Debug.Log (Vector3.Distance (CurrentPathEnd (), transform.position));
 				if (DayNightController.instance.TimeOfDayActual () + DayNightController.instance.daysElapsed < nextShiftStart) {
 					SetState (State.waiting);
 				}
@@ -160,6 +161,7 @@ public class Person : MonoBehaviour {
 		}
 
 		if (state == State.settingPath) {
+			Debug.Log ("setting bullpen");
 			_agent.SetDestination (bullpenLocation);
 		}
 
@@ -214,7 +216,7 @@ public class Person : MonoBehaviour {
 
 	}
 
-	void OnDrawGizmosSelected() {
+	void OnDrawGizmos() {
 
 		if (objects != null) {
 			foreach (var o in objects) {
@@ -354,6 +356,7 @@ public class Person : MonoBehaviour {
 
 	///////////////////// STATE MACHINE
 	private void OnEnterState(State state){
+		Debug.Log ("entering " + state);
 		switch(state){
 		case State.settingPath:
 			// Don't move until path is set
@@ -374,13 +377,12 @@ public class Person : MonoBehaviour {
 			_agent.destination = CurrentDestination().EntryPosition(); 
 			// Animate walking
 			break;
-		case State.readyToMove:
-			// Animate walking
-			break;
 		}
 	}
 		
 	private void OnExitState(State state){
+		Debug.Log ("exiting " + state);
+
 		switch(state){
 		case State.settingPath:
 			// Don't move until path is set
@@ -398,15 +400,14 @@ public class Person : MonoBehaviour {
 		case State.walking:
 			// Animate walking
 			break;
-		case State.readyToMove:
-			// Animate walking
-			break;
 		}
 	}
 
 	public void SetState (State newState) {
-		OnExitState (state);
-		state = newState;
-		OnEnterState (newState);
+		if (state != newState) {
+			OnExitState (state);
+			state = newState;
+			OnEnterState (newState);
+		}
 	}
 }
