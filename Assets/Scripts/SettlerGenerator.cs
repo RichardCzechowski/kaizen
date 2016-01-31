@@ -30,7 +30,7 @@ public class SettlerGenerator : MonoBehaviour {
 
 			int settlersToGenerate = Mathf.FloorToInt (_accumulatedSettlers);
 
-			for(var i = 1 ;i < settlersToGenerate; i++) {
+			for(var i = 0; i < settlersToGenerate; i++) {
 				GeneratePerson ();
 				_accumulatedSettlers--;
 			}
