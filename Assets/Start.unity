@@ -2499,7 +2499,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 74f702e635462479e93c197cc087730c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3533,8 +3533,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac041f13acb841299882bdc552a94f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positiveSound: {fileID: 8300000, guid: 6197b23fa0a614bf7b8874bffd5f9e82, type: 3}
-  negativeSound: {fileID: 8300000, guid: 03cd0ecdcbc734187847953d95248eea, type: 3}
+  positiveSound: {fileID: 8300000, guid: 04a1456cfc34b43d5acee25a50dec16a, type: 3}
+  negativeSound: {fileID: 8300000, guid: 2464b7b0fbdd3447787ed85bb2126a6e, type: 3}
+  cancelSound: {fileID: 8300000, guid: ccb0392c484524712888589bf879e6b0, type: 3}
   colorCamera: {fileID: 1209766831}
   curves: {fileID: 760038147}
   fancyEffects: 0

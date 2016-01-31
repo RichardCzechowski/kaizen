@@ -6,6 +6,7 @@ public class pathManager : MonoBehaviour {
 
 	public AudioClip positiveSound;
 	public AudioClip negativeSound;
+	public AudioClip cancelSound;
 
 	public Camera colorCamera;
 	public ColorCorrectionCurves curves;
@@ -110,7 +111,9 @@ public class pathManager : MonoBehaviour {
 				}
 
 			} else {
-				
+
+				AudioSource.PlayClipAtPoint (cancelSound, Camera.main.transform.position);
+
 				DayNightController.instance.EndPreview ();
 				startNewPath = false;
 				if (_lastPerson) {
