@@ -11,8 +11,12 @@ public class Building : MonoBehaviour {
 	public List<Person> occupants = new List<Person>();
 
 	public Transform entryPoint;
+	public Transform resourcePoint;
 
 	public int stars;
+
+	public GameObject resourcePrefab;
+	List<GameObject> resourceItems = new List<GameObject>();
 
 	void Start(){
 	}
@@ -29,6 +33,20 @@ public class Building : MonoBehaviour {
 		} else {
 			return occupants;
 		}
+	}
+		
+	void Update() {
+
+		if (resourcePrefab) {
+			if (resourceItems.Count > stars) {
+				var item = resourceItems [0];
+				Destroy (item);
+				resourceItems.RemoveAt (0);
+			} else if (resourceItems.Count < stars) {
+				resourceItems.Add(Instantiate(resourcePrefab, resourcePoint.position, resourcePoint.rotation) as GameObject);
+			}
+		}
+
 	}
 
 	public bool Full() {
