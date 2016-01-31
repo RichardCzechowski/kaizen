@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.ImageEffects;
 
 public class tutorial : MonoBehaviour {
 
@@ -45,9 +46,11 @@ public class tutorial : MonoBehaviour {
 
 	public static tutorial instance = null;
 
+	Blur _blur;
 	// Use this for initialization
 	void Start () {
 		camera = GameObject.FindGameObjectWithTag ("MainCamera");
+		_blur = camera.GetComponent<Blur> ();
 	}
 
 	void Awake (){
@@ -85,6 +88,8 @@ public class tutorial : MonoBehaviour {
 		if (showUpgradeGUI){
 			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introUpgrade);
 		}
+
+		_blur.enabled = showPersonGUI || showPathGUI || showPathGUI2 || showHomeGUI || showHomeGUI2 || showFoodGUI || showWorkGUI || showStarGUI || showUpgradeGUI;
 	}
 
 

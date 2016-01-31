@@ -114,6 +114,7 @@ GameObject:
   - 65: {fileID: 6586730}
   - 114: {fileID: 11472926}
   - 195: {fileID: 19593148}
+  - 114: {fileID: 11440440}
   m_Layer: 0
   m_Name: Person
   m_TagString: Player
@@ -408,6 +409,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11440440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7623d72e166a4a809bc7505be3cb053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11472926
 MonoBehaviour:
   m_ObjectHideFlags: 1
