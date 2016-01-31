@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 498714}
-  - 114: {fileID: 11481860}
+  - 114: {fileID: 11488450}
   m_Layer: 0
   m_Name: OccupancyIndicator
   m_TagString: Untagged
@@ -328,7 +328,7 @@ MonoBehaviour:
   capacity: 3
   occupants: []
   entryPoint: {fileID: 410120}
---- !u!114 &11481860
+--- !u!114 &11488450
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -336,15 +336,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 114352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d4bbfbccedc0468985ce65e6aba9306, type: 3}
+  m_Script: {fileID: 11500000, guid: 33bdb84d040eb43c8bc7c3e7de9d2409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building: {fileID: 11425006}
-  quadPrefab: {fileID: 113192, guid: 53915600a903548459ef7325c3ab2d37, type: 2}
-  emptySlotTexture: {fileID: 2800000, guid: 295938f3062054374979b7a3cd25517b, type: 3}
-  spacing: 1.2
-  width: 1
-  materialTemplate: {fileID: 2100000, guid: 8258d80db3cb1470daa8b31f422d48d8, type: 2}
+  prefab: {fileID: 131876, guid: c4050ec13625a440c8ddb81915ad7cda, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

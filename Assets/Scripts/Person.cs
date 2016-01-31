@@ -233,6 +233,18 @@ public class Person : MonoBehaviour {
 		nextShiftStart = DayNightController.instance.ShiftStartHour(DayNightController.instance.CurrentShift() + 1) / 24F + DayNightController.instance.daysElapsed;
 	}
 
+	void HideMesh() {
+		foreach (var renderer in GetComponentsInChildren<MeshRenderer> ()) {
+			renderer.enabled = false;
+		}
+	}
+
+	void ShowMesh() {
+		foreach (var renderer in GetComponentsInChildren<MeshRenderer> ()) {
+			renderer.enabled = true;
+		}
+	}
+
 
 	///////////////////// STATE MACHINE
 	private void OnEnterState(State state){
@@ -243,12 +255,14 @@ public class Person : MonoBehaviour {
 			break;
 		case State.waiting:
 			//Hangout for a length of time
-			this.GetComponent<NavMeshAgent>().radius = .01F;
-			this.GetComponent<Collider>().isTrigger = true;
-			CurrentDestination().AddPerson(this);
-			start = DayNightController.instance.TimeOfDayActual();
+			this.GetComponent<NavMeshAgent> ().radius = .01F;
+			this.GetComponent<Collider> ().isTrigger = true;
+			CurrentDestination ().AddPerson (this);
+			start = DayNightController.instance.TimeOfDayActual ();
+			HideMesh ();
 			break;
 		case State.walking:
+			ShowMesh ();
 			SetWaitTime();
 			_agent.destination = CurrentDestination().EntryPosition(); 
 			// Animate walking

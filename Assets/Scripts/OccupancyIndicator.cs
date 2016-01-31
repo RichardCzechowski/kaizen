@@ -3,7 +3,7 @@ using System.Collections;
 
 public class OccupancyIndicator : MonoBehaviour {
 
-	public Building building;
+	Building building;
 
 	public GameObject quadPrefab;
 
@@ -19,6 +19,8 @@ public class OccupancyIndicator : MonoBehaviour {
 	Material _emptyMaterial;
 
 	void Start() {
+
+		building = transform.parent.parent.GetComponent<Building> ();
 
 		_emptyMaterial = new Material(materialTemplate);
 		_emptyMaterial.mainTexture = emptySlotTexture;
