@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160516}
   m_LocalRotation: {x: 0, y: -0.43310463, z: 0, w: 0.9013437}
-  m_LocalPosition: {x: -5.96, y: 2.833, z: 0.53}
+  m_LocalPosition: {x: -17.73716, y: 2.59, z: -4.6004944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 472300}
@@ -344,18 +344,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portrait: {fileID: 2800000, guid: 5359bcfb3b2934086b1781ffb221635a, type: 3}
   color: {r: 0.728, g: 0.5716933, b: 0.23529415, a: 1}
+  possiblePortraits:
+  - {fileID: 2800000, guid: 5359bcfb3b2934086b1781ffb221635a, type: 3}
+  - {fileID: 2800000, guid: 9353dc01d6ac74b0f9838c5b442fd5f4, type: 3}
+  possibleBaseTextures:
+  - {fileID: 2800000, guid: 977a9dc5335024c90b42c97a9333a04d, type: 3}
+  - {fileID: 2800000, guid: 04d59aa3d8f31447cb34804b25f2d917, type: 3}
+  possibleClothingTextures:
+  - {fileID: 2800000, guid: cd8cebcf32f004e209303004bfa35205, type: 3}
+  - {fileID: 2800000, guid: 8f6e94722a90447b79191c0f8368f964, type: 3}
   possibleColors:
   - {r: 0, g: 1, b: 0.9146342, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 1, g: 0.8896551, b: 0, a: 1}
   - {r: 0.31079832, g: 0.64705884, b: 0.24740486, a: 1}
-  - {r: 0.7794118, g: 0.103157446, b: 0.5648757, a: 1}
+  - {r: 1, g: 0.60294116, b: 0.8740364, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.59999996, b: 0, a: 1}
+  - {r: 0.103157446, g: 0.19177002, b: 0.7794118, a: 1}
+  - {r: 0.8206897, g: 0, b: 1, a: 1}
+  baseRenderer:
+  - {fileID: 2384186}
+  - {fileID: 2374034}
   recolorableClothes:
   - {fileID: 2365558}
   - {fileID: 2307878}
   selected: 0
   paused: 0
   mood: 0
+  icon: 0
   bullpenLocation: {x: 0, y: 0, z: 0}
 --- !u!120 &12047500
 LineRenderer:
@@ -424,6 +442,26 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: baseRenderer.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possiblePortraits.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleBaseTextures.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleClothingTextures.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Speed
       value: 7
       objectReference: {fileID: 0}
@@ -435,6 +473,98 @@ Prefab:
       propertyPath: m_Acceleration
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[5].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[5].g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[5].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[6].r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[6].g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[6].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[7].g
+      value: 0.59999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[7].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[7].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[8].r
+      value: 0.103157446
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[8].g
+      value: 0.19177002
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[8].b
+      value: 0.7794118
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[9].b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[9].r
+      value: 0.8206897
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[9].g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[4].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[4].g
+      value: 0.60294116
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possibleColors.Array.data[4].b
+      value: 0.8740364
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: possiblePortraits.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: 9353dc01d6ac74b0f9838c5b442fd5f4, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleBaseTextures.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: 04d59aa3d8f31447cb34804b25f2d917, type: 3}
+    - target: {fileID: 0}
+      propertyPath: possibleClothingTextures.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: 8f6e94722a90447b79191c0f8368f964, type: 3}
+    - target: {fileID: 0}
+      propertyPath: baseRenderer.Array.data[0]
+      value: 
+      objectReference: {fileID: 2384186}
+    - target: {fileID: 0}
+      propertyPath: baseRenderer.Array.data[1]
+      value: 
+      objectReference: {fileID: 2374034}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160516}

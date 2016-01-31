@@ -10,7 +10,7 @@ public class DayNightController : MonoBehaviour {
 	public float secondsInFullDay = 120f;
 
 	[Range(0,1)]
-	float _currentTimeOfDay = 0;
+	float _currentTimeOfDay = 0.25f;
 
 	[HideInInspector]
 	public float timeMultiplier = 1f;

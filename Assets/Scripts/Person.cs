@@ -8,12 +8,19 @@ public class Person : MonoBehaviour {
 	public enum State {settingPath, waiting, walking, readyToMove};
 	State state = State.settingPath;
 
+
+	[HideInInspector]
 	public Texture2D portrait;
 	public Color color = Color.black;
+
+	public Texture2D[] possiblePortraits;
+	public Texture2D[] possibleBaseTextures;
+	public Texture2D[] possibleClothingTextures;
 	public Color[] possibleColors;
 
 	Building[] objects;
 
+	public MeshRenderer[] baseRenderer;
 	public MeshRenderer[] recolorableClothes;
 
 	private NavMeshAgent _agent;
@@ -39,12 +46,26 @@ public class Person : MonoBehaviour {
 		_lineRenderer = GetComponentInChildren<LineRenderer> ();
 		_lineRenderer.useWorldSpace = true;
 
+		// Don't always start with the same color etc.
+		peopleCreated += UnityEngine.Random.Range (0, 10);
+
 		color = possibleColors [peopleCreated % possibleColors.Length];
 		peopleCreated++;
+
+		var clothingTexture = possibleClothingTextures [peopleCreated % possibleClothingTextures.Length];
+		var baseTexture = possibleBaseTextures [peopleCreated % possibleBaseTextures.Length];
+		portrait = possiblePortraits [peopleCreated % possiblePortraits.Length];
 
 		foreach (var renderer in recolorableClothes) {
 			var mat = new Material(renderer.sharedMaterial);
 			mat.color = color;
+			mat.mainTexture = clothingTexture;
+			renderer.material = mat;
+		}
+
+		foreach (var renderer in baseRenderer) {
+			var mat = new Material(renderer.sharedMaterial);
+			mat.mainTexture = baseTexture;
 			renderer.material = mat;
 		}
 
