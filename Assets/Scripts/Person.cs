@@ -28,6 +28,8 @@ public class Person : MonoBehaviour {
 
 	static int peopleCreated = 0;
 
+	public int mood = 0;
+
 	void Start () {
 		timeIsPaused = DayNightController.instance.paused;
 		ClearPaths ();
@@ -245,6 +247,9 @@ public class Person : MonoBehaviour {
 		}
 	}
 
+	// Fo calculating mood
+	float start;
+	float end;
 
 	///////////////////// STATE MACHINE
 	private void OnEnterState(State state){
@@ -272,17 +277,16 @@ public class Person : MonoBehaviour {
 			break;
 		}
 	}
-
+		
 	private void OnExitState(State state){
 		switch(state){
 		case State.settingPath:
 			// Don't move until path is set
 			break;
 		case State.waiting:
-			//Hangout for a length of time
+			// Hangout for a length of time
 			end = DayNightController.instance.TimeOfDayActual ();
-			timeWaiting();
-			CalculateHappiness();
+			mood += PreviousDestination ().ComputeScore ();
 			PreviousDestination().RemovePerson(this);
 			this.GetComponent<NavMeshAgent>().radius = .5F;
 			this.GetComponent<Collider>().isTrigger = false;
@@ -300,102 +304,5 @@ public class Person : MonoBehaviour {
 		OnExitState (state);
 		state = newState;
 		OnEnterState (newState);
-	}
-		
-
-	/////////////// Happiness Calculations
-
-
-
-	// THIS IS A SKELETON, BY NO MEANS BALANCED OR INTERESTING
-	//////////////////// Calculate how much time they spent in a building
-	public float mood;
-	public float monotony;
-	public float restfulness;
-	public float playfullness;
-	public float productivity;
-	private Building[] previousPath;
-
-	// Determine time in a given building
-	private float start;
-	private float end;
-	private float timePlaying;
-	private float timeWorking;
-	private float timeResting;
-
-	private void timeWaiting(){
-		var total = (end - start) * DayNightController.instance.ShiftLengthHours();
-		switch(CurrentDestination().type){
-		case Building.Type.Home:
-			timeResting += total;
-			break;
-		case Building.Type.Play:
-			timePlaying += total;
-			break;
-		case Building.Type.Work:
-			timeWorking += total;
-			break;
-		}
-
-	}
-
-	private void CalculateHappiness(){
-		// Only Calculate once per day
-		if (CurrentDestination () == objects [0]) {
-			var k = 0;
-			for (k = 0; k < objects.Length; k++) {
-				// Monotony
-				if (previousPath != null && previousPath[k] != null && objects [k] == previousPath [k]) {
-					monotony += 1;
-				} else {
-					monotony = 0;
-				}
-				// Person goes home if too borded
-				if (monotony > 100) {
-					var j = 1;
-					for (j = 1; j < objects.Length; j++) {
-						objects [j] = null;
-					}
-					mood -= 1;
-					scoreManager.instance.currentScore -= 1;
-				}
-
-				// Other emotions
-				restfulness = 0F;
-				playfullness = 0F;
-				productivity = 0F;
-				switch(objects[k].GetComponent<Building>().type){
-				case Building.Type.Home:
-					restfulness += 1.0F - (1F - timeResting);
-					break;
-				case Building.Type.Play:
-					playfullness += 1.0F - (1F - timePlaying);
-					break;
-				case Building.Type.Work:
-					productivity += 1.0F - (1F - timeWorking);
-					break;
-				}
-			}
-			timeWorking = 0;
-			timePlaying = 0;
-			timeResting = 0;
-
-			// Subtract for imbalanced days
-			if (playfullness == 0 || restfulness == 0 || productivity == 0) {
-				scoreManager.instance.currentScore -= 1;
-			}
-
-			previousPath = objects;
-			// Calculate mood from emotions
-			scoreManager.instance.currentScore += restfulness + playfullness + productivity;
-
-			// Don't allow negative scores b/c that's sad
-			if (scoreManager.instance.currentScore < 0) {
-				scoreManager.instance.currentScore = 0;
-			}
-
-			// Keep constant mood
-			mood += restfulness + playfullness + productivity;
-		}
 	}
 }

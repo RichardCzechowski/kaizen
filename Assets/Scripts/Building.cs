@@ -12,6 +12,8 @@ public class Building : MonoBehaviour {
 
 	public Transform entryPoint;
 
+	public int stars;
+
 	void Start(){
 	}
 
@@ -49,6 +51,23 @@ public class Building : MonoBehaviour {
 		occupants.Remove(newPerson);
 	}
 
-
+	public int ComputeScore(){
+		switch(type){
+		case Type.Home:
+			if (occupants.Count == 1) {
+				return 1;
+			}
+			break;
+		case Type.Play:
+			if (occupants.Count > 1) {
+				return occupants.Count;
+			}
+			break;
+		case Type.Work:
+			return 0;
+			//break;
+		}
+		return 0;
+	}
 
 }
