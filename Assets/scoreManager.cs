@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class scoreManager : MonoBehaviour {
 
-	public static scoreManager instance = null;
+	public static scoreManager instance;
 	public float currentScore;
 	// Use this for initialization
 	void Start () {

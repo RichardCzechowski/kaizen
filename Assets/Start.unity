@@ -1093,6 +1093,7 @@ GameObject:
   - 4: {fileID: 981439661}
   - 114: {fileID: 981439660}
   - 114: {fileID: 981439662}
+  - 114: {fileID: 981439663}
   m_Layer: 0
   m_Name: _Logic
   m_TagString: Untagged
@@ -1113,7 +1114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sun: {fileID: 2096203617}
   moon: {fileID: 746783055}
-  secondsInFullDay: 25
+  secondsInFullDay: 45
   timeMultiplier: 1
   daysElapsed: 0
   nightDayColor:
@@ -1231,6 +1232,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positiveSound: {fileID: 8300000, guid: 6197b23fa0a614bf7b8874bffd5f9e82, type: 3}
   negativeSound: {fileID: 8300000, guid: 03cd0ecdcbc734187847953d95248eea, type: 3}
+--- !u!114 &981439663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 981439659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020b6bd34d5144d05b2a6c00e87bcdc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScore: 0
 --- !u!1 &986489038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,7 +1622,7 @@ Transform:
   m_LocalScale: {x: 1152.8317, y: 408.9803, z: 408.9803}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
 --- !u!1001 &1514287941
 Prefab:
   m_ObjectHideFlags: 0
@@ -1847,7 +1860,7 @@ Transform:
   m_LocalScale: {x: -2692.342, y: 911.4575, z: 408.9803}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!1 &1971069312
 GameObject:
   m_ObjectHideFlags: 0
