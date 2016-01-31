@@ -29,7 +29,6 @@ public class scoreManager : MonoBehaviour {
 			if (building.stars - remainder < 0) {
 				starsToRemove = building.stars;
 			}
-			Debug.Log ("removing " + starsToRemove);
 			building.stars -= starsToRemove;
 			pointsToDecrement -= starsToRemove;
 		}
