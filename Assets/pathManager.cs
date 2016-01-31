@@ -90,7 +90,6 @@ public class pathManager : MonoBehaviour {
 						DayNightController.instance.EndPreview ();
 						startNewPath = false;
 						person.selected = false;
-//						person.SetState (Person.State.walking);
 						Invoke("Walkabout", Time.deltaTime);
 
 						if (fancyEffects) {

@@ -5,7 +5,7 @@ public class statusIcon : MonoBehaviour {
 
 	Animator anim;
 
-	void Start(){
+	void Awake() {
 		anim = gameObject.GetComponent<Animator> ();
 	}
 		

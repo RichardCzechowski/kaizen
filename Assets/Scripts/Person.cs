@@ -83,6 +83,8 @@ public class Person : MonoBehaviour {
 		lineMat.color = color;
 		_lineRenderer.material = lineMat;
 
+		HideIcon ();
+
 	}
 
 	public static Person[] All() {
