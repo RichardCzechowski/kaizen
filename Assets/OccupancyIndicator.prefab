@@ -39,11 +39,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4bbfbccedc0468985ce65e6aba9306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building: {fileID: 0}
   quadPrefab: {fileID: 113192, guid: 53915600a903548459ef7325c3ab2d37, type: 2}
-  emptySlotTexture: {fileID: 2800000, guid: b9df0aa89839e42da96c6f24c2f862af, type: 3}
-  fullSlotTexture: {fileID: 2800000, guid: 1f665b616fb6d4d20a514fa7a63c9398, type: 3}
+  emptySlotTexture: {fileID: 2800000, guid: 295938f3062054374979b7a3cd25517b, type: 3}
   spacing: 1.2
+  width: 1
   materialTemplate: {fileID: 2100000, guid: 8258d80db3cb1470daa8b31f422d48d8, type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -51,7 +50,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: emptySlotTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 295938f3062054374979b7a3cd25517b, type: 3}
+    - target: {fileID: 0}
+      propertyPath: materialTemplate
+      value: 
+      objectReference: {fileID: 2100000, guid: 8258d80db3cb1470daa8b31f422d48d8, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131876}
