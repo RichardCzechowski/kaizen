@@ -40,7 +40,7 @@ public class pathManager : MonoBehaviour {
 	int _guiPhase = -1;
 	void OnGUI() {
 		
-		if (tutorial.instance.Active ()) {
+		if (Tutorial.instance.Active ()) {
 			return;
 		}
 
@@ -54,7 +54,7 @@ public class pathManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (tutorial.instance.Active ()) {
+		if (Tutorial.instance.Active ()) {
 			return;
 		}
 
@@ -68,7 +68,7 @@ public class pathManager : MonoBehaviour {
 
 			if (hit.transform != null && hit.transform.gameObject.tag == "Player" || person) {
 				
-				tutorial.instance.kickOffIntroducePath ();
+				Tutorial.instance.ShowPage("routine");
 
 				if (fancyEffects) {
 					curves.enabled = true;
@@ -105,16 +105,9 @@ public class pathManager : MonoBehaviour {
 					building = hit.transform.parent.gameObject.GetComponent<Building> ();
 				}
 
-				if (building.type == Building.Type.Home) {
-					tutorial.instance.kickOffIntroduceHome ();
-				}else if(building.type == Building.Type.Play){
-					tutorial.instance.kickOffIntroduceFood ();
-				}else if(building.type == Building.Type.Work){
-					tutorial.instance.kickOffIntroduceWork ();
-				}
-
 				if (building.Full () || (_lastBuilding && building.type == _lastBuilding.type)) {
 					AudioSource.PlayClipAtPoint (negativeSound, Camera.main.transform.position);
+					Tutorial.instance.ShowPage("repeats");
 				} else {
 					
 					AudioSource.PlayClipAtPoint (positiveSound, Camera.main.transform.position);
@@ -133,6 +126,9 @@ public class pathManager : MonoBehaviour {
 							colorCamera.enabled = false;
 						}
 
+						Tutorial.instance.ShowPage("circles");
+
+
 					} else {
 						DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour (i));
 						i++;
@@ -145,6 +141,11 @@ public class pathManager : MonoBehaviour {
 
 			} else if (startNewPath) {
 
+				if (fancyEffects) {
+					curves.enabled = false;
+					colorCamera.enabled = false;
+				}
+
 				_guiPhase = -1;
 
 				AudioSource.PlayClipAtPoint (cancelSound, Camera.main.transform.position);
@@ -154,7 +155,6 @@ public class pathManager : MonoBehaviour {
 				if (_lastPerson) {
 					_lastPerson.selected = false;
 					Invoke ("Resetto", Time.deltaTime);
-
 				}
 
 			}

@@ -1,51 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityStandardAssets.ImageEffects;
 
-public class tutorial : MonoBehaviour {
+public class Tutorial : MonoBehaviour {
 
-	public Texture2D introPerson;
-	private bool hasIntroducedPerson;
-	private bool showPersonGUI;
+	[System.Serializable]
+	public class Page {
+		public string name;
+		public Texture2D card;
+		public GameObject zoomToObject;
+		public bool pausesWhileZooming = true;
+		public float delay = 0;
 
+		[System.NonSerialized]
+		public bool used;
+	}
 
-	public Texture2D introPath;
-	private bool hasIntroducedPath;
-	private bool showPathGUI;
-
-	public Texture2D introPath2;
-	private bool hasIntroducedPath2;
-	private bool showPathGUI2;
-
-	public Texture2D introHome;
-	private bool hasIntroducedHome;
-	private bool showHomeGUI;
-
-	public Texture2D introHome2;
-	private bool hasIntroducedHome2;
-	private bool showHomeGUI2;
-
-	public Texture2D introFood;
-	private bool hasIntroducedFood;
-	private bool showFoodGUI;
-
-	public Texture2D introWork;
-	private bool hasIntroducedWork;
-	private bool showWorkGUI;
-
-	public Texture2D introStar;
-	private bool hasIntroducedStar;
-	private bool showStarGUI;
-
-	public Texture2D introUpgrade;
-	private bool hasIntroducedUpgrade;
-	private bool showUpgradeGUI;
-
-	public static tutorial instance = null;
+	public Page[] pages;
+	public static Tutorial instance = null;
 
 	Blur _blur;
 	Stratecam _cam;
-	// Use this for initialization
+
 	void Start () {
 		_blur = Camera.main.GetComponent<Blur> ();
 		_cam = Camera.main.GetComponent<Stratecam> ();
@@ -59,39 +36,66 @@ public class tutorial : MonoBehaviour {
 	float width = 529;
 
 	public bool Active() {
-		return showPersonGUI || showPathGUI || showPathGUI2 || showHomeGUI || showHomeGUI2 || showFoodGUI || showWorkGUI || showStarGUI || showUpgradeGUI;
+		return _currentPage != null;
+	}
+
+	Page _currentPage = null;
+	Queue<Page> _queue = new Queue<Page>();
+	public void ShowPage(Page page) {
+		_queue.Enqueue (page);
+		if (_currentPage == null) {
+			Advance ();
+		}
+	}
+
+	public void ShowPage(string pageName) {
+		foreach (var p in pages) {
+			if (p.name == pageName) {
+				if (!p.used) {
+					ShowPage (p);
+				} else {
+					Debug.Log ("Tutorial page " + pageName + " already used.");
+				}
+				return;
+			}
+		}
+		Debug.LogError ("Tutorial page " + pageName + " not found.");
+	}
+
+	public bool UsedPage(string pageName) {
+		foreach (var p in pages) {
+			if (p.name == pageName) {
+				return p.used;
+			}
+		}
+		Debug.LogError ("Tutorial page " + pageName + " not found.");
+		return false;
+	}
+
+	void Advance () {
+		_currentPage = _queue.Dequeue ();
+		DayNightController.instance.pauseNoPreview = true;
+		DisableInput ();
+		_currentPage.used = true;
+		StartCoroutine (FollowAndDelay ());
+	}
+
+	void Dismiss() {
+		_currentPage = null;
+		DayNightController.instance.pauseNoPreview = false;
+		EnableInput ();
+		_cam.objectToFollow = null;
+		_cam.maxZoomDistance = 40;
+		_cam.minZoomDistance = 10;
+		_displaying = false;
+		StopAllCoroutines ();
 	}
 
 	void OnGUI() {
-		if (showPersonGUI){
-			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introPerson);
+		if (_displaying){
+			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), _currentPage.card);
 		}
-		if (showPathGUI){
-			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introPath);
-		}
-		if (showPathGUI2){
-			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introPath2);
-		}
-		if (showHomeGUI){
-			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introHome);
-		}
-		if (showHomeGUI2){
-			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introHome2);
-		}
-		if (showFoodGUI){
-			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introFood);
-		}
-		if (showWorkGUI){
-			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introWork);
-		}
-		if (showStarGUI){
-			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introStar);
-		}
-		if (showUpgradeGUI){
-			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introUpgrade);
-		}
-
-		_blur.enabled = Active ();
+		_blur.enabled = _displaying;
 	}
 
 	void DisableInput() {
@@ -104,207 +108,54 @@ public class tutorial : MonoBehaviour {
 		_cam.useMouseInput = true;
 	}
 
-	void ShowTutorial() {
-		DayNightController.instance.pauseNoPreview = true;
-		DisableInput ();
-	}
 
-	void HideTutorial() {
-		DayNightController.instance.pauseNoPreview = false;
-		EnableInput ();
-	}
+	bool hasIntroducedPerson = false;
 
-	// Update is called once per frame
 	void Update () {
 
 		if (!hasIntroducedPerson && GameObject.FindWithTag ("Player")) {
-			kickOffIntroducePerson ();
-		}
-
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			showPersonGUI = false;
-			showPathGUI = false;
-			showPathGUI2 = false;
-			showHomeGUI = false;
-			showHomeGUI2 = false;
-			showFoodGUI = false;
-			showWorkGUI = false;
-			showStarGUI = false;
-			showUpgradeGUI = false;
-			StopAllCoroutines();
-			_cam.objectToFollow = null;
-			_cam.maxZoomDistance = 40;
-			_cam.minZoomDistance = 10;
-		}
-		if (Input.GetMouseButtonUp(0)) {
-			showPersonGUI = false;
-			showPathGUI = false;
-			showPathGUI2 = false;
-			showHomeGUI = false;
-			showHomeGUI2 = false;
-			showFoodGUI = false;
-			showWorkGUI = false;
-			showStarGUI = false;
-			showUpgradeGUI = false;
-			_cam.objectToFollow = null;
-			_cam.maxZoomDistance = 40;
-			_cam.minZoomDistance = 10;
-			HideTutorial();
-		}
-	}
-
-	public void kickOffIntroducePerson(){
-		if (!hasIntroducedPerson) {
-			StartCoroutine(IntroducePerson());
+			pages [0].zoomToObject = GameObject.FindWithTag ("Player");
+			pages [0].delay = 8;
+			ShowPage ("people");
 			hasIntroducedPerson = true;
 		}
-	}
 
-
-	public void kickOffIntroducePath(){
-		if (!hasIntroducedPath) {
-			StartCoroutine(IntroducePath());
-			hasIntroducedPath = true;
+		if (_displaying && (Input.GetKeyDown (KeyCode.Escape) || Input.GetKeyDown (KeyCode.Space) || Input.GetMouseButtonUp(0))) {
+			Dismiss ();
 		}
-	}
+
+		if (DayNightController.instance.daysElapsed > 0 && UsedPage("circles")) {
 
 
-	public void kickOffIntroduceHome(){
-		if (!hasIntroducedHome) {
-			StartCoroutine(IntroduceHome());
-			hasIntroducedHome = true;
+			Tutorial.instance.ShowPage("abouthouses");
+
+			if (DayNightController.instance.TimeOfDayActual() > 0.25f) {
+				Tutorial.instance.ShowPage("aboutfood");
+			}
+
+			if (DayNightController.instance.TimeOfDayActual() > 0.9f) {
+				Tutorial.instance.ShowPage("about work");
+
+			}
+
 		}
+
 	}
 
-
-	public void kickOffIntroduceFood(){
-		if (!hasIntroducedFood) {
-			StartCoroutine(IntroduceFood());
-			hasIntroducedFood = true;
+	bool _displaying = false;
+	IEnumerator FollowAndDelay() {
+		if (!_currentPage.pausesWhileZooming) {
+			DayNightController.instance.pauseNoPreview = false;
 		}
-	}
-
-
-	public void kickOffIntroduceWork(){
-		if (!hasIntroducedWork) {
-			StartCoroutine(IntroduceWork());
-			hasIntroducedWork = true;
-		}
-	}
-
-
-	public void kickOffIntroduceStar(){
-		if (!hasIntroducedStar) {
-			StartCoroutine(IntroduceStar());
-			hasIntroducedStar = true;
-		}
-	}
-
-	public void kickOffIntroduceUpgrade(){
-		if (!hasIntroducedUpgrade) {
-			IntroduceUpgrade();
-			hasIntroducedUpgrade = true;
-		}
-	}
-
-
-	IEnumerator IntroducePerson() {
 		DisableInput ();
-		_cam.maxZoomDistance = 11;
-		_cam.minZoomDistance = 10;
-		_cam.objectToFollow = GameObject.FindWithTag("Player");
-		yield return new WaitForSeconds (5);
-		ShowTutorial();
-		showPersonGUI = true;
-		_cam.objectToFollow = null;
-		_cam.maxZoomDistance = 40;
-		_cam.minZoomDistance = 10;
-		yield return new WaitForSeconds (5);
-		showPersonGUI = false;
-		HideTutorial();
-		//StartCoroutine(IntroducePath());
-	}
-
-	IEnumerator IntroducePath() {
-		yield return new WaitForSeconds (1);
-		ShowTutorial();
-		showPathGUI = true;
-		yield return new WaitForSeconds (7);
-		showPathGUI = false;
-
-		showPathGUI2 = true;
-		yield return new WaitForSeconds (5);
-		showPathGUI2 = false;
-		HideTutorial();
-	}
-
-	IEnumerator IntroduceHome() {
-		_cam.maxZoomDistance = 11;
-		_cam.minZoomDistance = 10;
-		_cam.objectToFollow = GameObject.Find("Home (1)");
-		yield return new WaitForSeconds (1);
-		ShowTutorial();
-		showHomeGUI = true;
-		yield return new WaitForSeconds (8);
-		showHomeGUI = false;
-		showHomeGUI2 = true;
-		_cam.objectToFollow = null;
-		_cam.maxZoomDistance = 40;
-		_cam.minZoomDistance = 10;
-		HideTutorial();
-		//StartCoroutine(IntroduceFood());
-	}
-
-	IEnumerator IntroduceFood() {
-		_cam.maxZoomDistance = 11;
-		_cam.minZoomDistance = 10;
-		_cam.objectToFollow = GameObject.Find("Noodle Shop");
-		yield return new WaitForSeconds (1);
-		ShowTutorial();
-		showFoodGUI = true;
-		_cam.objectToFollow = null;
-		_cam.maxZoomDistance = 40;
-		_cam.minZoomDistance = 10;
-		yield return new WaitForSeconds (5);
-		showFoodGUI = false;
-		HideTutorial();
-		//StartCoroutine(IntroduceWork());
-	}
-
-	IEnumerator IntroduceWork() {
-		_cam.maxZoomDistance = 11;
-		_cam.minZoomDistance = 10;
-		_cam.objectToFollow = GameObject.Find("Star Factory");
-		yield return new WaitForSeconds (1);
-		ShowTutorial();
-		showWorkGUI = true;
-		_cam.objectToFollow = null;
-		_cam.maxZoomDistance = 40;
-		_cam.minZoomDistance = 10;
-		yield return new WaitForSeconds (5);
-		showWorkGUI = false;
-		HideTutorial();
-		//StartCoroutine(IntroduceStar());
-	}
-
-	IEnumerator IntroduceStar() {
-		_cam.maxZoomDistance = 11;
-		_cam.minZoomDistance = 10;
-		_cam.objectToFollow = GameObject.Find("StarResource");
-		yield return new WaitForSeconds (1);
-		ShowTutorial();
-		_cam.objectToFollow = null;
-		_cam.maxZoomDistance = 40;
-		_cam.minZoomDistance = 10;
-		showStarGUI = true;
-		HideTutorial();
-		kickOffIntroduceUpgrade ();
-	}
-
-	void IntroduceUpgrade() {
-		ShowTutorial();
-		showUpgradeGUI = true;
-		HideTutorial();
+		if (_currentPage.zoomToObject != null) {
+			_cam.maxZoomDistance = 11;
+			_cam.minZoomDistance = 10;
+			_cam.objectToFollow = _currentPage.zoomToObject;
+		}
+		yield return new WaitForSeconds (_currentPage.delay);
+		DayNightController.instance.pauseNoPreview = true;
+		_displaying = true;
 	}
 		
 }

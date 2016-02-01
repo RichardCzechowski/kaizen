@@ -4443,15 +4443,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67f046ca3d6f43a289393c129069a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introPerson: {fileID: 2800000, guid: 20b74c381632740d1ad9c2cce7452e59, type: 3}
-  introPath: {fileID: 2800000, guid: ccc9d0eb3a0ae4c85b382f5109a7a858, type: 3}
-  introPath2: {fileID: 2800000, guid: c059f3cca99074e168fd9525628a6d21, type: 3}
-  introHome: {fileID: 2800000, guid: a65d0b237a6404c188ea518a236303e0, type: 3}
-  introHome2: {fileID: 2800000, guid: a96988d9aaaf841ac967f00040899345, type: 3}
-  introFood: {fileID: 2800000, guid: 3163e9933514849028ab4653cf7ac2b1, type: 3}
-  introWork: {fileID: 2800000, guid: d603e3675381544e7b85c3ce9d3ce6d6, type: 3}
-  introStar: {fileID: 2800000, guid: 498d6649c89754066b0c659e659fddd6, type: 3}
-  introUpgrade: {fileID: 2800000, guid: 8013670107e544715be73f9fa620c802, type: 3}
+  pages:
+  - name: people
+    card: {fileID: 2800000, guid: 20b74c381632740d1ad9c2cce7452e59, type: 3}
+    zoomToObject: {fileID: 0}
+    pausesWhileZooming: 0
+    delay: 2
+  - name: routine
+    card: {fileID: 2800000, guid: ccc9d0eb3a0ae4c85b382f5109a7a858, type: 3}
+    zoomToObject: {fileID: 0}
+    pausesWhileZooming: 1
+    delay: 1
+  - name: repeats
+    card: {fileID: 2800000, guid: c059f3cca99074e168fd9525628a6d21, type: 3}
+    zoomToObject: {fileID: 0}
+    pausesWhileZooming: 1
+    delay: 0
+  - name: circles
+    card: {fileID: 2800000, guid: a65d0b237a6404c188ea518a236303e0, type: 3}
+    zoomToObject: {fileID: 0}
+    pausesWhileZooming: 1
+    delay: 0
+  - name: aboutfood
+    card: {fileID: 2800000, guid: 3163e9933514849028ab4653cf7ac2b1, type: 3}
+    zoomToObject: {fileID: 0}
+    pausesWhileZooming: 1
+    delay: 0
+  - name: abouthouses
+    card: {fileID: 2800000, guid: a96988d9aaaf841ac967f00040899345, type: 3}
+    zoomToObject: {fileID: 0}
+    pausesWhileZooming: 1
+    delay: 0
+  - name: about work
+    card: {fileID: 2800000, guid: d603e3675381544e7b85c3ce9d3ce6d6, type: 3}
+    zoomToObject: {fileID: 0}
+    pausesWhileZooming: 1
+    delay: 0
+  - name: stars
+    card: {fileID: 2800000, guid: 498d6649c89754066b0c659e659fddd6, type: 3}
+    zoomToObject: {fileID: 0}
+    pausesWhileZooming: 1
+    delay: 0
+  - name: upgrades
+    card: {fileID: 2800000, guid: 8013670107e544715be73f9fa620c802, type: 3}
+    zoomToObject: {fileID: 0}
+    pausesWhileZooming: 1
+    delay: 0
 --- !u!1 &986489038
 GameObject:
   m_ObjectHideFlags: 0
