@@ -197,6 +197,7 @@ public class Person : MonoBehaviour {
 	public void ShowPath() {
 		selected = true;
 		_startHidingTime = -1;
+		_lineRenderer.material.color = color;
 	}
 
 	public void FadeOutPath() {
