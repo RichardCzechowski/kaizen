@@ -16,7 +16,7 @@ GameObject:
   - 199: {fileID: 19984922}
   - 198: {fileID: 19897576}
   m_Layer: 0
-  m_Name: StarResource 1
+  m_Name: StarResource with particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
