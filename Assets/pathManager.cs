@@ -39,13 +39,25 @@ public class pathManager : MonoBehaviour {
 	public Texture2D[] shiftImages;
 	int _guiPhase = -1;
 	void OnGUI() {
+		
+		if (tutorial.instance.Active ()) {
+			return;
+		}
+
 		if (_guiPhase > -1) {
-			GUI.DrawTexture(new Rect(Screen.width - 100 - 40, 40, 100, 100), shiftImages[_guiPhase]);
+			int size = 100;
+			int border = 40;
+			GUI.DrawTexture(new Rect(Screen.width / 2 - size /2, border, size, size), shiftImages[_guiPhase]);
 		}
 	}
 
 	// Update is called once per frame
 	void Update () {
+
+		if (tutorial.instance.Active ()) {
+			return;
+		}
+
 		if (Input.GetMouseButtonUp(0)) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;

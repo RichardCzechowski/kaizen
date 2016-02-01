@@ -177,7 +177,6 @@ public class Person : MonoBehaviour {
 			_lineRenderer.gameObject.SetActive (true);
 
 			if (_startHidingTime > -1) {
-				Color currentColor = _lineRenderer.material.color;
 				float a = (_hiddenTime - Time.time) / (_hiddenTime - _startHidingTime);
 				_lineRenderer.material.color = new Color (color.r, color.g, color.b, a);
 			}
