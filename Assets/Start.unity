@@ -2892,7 +2892,7 @@ MonoBehaviour:
     card: {fileID: 2800000, guid: ccc9d0eb3a0ae4c85b382f5109a7a858, type: 3}
     zoomToObject: {fileID: 0}
     pausesWhileZooming: 1
-    delay: 1
+    delay: 0
   - name: repeats
     card: {fileID: 2800000, guid: c059f3cca99074e168fd9525628a6d21, type: 3}
     zoomToObject: {fileID: 0}
