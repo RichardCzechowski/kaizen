@@ -43,9 +43,6 @@ public class Tutorial : MonoBehaviour {
 	Queue<Page> _queue = new Queue<Page>();
 	public void ShowPage(Page page) {
 		_queue.Enqueue (page);
-		if (_currentPage == null) {
-			Advance ();
-		}
 	}
 
 	public void ShowPage(string pageName) {
@@ -53,8 +50,6 @@ public class Tutorial : MonoBehaviour {
 			if (p.name == pageName) {
 				if (!p.used) {
 					ShowPage (p);
-				} else {
-					Debug.Log ("Tutorial page " + pageName + " already used.");
 				}
 				return;
 			}
@@ -96,6 +91,12 @@ public class Tutorial : MonoBehaviour {
 			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), _currentPage.card);
 		}
 		_blur.enabled = _displaying;
+	}
+
+	void LateUpdate() {
+		if (_currentPage == null && _queue.Count > 0) {
+			Advance ();
+		}
 	}
 
 	void DisableInput() {
