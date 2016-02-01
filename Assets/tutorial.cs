@@ -90,21 +90,28 @@ public class tutorial : MonoBehaviour {
 		if (showUpgradeGUI){
 			GUI.DrawTexture(new Rect((Screen.width/2) - (width/2), Screen.height/2-(height/2), width, height), introUpgrade);
 		}
+
+		_blur.enabled = Active ();
+	}
+
+	void DisableInput() {
+		_cam.useKeyboardInput = false;
+		_cam.useMouseInput = false;
+	}
+
+	void EnableInput () {
+		_cam.useKeyboardInput = true;
+		_cam.useMouseInput = true;
 	}
 
 	void ShowTutorial() {
-		_cam.useKeyboardInput = false;
-		_cam.useMouseInput = false;
 		DayNightController.instance.pauseNoPreview = true;
-		_blur.enabled = true;
-
+		DisableInput ();
 	}
 
 	void HideTutorial() {
-		_cam.useKeyboardInput = true;
-		_cam.useMouseInput = true;
 		DayNightController.instance.pauseNoPreview = false;
-		_blur.enabled = false;
+		EnableInput ();
 	}
 
 	// Update is called once per frame
@@ -202,6 +209,7 @@ public class tutorial : MonoBehaviour {
 
 
 	IEnumerator IntroducePerson() {
+		DisableInput ();
 		_cam.maxZoomDistance = 11;
 		_cam.minZoomDistance = 10;
 		_cam.objectToFollow = GameObject.FindWithTag("Player");
@@ -231,11 +239,11 @@ public class tutorial : MonoBehaviour {
 	}
 
 	IEnumerator IntroduceHome() {
-		ShowTutorial();
 		_cam.maxZoomDistance = 11;
 		_cam.minZoomDistance = 10;
 		_cam.objectToFollow = GameObject.Find("Home (1)");
 		yield return new WaitForSeconds (1);
+		ShowTutorial();
 		showHomeGUI = true;
 		yield return new WaitForSeconds (8);
 		showHomeGUI = false;
@@ -248,11 +256,11 @@ public class tutorial : MonoBehaviour {
 	}
 
 	IEnumerator IntroduceFood() {
-		ShowTutorial();
 		_cam.maxZoomDistance = 11;
 		_cam.minZoomDistance = 10;
 		_cam.objectToFollow = GameObject.Find("Noodle Shop");
 		yield return new WaitForSeconds (1);
+		ShowTutorial();
 		showFoodGUI = true;
 		_cam.objectToFollow = null;
 		_cam.maxZoomDistance = 40;
@@ -264,11 +272,11 @@ public class tutorial : MonoBehaviour {
 	}
 
 	IEnumerator IntroduceWork() {
-		ShowTutorial();
 		_cam.maxZoomDistance = 11;
 		_cam.minZoomDistance = 10;
 		_cam.objectToFollow = GameObject.Find("Star Factory");
 		yield return new WaitForSeconds (1);
+		ShowTutorial();
 		showWorkGUI = true;
 		_cam.objectToFollow = null;
 		_cam.maxZoomDistance = 40;
@@ -280,11 +288,11 @@ public class tutorial : MonoBehaviour {
 	}
 
 	IEnumerator IntroduceStar() {
-		ShowTutorial();
 		_cam.maxZoomDistance = 11;
 		_cam.minZoomDistance = 10;
 		_cam.objectToFollow = GameObject.Find("StarResource");
 		yield return new WaitForSeconds (1);
+		ShowTutorial();
 		_cam.objectToFollow = null;
 		_cam.maxZoomDistance = 40;
 		_cam.minZoomDistance = 10;
