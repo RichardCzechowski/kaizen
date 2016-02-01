@@ -3859,7 +3859,10 @@ MonoBehaviour:
   settlerPrefab: {fileID: 160516, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
   arrivalSound: {fileID: 8300000, guid: c05f5d5a9d8a94a3b9c35f11219eed63, type: 3}
   entrance: {fileID: 986489039}
+  spawnTimeOfDay: 0.2
   settlersPerDay: 0.8
+  day1Boost: 1
+  day2Boost: 0.2
 --- !u!1001 &1493576847
 Prefab:
   m_ObjectHideFlags: 0

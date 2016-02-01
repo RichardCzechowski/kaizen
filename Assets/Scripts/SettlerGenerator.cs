@@ -8,13 +8,12 @@ public class SettlerGenerator : MonoBehaviour {
 
 	public Transform entrance;
 
+	public float spawnTimeOfDay = 0.2f;
+
 	public float settlersPerDay = 0.75f;
 
-	// Use this for initialization
-	void Start () {
-		GeneratePerson ();
-		AudioSource.PlayClipAtPoint (arrivalSound, transform.position);
-	}
+	public float day1Boost = 1;
+	public float day2Boost = 1;
 
 	Person GeneratePerson() {
 		GameObject obj = Instantiate (settlerPrefab, entrance.position, entrance.rotation) as GameObject;
@@ -23,10 +22,17 @@ public class SettlerGenerator : MonoBehaviour {
 		return person;
 	}
 
-	float _lastDay = 0;
+	float _lastDay = -1;
 	float _accumulatedSettlers = 0;
 	void Update () {
-		if (DayNightController.instance.daysElapsed != _lastDay) {
+		if (DayNightController.instance.daysElapsed != _lastDay &&  DayNightController.instance.TimeOfDayActual() > spawnTimeOfDay) {
+
+			if (DayNightController.instance.daysElapsed == 0) {
+				_accumulatedSettlers += day1Boost;
+			}
+			if (DayNightController.instance.daysElapsed == 1) {
+				_accumulatedSettlers += day2Boost;
+			}
 
 			_accumulatedSettlers += settlersPerDay;
 
