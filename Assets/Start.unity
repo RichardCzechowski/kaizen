@@ -4290,7 +4290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sun: {fileID: 2096203617}
   moon: {fileID: 746783055}
-  secondsInFullDay: 45
+  secondsInFullDay: 60
   timeMultiplier: 1
   daysElapsed: 0
   nightDayColor:
@@ -6940,7 +6940,7 @@ MonoBehaviour:
   settlerPrefab: {fileID: 160516, guid: 7cdecd587b50245af95c7a6bc0c65e2e, type: 2}
   arrivalSound: {fileID: 8300000, guid: c05f5d5a9d8a94a3b9c35f11219eed63, type: 3}
   entrance: {fileID: 986489039}
-  settlersPerDay: 1
+  settlersPerDay: 0.8
 --- !u!1001 &1493576847
 Prefab:
   m_ObjectHideFlags: 0
