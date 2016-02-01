@@ -19,14 +19,19 @@ public class ForSaleSign : MonoBehaviour {
 		building = transform.parent.parent.GetComponent<Building> ();
 	}
 
+	int _lastUpgradeCost = 0;
 	void Update () {
-	
-		if (building.CanUpgrade()) {
+		
+		if (building.CanUpgrade ()) {
 			foreach (var r in _renderers) {
 				r.enabled = true;
 			}
 			_collider.enabled = true;
-			_textMesh.text = building.upgradeCost + "";
+			if (building.upgradeCost != _lastUpgradeCost) {
+				_textMesh.text = building.upgradeCost.ToString();
+				_lastUpgradeCost = building.upgradeCost;
+			}
+
 		} else {
 			foreach (var r in _renderers) {
 				r.enabled = false;

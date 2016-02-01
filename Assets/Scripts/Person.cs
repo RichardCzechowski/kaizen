@@ -90,10 +90,12 @@ public class Person : MonoBehaviour {
 
 		HideIcon ();
 
+		_allPeople.Add (this);
 	}
 
-	public static Person[] All() {
-		return FindObjectsOfType<Person>();
+	static List<Person> _allPeople = new List<Person> ();
+	public static List<Person> All() {
+		return _allPeople;
 	}
 
 	public Building BuildingForShift(int shift) {
@@ -137,8 +139,9 @@ public class Person : MonoBehaviour {
 	}
 
 	Vector3 CurrentPathEnd() {
-		if (_agent.path.corners.Length != 0) {
-			return _agent.path.corners [_agent.path.corners.Length - 1];
+		var corners = _agent.path.corners;
+		if (corners.Length != 0) {
+			return corners [corners.Length - 1];
 		} else {
 			return Vector3.zero;
 		}
@@ -233,8 +236,14 @@ public class Person : MonoBehaviour {
 		}
 		return pathLength;
 	}
-		
+
+	int _lastPreviewLength = -1;
 	void UpdatePathPreview() {
+
+		if (ObjectsSet () == _lastPreviewLength) {
+			return;
+		}
+		_lastPreviewLength = ObjectsSet ();
 
 		List<Vector3> path = new List<Vector3>();
 

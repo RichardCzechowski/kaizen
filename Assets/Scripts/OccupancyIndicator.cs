@@ -77,16 +77,17 @@ public class OccupancyIndicator : MonoBehaviour {
 
 	}
 
-	void Update() {
+	void LateUpdate() {
 
 		if (_fgQuads != null && building.capacity != _fgQuads.Length) {
 			Rebuild ();
 		}
-		
+
+		var occupants = building.OccupantsIncludingPreview ();
+
 		for (var i = 0; i < building.capacity; i++) {
 			var fg = _fgQuads [i];
 			var bg = _bgQuads [i];
-			var occupants = building.OccupantsIncludingPreview ();
 			if (i < occupants.Count) {
 				var mat = new Material(materialTemplate);
 				mat.mainTexture = occupants[i].portrait;
