@@ -4413,7 +4413,7 @@ MonoBehaviour:
   cancelSound: {fileID: 8300000, guid: ccb0392c484524712888589bf879e6b0, type: 3}
   colorCamera: {fileID: 1209766831}
   curves: {fileID: 760038147}
-  fancyEffects: 0
+  fancyEffects: 1
   shiftImages:
   - {fileID: 2800000, guid: 3cca9701d80bb4637bb91ece0f03ab1c, type: 3}
   - {fileID: 2800000, guid: fffdfc71f024f4924b87d345478bd85e, type: 3}
