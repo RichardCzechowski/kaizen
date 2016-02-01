@@ -105,7 +105,10 @@ public class pathManager : MonoBehaviour {
 					building = hit.transform.parent.gameObject.GetComponent<Building> ();
 				}
 
-				if (building.Full () || (_lastBuilding && building.type == _lastBuilding.type)) {
+				if (building.Full ()) {
+					AudioSource.PlayClipAtPoint (negativeSound, Camera.main.transform.position);
+				}
+				else if (_lastBuilding && building.type == _lastBuilding.type) {
 					AudioSource.PlayClipAtPoint (negativeSound, Camera.main.transform.position);
 					Tutorial.instance.ShowPage("repeats");
 				} else {
@@ -125,9 +128,6 @@ public class pathManager : MonoBehaviour {
 							curves.enabled = false;
 							colorCamera.enabled = false;
 						}
-
-						Tutorial.instance.ShowPage("circles");
-
 
 					} else {
 						DayNightController.instance.BeginPreviewHours (DayNightController.instance.ShiftStartHour (i));

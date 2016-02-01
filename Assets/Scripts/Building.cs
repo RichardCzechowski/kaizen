@@ -24,8 +24,6 @@ public class Building : MonoBehaviour {
 	public GameObject[] onBeforePurchase;
 	public GameObject[] onAfterPurchase;
 
-	void Start(){
-	}
 
 	public List<Person> OccupantsIncludingPreview() {
 		if (DayNightController.instance.paused) {
@@ -68,10 +66,6 @@ public class Building : MonoBehaviour {
 				obj.SetActive (true);
 			}
 		}
-//
-//		if (Input.GetKeyUp (KeyCode.Alpha9)) {
-//			AddStars (1);
-//		}
 
 	}
 
@@ -97,6 +91,7 @@ public class Building : MonoBehaviour {
 	}
 
 	public void AddPerson(Person newPerson){
+		Tutorial.instance.ShowPage("circles");
 		if (occupants.Count < capacity) {
 			occupants.Add (newPerson);
 		} else {
